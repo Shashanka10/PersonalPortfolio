@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Me from "../../../public/pp.jpg"
-import Link from "next/link";
+import Button from "@/components/Button/Button";
 
 const About = () => {
   return (
@@ -47,7 +47,7 @@ const About = () => {
             <br />
             <br /> - Trek Diaries (NextJS) ---4TH SEM
           </p>
-            <Link href="/contact" alt= 'contactpage'/>
+          <Button url="/contact" text="Contact Me" />
         </div>
       </div>
     </div>

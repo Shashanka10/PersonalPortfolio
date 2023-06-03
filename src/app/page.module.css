@@ -22,19 +22,6 @@
   font-weight: 300;
 }
 
-.cv
-{
-  border: none;
-  background-color: rgb(141, 198, 198);
-  color: aliceblue;
-  padding: 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 150px;
-  height: 40px;
-  font-weight: 500;
-  font-size: 24px;
-}
 
 .img
 {
@@ -43,4 +30,14 @@
   height: 500px;
   object-fit: contain;
   background-color: rgb(140, 213, 213);
+  /* animation: move 3s infinite ease alternate; */
+}
+
+@keyframes move {
+    from{
+        transform: translateY(-10px);
+    }
+    to{
+        transform: translateY(10px);
+    }
 }

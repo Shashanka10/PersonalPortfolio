@@ -1,0 +1,50 @@
+.layout h1{
+    font-size: 60px;
+}
+
+
+.container h1{
+    font-size: 30px;
+    margin: 20px 0;
+}
+
+.items
+{
+    display: flex;
+    gap: 50px;
+}
+.item
+{
+    border: 5px solid #bbb;
+    border-radius: 5px;
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background-size: cover !important;
+} 
+.item:nth-child(1)
+{
+    background: url("/illustration.png");
+}
+.item:nth-child(2)
+{
+    background: url("/websites.jpg");
+}
+.item:nth-child(3)
+{
+    background: url("/apps.jpg");
+}
+
+.item:hover .title
+{
+    color: aqua;
+}
+
+.title
+{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 40px;
+    font-weight: bold;
+}

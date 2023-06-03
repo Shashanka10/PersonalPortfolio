@@ -1,0 +1,13 @@
+.container
+{
+  border: none;
+  background-color: rgb(124, 190, 190);
+  color: aliceblue;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  font-weight: 400;
+  font-size: 18px;
+}
