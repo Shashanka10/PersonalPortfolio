@@ -3,16 +3,26 @@ import styles from "./page.module.css"
 import Image from 'next/image'
 import myprof from "../../../../public/profile.jpg"
 import Isolation from "../../../../public/isolation.png"
+import {notFound} from "next/navigation"
 
-const BlogPost = () => {
+async function getData(id) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`,{ cache: 'no-store' });
+
+  if (!res.ok) {
+    return notFound()
+  }
+ 
+  return res.json();
+}
+
+const BlogPost = async({params}) => {
+  const data = await getData(params.id);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.info}>
-          <h1>Robolation</h1>
-          <p>The robot sat silently in its small, dimly lit enclosure, surrounded by a thick glass barrier. 
-            Cut off from the outside world, its metallic body emanated a sense of isolation and solitude. 
-            Its digital eyes gazed longingly at the world beyond, yearning for connection, but confined to its solitary existence.</p>
+          <h1>{data.title}</h1>
+          <p>{data.body}</p>
           <div className={styles.author}>
             <Image
               src={myprof}

@@ -20,7 +20,7 @@
 .ball
 {
     width: 18px;
-    height: 16px;
+    height: 18px;
     border-radius: 50%;
     position: absolute;
     background-color: rgb(88, 202, 164);

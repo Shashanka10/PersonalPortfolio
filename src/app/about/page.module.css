@@ -10,8 +10,8 @@
 .img {
     object-fit: cover;
     object-position: 0 25%;
-  filter: grayscale(100%);
-  border-radius: 10px;
+    filter: grayscale(100%);
+    border-radius: 10px;
 }
 
 .imgText {
@@ -67,4 +67,3 @@
   font-weight: 300;
   text-align: justify;
 }
-

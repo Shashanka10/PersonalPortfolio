@@ -13,7 +13,7 @@
 }
 .item h1{
   font-size: 65px;
-  background: linear-gradient(to bottom ,rgb(82, 200, 200),rgb(230, 222, 222) );
+  background: linear-gradient(to bottom ,rgb(82, 200, 200),rgb(96, 170, 114) );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -41,3 +41,4 @@
         transform: translateY(10px);
     }
 }
+
