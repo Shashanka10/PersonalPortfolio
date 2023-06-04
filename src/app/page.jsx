@@ -12,7 +12,11 @@ export default function Home() {
         <Button url="/portfolio" text="See my Work" />
       </div>
       <div className={styles.item}>
-      <Image src={Illustrate} alt='home_pfp'className={styles.img}/>
+      <Image 
+      src={Illustrate} 
+      alt='home_pfp'
+      className={styles.img}
+      priority={false}/>
       </div>
     </div>
   )
