@@ -1,9 +1,13 @@
+"use client"
 import React from 'react'
+import { Loading } from '@nextui-org/react'
 
-const Loading = () => {
+const LoadingContact = () => {
   return (
-    <div>Loading</div>
+    <div>
+      <Loading>Loading</Loading>;
+    </div>
   )
 }
 
-export default Loading
+export default LoadingContact

@@ -4,6 +4,11 @@ import contact from "../../../public/contact.png"
 import Image from 'next/image'
 import Button from '@/components/Button/Button'
 
+export const metadata = {
+  title: 'My Contact',
+  description: 'contact page',
+}
+
 const Contact = () => {
   return (
     <div className={styles.contact}>

@@ -4,6 +4,11 @@ import Image from "next/image";
 import Me from "../../../public/pp.jpg"
 import Button from "@/components/Button/Button";
 
+export const metadata = {
+  title: 'About Me',
+  description: 'about page',
+}
+
 const About = () => {
   return (
     <div className={styles.container}>
