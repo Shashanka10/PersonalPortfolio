@@ -4,8 +4,20 @@ import styles from "./page.module.css";
 import { getProviders, signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import {FcGoogle} from "react-icons/fc"
 
-const Login = ({ url }) => {
+const Login = () => {
+
+  const session = useSession();
+  const router = useRouter();
+  
+  if(session.status === "loading"){
+    return <p>Loading ...</p>
+  }
+  if(session.status === "authenticated"){
+    router?.push("/dashboard")
+  }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,9 +56,9 @@ const Login = ({ url }) => {
         }}
         className={styles.goog}
       >
-        Login with Google
+        Login with Google <FcGoogle className={styles.icon}/>
       </button>
-      <span className={styles.or}>- OR -</span>
+      <span className={styles.or}>--- OR ---</span>
       <Link className={styles.link} href="/dashboard/register">
         Create new account
       </Link>

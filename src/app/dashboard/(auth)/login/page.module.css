@@ -53,6 +53,7 @@
     font-weight: bold;
 }
 .goog {
+    position: relative;
     width: 60%;
     padding: 12px;
     cursor: pointer;
@@ -67,4 +68,12 @@
 .link
 {
     font-size: 17px;
+}
+
+.icon
+{
+    right: 25px;
+    top: 8px;
+    position: absolute;
+    font-size: 25px;
 }
