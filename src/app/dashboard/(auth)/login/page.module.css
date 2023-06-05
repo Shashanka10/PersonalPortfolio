@@ -1,0 +1,70 @@
+.container
+{
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 600px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border: 3px solid #bbb;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+.container h1{
+    color: rgb(79, 172, 172);
+    font-size: 40px;
+    font-weight: bold;
+}
+.container h2{
+    color: rgb(218, 228, 228);
+    font-size: 20px;
+    font-weight: lighter;
+}
+.form
+{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    padding: 15px;
+    gap: 25px;
+}
+
+.input
+{
+    border: 2px solid green;
+    background-color: rgb(246, 243, 240);
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.reg {
+    padding: 15px;
+    cursor: pointer;
+    background-color: #11613a;
+    border: none;
+    border-radius: 10px;
+    color: #eee;
+    font-size: 15px;
+    font-weight: bold;
+}
+.goog {
+    width: 60%;
+    padding: 12px;
+    cursor: pointer;
+    background-color: #bacac2;
+    border: none;
+    border-radius: 10px;
+    color: #210e0e;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.link
+{
+    font-size: 17px;
+}
