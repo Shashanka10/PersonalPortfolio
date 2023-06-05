@@ -30,7 +30,7 @@ const Category = ({params}) => {
           <div className={styles.imgContainer}>
             <Image 
             fill={true}
-            src={item.image} 
+            src={item.img} 
             className={styles.img}
             alt=''/>
           </div>
