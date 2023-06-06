@@ -8,11 +8,6 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import {MdDeleteForever} from "react-icons/md"
 
-export const metadata = {
-  title: 'Dashboard',
-  description: 'dashboard page',
-}
-
 const Dashboard = () => {
 
   const session = useSession();
