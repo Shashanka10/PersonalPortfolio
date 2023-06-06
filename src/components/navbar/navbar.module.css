@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC&family=Shadows+Into+Light&display=swap');
 .navbar
 {
     height: 100px;
@@ -8,8 +9,14 @@
 
 .logo
 {
+    font-family: 'Alegreya SC', serif;
     font-weight: bold;
     font-size: 24px;
+    letter-spacing: 3px;
+}
+.logo:hover
+{
+    color: rgb(71, 194, 194);
 }
 
 .links

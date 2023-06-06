@@ -1,14 +1,28 @@
+'use client'
 import Image from 'next/image'
 import styles from './page.module.css'
 import Illustrate from "../../public/me.png"
 import Button from '@/components/Button/Button'
+import Typewriter from 'typewriter-effect';
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.item}>
-        <h1>Hi! My name is Shashanka</h1>   
-        <p>Currently studying Computer Engineering at Kathmandu University</p>   
+        <h1>Hi! I am Shashanka</h1>   
+        <h2><Typewriter
+              options={{
+              strings: [
+                "< Welcome to my Website />",
+                "< Web Developer />",
+                "< Graphic Designer />",
+                "< Trekker />",
+                "< NextJS Developer />"
+              ],
+              autoStart: true,
+              loop: true,
+              }}
+        /></h2>   
         <Button url="/portfolio" text="See my Work" />
       </div>
       <div className={styles.item}>

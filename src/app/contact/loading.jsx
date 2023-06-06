@@ -5,7 +5,7 @@ import { Loading } from '@nextui-org/react'
 const LoadingContact = () => {
   return (
     <div>
-      <Loading>Loading</Loading>;
+      <Loading>Loading</Loading>
     </div>
   )
 }

@@ -1,13 +1,15 @@
 .container
 {
   border: none;
-  background-color: rgb(124, 190, 190);
+  background-color: rgb(55, 114, 114);
   color: aliceblue;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
   cursor: pointer;
-  width: 150px;
-  height: 40px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 15px;
+}
+.container:hover{
+  background-color: rgb(142, 160, 160);
+  color: black;
 }
