@@ -12,14 +12,13 @@
   gap: 50px;
 }
 .item h1{
-  position: absolute;
-  font-size: 55px;
+  font-size: 45px;
   background: linear-gradient(to bottom ,rgb(82, 200, 200),rgb(96, 170, 114) );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .item h2{
-  margin-top: 4em;
+  margin-top: 1em;
   color: rgb(255, 255, 255);
   text-align: center;
   font-size: 30px;
