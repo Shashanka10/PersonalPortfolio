@@ -23,7 +23,7 @@ export default function Home() {
               loop: true,
               }}
         /></h2>   
-        <Button url="/portfolio" text="See my Work" />
+        <Button url="/portfolio" text="See my Work" className={styles.btn}/>
       </div>
       <div className={styles.item}>
       <Image 

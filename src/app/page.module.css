@@ -12,21 +12,22 @@
   gap: 50px;
 }
 .item h1{
-  text-align: center;
   position: absolute;
-  top: 5em;
   font-size: 55px;
   background: linear-gradient(to bottom ,rgb(82, 200, 200),rgb(96, 170, 114) );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .item h2{
-  position: absolute;
-  top: 12em;
+  margin-top: 4em;
   color: rgb(255, 255, 255);
   text-align: center;
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 500;
+}
+.btn
+{
+  margin-top: 5em;
 }
 
 
