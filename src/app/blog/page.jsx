@@ -9,7 +9,7 @@ export const metadata = {
 }
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/posts", {
+  const res = await fetch("http://next-js-learn-rose.vercel.app/api/posts", {
     cache: "no-store",
   });
 
