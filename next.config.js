@@ -4,11 +4,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.pexels.com',
-        port: '',
-        pathname: '/photos/**',
-      },
-    ],
+        hostname: '**.freepik.com',
+  }],
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if
