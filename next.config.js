@@ -5,7 +5,9 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: '**.freepik.com',
-  }],
+        port: '',
+      },
+    ],
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if
