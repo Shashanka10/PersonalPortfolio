@@ -47,6 +47,8 @@
 
 .image {
   object-fit: contain;
+  width: 100%;
+  height: 300px;
 }
 
 .content {
@@ -55,4 +57,102 @@
   font-weight: 300;
   color: #999;
   text-align: justify;
+}
+
+
+/* Media Queries */
+
+/* Tablets */
+@media only screen and (max-width: 768px) {
+  .top {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info h1 {
+    font-size: 25px;
+  }
+
+  .info p {
+    font-size: 14px;
+  }
+
+  .author {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .avatar
+  {
+    width: 35px;
+    height: 35px;
+  }
+
+  .username {
+    font-size: 14px;
+  }
+  .imageContainer
+  {
+    position: absolute;
+    top: 19em;
+    right: 0;
+    width: 100%;
+  }
+  .image
+  {
+    position: absolute;
+    top: 0;
+    right: 6em;
+    width: 40%;
+    height: 250px;
+  }
+
+  .content {
+    font-size: 14px;
+  }
+}
+
+/* Mobile Phones */
+@media only screen and (max-width: 480px) {
+  .top {
+    gap: 15px;
+  }
+
+  .info h1 {
+    font-size: 24px;
+  }
+
+  .info p {
+    font-size: 10px;
+  }
+
+  .author {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .avatar
+  {
+    width: 25px;
+    height: 25px;
+  }
+
+  .username {
+    font-size: 10px;
+  }
+
+  .imageContainer {
+    position: absolute;
+    width: 100%;
+  }
+  .image
+  {
+    top: 3em;
+    right: 4em;
+    height: 140px;
+  }
+
+  .content {
+    font-size: 12px;
+  }
 }

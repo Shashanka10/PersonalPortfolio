@@ -25,3 +25,44 @@
     position: absolute;
     background-color: rgb(88, 202, 164);
 }
+
+
+/* Media Queries */
+
+/* Tablets */
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 40px;
+        height: 22px;
+        border: 1px solid rgb(30, 157, 30);
+        border-radius: 22px;
+    }
+
+    .icon {
+        font-size: 10px;
+    }
+
+    .ball {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Mobile Phones */
+@media only screen and (max-width: 480px) {
+    .container {
+        width: 26px;
+        height: 14px;
+        border: 1px solid rgb(30, 157, 30);
+        border-radius: 14px;
+    }
+
+    .icon {
+        font-size: 8px;
+    }
+
+    .ball {
+        width: 9px;
+        height: 9px;
+    }
+}

@@ -13,3 +13,23 @@
   background-color: rgb(142, 160, 160);
   color: black;
 }
+
+/* Media Queries */
+
+/* Tablets */
+@media only screen and (max-width: 768px) {
+  .container {
+    font-size: 13px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+}
+
+/* Mobile Phones */
+@media only screen and (max-width: 480px) {
+  .container {
+    font-size: 11px;
+    padding: 6px;
+    border-radius: 6px;
+  }
+}

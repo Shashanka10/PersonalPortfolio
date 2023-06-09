@@ -29,7 +29,8 @@ const Category = ({params}) => {
           </div>
           <div className={styles.imgContainer}>
             <Image 
-            fill={true}
+            width={350}
+            height={350}
             src={item.img} 
             className={styles.img}
             alt=''/>

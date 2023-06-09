@@ -77,3 +77,73 @@
     position: absolute;
     font-size: 25px;
 }
+
+
+/* Media Queries */
+
+/* Tablets */
+@media only screen and (max-width: 768px) {
+    .container {
+      width: 80%;
+    }
+    .container h1{
+        font-size: 35px;
+    }
+    .container h2{
+        font-size: 16px;
+    }
+  
+    .form {
+      width: 80%;
+    }
+    .input
+    {
+        font-size: 12px;
+    }
+    .icon
+{
+    font-size: 20px;
+    right: 6px;
+    top: 10px;
+}
+  }
+  
+  /* Mobile Phones */
+  @media only screen and (max-width: 480px) {
+    .container {
+      width: 90%;
+    }
+    .container h1{
+        font-size: 25px;
+    }
+    .container h2{
+        font-size: 12px;
+    }
+  
+    .form {
+      width: 100%;
+    }
+
+    .input
+    {
+        font-size: 10px;
+    }
+    .icon
+{
+    font-size: 16px;
+    right: 14px;
+    top: 8px;
+}
+
+.reg {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.goog {
+    width: 70%;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+  }

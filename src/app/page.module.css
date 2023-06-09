@@ -50,3 +50,45 @@
 }
 
 
+
+/* Media Queries */
+
+/* Tablets */
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .item {
+    gap: 20px;
+  }
+
+  .img {
+    height: 350px;
+  }
+}
+
+/* Mobile Phones */
+@media only screen and (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .item{
+    gap: 10px;
+  }
+  .item h1 {
+    font-size: 30px;
+  }
+
+  .item h2 {
+    font-size: 20px;
+  }
+
+  .img {
+    height: 250px;
+  }
+}
+
