@@ -54,7 +54,46 @@
     border: 2px solid black;
     outline: none;
 }
-
+.sendBtn
+{
+    position: relative;
+    margin-top: 10px;
+    left: 7em;
+    border: none;
+    width: 40%;
+    background-color: rgb(55, 114, 114);
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 15px;
+}
+.error {
+    position: absolute;
+    bottom: 2em;
+    width: 33%;
+    height: 10%;
+    padding: 5px;
+    background-color: rgb(202, 217, 217);
+    border-radius: 10px;
+    border: 2px solid black;
+    outline: none;
+    justify-content: center;
+  }
+  
+.errorMessage {
+    color: red;
+    font-size: 15px;
+    font-weight: 500;
+}
+  
+.success {
+    color: rgb(49, 185, 12);
+    font-size: 15px;
+    font-weight: 500;
+}
+  
 
 /* Media Queries */
 
