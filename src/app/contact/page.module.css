@@ -69,7 +69,7 @@
     font-weight: 400;
     font-size: 15px;
 }
-.error {
+/* .eme {
     position: absolute;
     bottom: 2em;
     width: 33%;
@@ -80,7 +80,7 @@
     border: 2px solid black;
     outline: none;
     justify-content: center;
-  }
+  } */
   
 .errorMessage {
     color: red;

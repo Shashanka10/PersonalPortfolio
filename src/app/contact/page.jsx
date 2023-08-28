@@ -25,7 +25,7 @@ const Contact = () => {
     const res = await fetch ("/api/auth/contact", {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name,
@@ -51,35 +51,38 @@ const Contact = () => {
           <div className={styles.imgContainer}>
             <Image src={contact} alt="my_contact" className={styles.img} width={300} height={300} />
           </div>
-          <form className={styles.form} onSubmit={handleSubmit} >
+          <form className={styles.form} onSubmit={handleSubmit} autoComplete='on' >
             <input 
               type="text" 
               onChange={e=> setName(e.target.value)}
               value={name}
+              id='name'
               placeholder='name' 
               className={styles.input} />
             <input 
               type="text" 
               onChange={e=> setEmail(e.target.value)}
               value={email}
+              id='email'
               placeholder='email@gmail.com' 
               className={styles.input} />
             <textarea 
             placeholder='messages ...' 
             onChange={e=> setMessage(e.target.value)}
             value={message}
+            id='message'
             cols={30} 
             rows={10} 
             className={styles.textarea}/>
             <button className={styles.sendBtn} type='submit'>Send</button>
-            <div className={styles.error}>
-            {
-              error && error.map((e) => {
+          </form>
+          <div className={styles.eme}>
+            { error && 
+                error.map((e) => {
                 <div className={`${success? styles.success :styles.errorMessage}`}>{e}</div>
-              })
+                })
             }
           </div>
-          </form>
       </div>
     </div>
   )
