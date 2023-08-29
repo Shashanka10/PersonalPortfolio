@@ -10,9 +10,9 @@ export const POST = async(request) => {
         await connect();
         await Contact.create({name, email, message});
         return NextResponse.json({
-        msg: ["Message sent successfully"], 
+        msg: "Message sent successfully", 
         success: true,
-       });
+       }, {status: 300});
     } catch (error) {
         if(error instanceof mongoose.Error.ValidationError){
             let errorList = [];
@@ -20,10 +20,10 @@ export const POST = async(request) => {
                 errorList.push(error.errors[e].message);
             }
             console.log(errorList);
-            return NextResponse.json({msg: errorList})
+            return NextResponse.json({msg: errorList, success: false}, {status: 422})
         }
         else {
-            return NextResponse.json({ msg: ["Unable to send message."] });
+            return NextResponse.json({ msg: "Unable to send message.", success: false }, { status: 520 });
         }
     }
 }

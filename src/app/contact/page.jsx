@@ -15,7 +15,7 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const[error, setError] = useState([]);
   const[success, setSuccess] = useState(false);
-
+  console.log(error)
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Name: ", name);
@@ -35,9 +35,8 @@ const Contact = () => {
     });
 
     const {msg, success} = await res.json();
+    
     setError(msg);
-    setSuccess(success);
-
     if(success){
       setName("");
       setEmail("");
@@ -54,21 +53,21 @@ const Contact = () => {
           <form className={styles.form} onSubmit={handleSubmit} autoComplete='on' >
             <input 
               type="text" 
-              onChange={e=> setName(e.target.value)}
+              onChange={(e)=> setName(e.target.value)}
               value={name}
               id='name'
               placeholder='name' 
               className={styles.input} />
             <input 
               type="text" 
-              onChange={e=> setEmail(e.target.value)}
+              onChange={(e)=> setEmail(e.target.value)}
               value={email}
               id='email'
               placeholder='email@gmail.com' 
               className={styles.input} />
             <textarea 
             placeholder='messages ...' 
-            onChange={e=> setMessage(e.target.value)}
+            onChange={(e)=> setMessage(e.target.value)}
             value={message}
             id='message'
             cols={30} 
@@ -77,9 +76,9 @@ const Contact = () => {
             <button className={styles.sendBtn} type='submit'>Send</button>
           </form>
           <div className={styles.eme}>
-            { error && 
+            { (error.length !== 0) && 
                 error.map((e) => {
-                <div className={`${success? styles.success :styles.errorMessage}`}>{e}</div>
+                <div className={styles.errorMessage}>{e}</div>
                 })
             }
           </div>
