@@ -1,13 +1,8 @@
-'use client';
+// 'use client';
 import React, { useState } from 'react'
 import styles from "./page.module.css"
 import contact from "../../../public/contact.png"
 import Image from 'next/image'
-
-export const metadata = {
-  title: 'My Contact',
-  description: 'contact page',
-}
 
 const Contact = () => {
   const [name, setName] = useState("");

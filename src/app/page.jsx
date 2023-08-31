@@ -15,9 +15,8 @@ export default function Home() {
               strings: [
                 "< Welcome to my Website />",
                 "< Web Developer />",
-                "< Graphic Designer />",
+                "< UI/UX Designer />",
                 "< Trekker />",
-                "< NextJS Developer />"
               ],
               autoStart: true,
               loop: true,
