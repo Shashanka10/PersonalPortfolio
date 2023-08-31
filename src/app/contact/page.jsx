@@ -15,7 +15,6 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const[error, setError] = useState([]);
   const[success, setSuccess] = useState(false);
-  console.log(error)
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Name: ", name);

@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import React from 'react'
 import styles from "./navbar.module.css"
 import Darkmode from '../DarkModeToogle/Darkmode';
@@ -42,7 +43,7 @@ const Navbar = () => {
   const session = useSession()
   return (
     <div className={styles.navbar}>
-      <Link href="/" className={styles.logo}>Shashanka</Link>
+      <Link href="/" className={styles.logo} ><Image src="/slogo.png" width={40} height={40} className={styles.logoImage} />Shashanka</Link>
       <div className={styles.links}>
         <Darkmode />
         {links.map((link) => (

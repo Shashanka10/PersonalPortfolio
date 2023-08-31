@@ -9,14 +9,19 @@
 
 .logo
 {
+    margin-top: 0.5em;
     font-family: 'Alegreya SC', serif;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 25px;
     letter-spacing: 3px;
 }
 .logo:hover
 {
     color: rgb(71, 194, 194);
+}
+.logoImage
+{
+    margin-right: 0.2em;
 }
 
 .links
