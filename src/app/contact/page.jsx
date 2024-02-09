@@ -1,84 +1,92 @@
-'use client';
-import React, { useState } from 'react'
-import styles from "./page.module.css"
-import contact from "../../../public/contact.png"
-import Image from 'next/image'
+"use client";
+import React, { useState, useRef } from "react";
+import contact from "../../../public/emailer.png";
+import Image from "next/image";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const[error, setError] = useState([]);
-  const[success, setSuccess] = useState(false);
-  const handleSubmit = async (e) => {
+
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
     e.preventDefault();
-    console.log("Name: ", name);
-    console.log("Email: ", email);
-    console.log("Message: ", message);
+    setSuccess(false);
+    setError(false);
 
-    const res = await fetch ("/api/auth/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        message,
+    emailjs.sendForm(process.env.NEXT_PUBLIC_SERVICE_ID, process.env.NEXT_PUBLIC_TEMPLATE_ID, form.current, {
+        publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
       })
-    });
+      .then(
+        (result) => {
+          setSuccess(true)
+          form.current.reset()
+        },
+        (error) => {
+          setError(true)
+        },
+      );
+  };
 
-    const {msg, success} = await res.json();
-    
-    setError(msg);
-    if(success){
-      setName("");
-      setEmail("");
-      setMessage("");
-    }
-  }
   return (
-    <div className={styles.contact}>
-      <h1>Let's Keep in Touch</h1>
-      <div className={styles.content}>
-          <div className={styles.imgContainer}>
-            <Image src={contact} alt="my_contact" className={styles.img} width={300} height={300} />
-          </div>
-          <form className={styles.form} onSubmit={handleSubmit} autoComplete='on' >
-            <input 
-              type="text" 
-              onChange={(e)=> setName(e.target.value)}
-              value={name}
-              id='name'
-              placeholder='name' 
-              className={styles.input} />
-            <input 
-              type="text" 
-              onChange={(e)=> setEmail(e.target.value)}
-              value={email}
-              id='email'
-              placeholder='email@gmail.com' 
-              className={styles.input} />
-            <textarea 
-            placeholder='messages ...' 
-            onChange={(e)=> setMessage(e.target.value)}
-            value={message}
-            id='message'
-            cols={30} 
-            rows={10} 
-            className={styles.textarea}/>
-            <button className={styles.sendBtn} type='submit'>Send</button>
-          </form>
-          <div className={styles.eme}>
-            { (error.length !== 0) && 
-                error.map((e) => {
-                <div className={styles.errorMessage}>{e}</div>
-                })
-            }
-          </div>
+    <div className="flex justify-between">
+      <div className="flex animate-bounce_slow ml-32">
+        <Image
+          src={contact}
+          alt="my_contact"
+          className="object-contain"
+          width={600}
+          height={300}
+        />
+      </div>
+      <div className="flex-col space-y-8 mr-32 mt-10 border p-6 rounded-3xl">
+        <div className="flex justify-center">
+          <h1 className="text-cyan-300 text-5xl font-bold font-sans">
+            Let's Keep in Touch
+          </h1>
+        </div>
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          autoComplete="on"
+          className="flex-col space-y-3"
+        >
+          <input
+            type="text"
+            placeholder="name"
+            className="p-3 flex w-full rounded-xl text-black"
+            name="user_name"
+            required
+          />
+          <input
+            type="text"
+            placeholder="email@gmail.com"
+            className="p-3 flex w-full rounded-xl text-black"
+            name="user_email"
+            required
+          />
+          <textarea
+            placeholder="what message do you have for me ....."
+            cols={30}
+            rows={8}
+            className="p-3 flex w-full rounded-xl resize-none text-black"
+            name="user_message"
+            required
+          />
+          <button
+            className="font-semibold text-white tracking-wider p-3 w-full bg-cyan-700 rounded-xl cursor-pointer"
+            type="submit"
+          >
+            Send
+          </button>
+          {success && <span className="text-green-600 font-medium flex justify-center">Your message has been sent sucessfully!!</span>}
+          {error && <span className="text-red-600 font-medium  flex justify-center">Something went wrong.</span>}
+        </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

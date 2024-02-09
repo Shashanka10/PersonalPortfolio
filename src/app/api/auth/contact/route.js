@@ -1,29 +1,19 @@
-import Contact from "@/models/Contact";
-import connect from "@/utils/db";
-import { NextResponse } from "next/server";
-import mongoose from "mongoose";
+import { EmailTemplate } from '../../../components/EmailTemplate';
+import { Resend } from 'resend';
 
-export const POST = async(request) => {
-    const {name,email,message} = await request.json();
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-    try {
-        await connect();
-        await Contact.create({name, email, message});
-        return NextResponse.json({
-        msg: "Message sent successfully", 
-        success: true,
-       }, {status: 300});
-    } catch (error) {
-        if(error instanceof mongoose.Error.ValidationError){
-            let errorList = [];
-            for(let e in error.errors){
-                errorList.push(error.errors[e].message);
-            }
-            console.log(errorList);
-            return NextResponse.json({msg: errorList, success: false}, {status: 422})
-        }
-        else {
-            return NextResponse.json({ msg: "Unable to send message.", success: false }, { status: 520 });
-        }
-    }
+export async function POST() {
+  try {
+    const data = await resend.emails.send({
+      from: 'Acme <onboarding@resend.dev>',
+      to: ['delivered@resend.dev'],
+      subject: 'Hello world',
+      react: EmailTemplate({ firstName: 'John' }),
+    });
+
+    return Response.json(data);
+  } catch (error) {
+    return Response.json({ error });
+  }
 }

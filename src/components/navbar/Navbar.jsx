@@ -1,10 +1,9 @@
-'use client'
-import Link from 'next/link'
-import Image from 'next/image'
-import React from 'react'
-import styles from "./navbar.module.css"
-import Darkmode from '../DarkModeToogle/Darkmode';
-import { signOut, useSession } from 'next-auth/react';
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import React from "react";
+import Darkmode from "../DarkModeToogle/Darkmode";
+import { signOut, useSession } from "next-auth/react";
 
 const links = [
   {
@@ -40,26 +39,38 @@ const links = [
 ];
 
 const Navbar = () => {
-  const session = useSession()
+  const session = useSession();
   return (
-    <div className={styles.navbar}>
-      <Link href="/" className={styles.logo} ><Image src="/merologo.png" width={40} height={40} className={styles.logoImage} />Shashanka</Link>
-      <div className={styles.links}>
+    <div className="flex justify-between items-center h-full p-4">
+      <Link
+        href="/"
+        className="flex text-lg items-center gap-3 cursor-pointer font-serif tracking-widest hover:text-cyan-800"
+      >
+        <Image src="/merologo.png" width={40} height={40} />
+        Shashanka
+      </Link>
+      <div className="flex items-center gap-6">
         <Darkmode />
         {links.map((link) => (
-        <Link key={link.id} href={link.url} className={styles.link}> 
-          {link.title}
-        </Link>
+          <Link
+            key={link.id}
+            href={link.url}
+            className="text-lg cursor-pointer font-sans hover:text-cyan-800"
+          >
+            {link.title}
+          </Link>
         ))}
         {session.status === "authenticated" && (
-        <button 
-        className={styles.logout}
-        onClick={signOut}
-        >Logout</button>
+          <button
+            className="p-3 transition ease-in-out delay-100 text-md font-medium bg-cyan-700 rounded-xl hover:translate-y-1 hover:scale-110 hover:bg-slate-500 duration-300"
+            onClick={signOut}
+          >
+            Logout
+          </button>
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
