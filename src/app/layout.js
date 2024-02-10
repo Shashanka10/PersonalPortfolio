@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         <FrameProvider>
           <ThemeProvider>
             <AuthProvider>
-              <div className="container">
+              <div className="flex flex-col p-4 min-h-screen justify-between max-w-full">
                 <Navbar />
                 {children}
                 <Footer />
