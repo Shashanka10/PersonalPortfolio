@@ -4,7 +4,7 @@ import { Loading } from '@nextui-org/react'
 
 const LoadingContact = () => {
   return (
-    <div>
+    <div className='flex justify-center items-center'>
       <Loading>Loading</Loading>
     </div>
   )
