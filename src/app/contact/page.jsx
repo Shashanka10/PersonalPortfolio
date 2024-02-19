@@ -31,19 +31,19 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex justify-between">
-      <div className="flex animate-bounce_slow ml-32">
+    <div className="flex pr-4 pl-4 sm:pr-0 sm:pl-0 justify-center sm:justify-around">
+      <div className="hidden sm:flex sm:items-center animate-bounce_slow sm:ml-2 md:ml-10 lg:ml-16">
         <Image
           src={contact}
           alt="my_contact"
-          className="object-contain"
+          className="object-contain w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"
           width={600}
           height={300}
         />
       </div>
-      <div className="flex-col space-y-8 mr-32 mt-10 border p-6 rounded-3xl">
+      <div className="flex-col space-y-5 md:space-y-7 sm:mr-8 md:mr-10 lg:mr-16 mt-2 sm:mt-4 lg:mt-8 border p-6 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl">
         <div className="flex justify-center">
-          <h1 className="text-cyan-300 text-5xl font-bold font-sans">
+          <h1 className="text-cyan-300 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-sans">
             Let's Keep in Touch
           </h1>
         </div>
@@ -56,14 +56,14 @@ const Contact = () => {
           <input
             type="text"
             placeholder="name"
-            className="p-3 flex w-full rounded-xl text-black"
+            className="p-2 lg:p-3 flex w-full rounded-xl text-black"
             name="user_name"
             required
           />
           <input
             type="text"
             placeholder="email@gmail.com"
-            className="p-3 flex w-full rounded-xl text-black"
+            className="p-2 lg:p-3 flex w-full rounded-xl text-black"
             name="user_email"
             required
           />
@@ -71,12 +71,12 @@ const Contact = () => {
             placeholder="what message do you have for me ....."
             cols={30}
             rows={8}
-            className="p-3 flex w-full rounded-xl resize-none text-black"
+            className="p-2 lg:p-3 flex w-full rounded-xl resize-none text-black"
             name="user_message"
             required
           />
           <button
-            className="font-semibold text-white tracking-wider p-3 w-full bg-cyan-700 rounded-xl cursor-pointer"
+            className="font-medium sm:font-semibold text-white tracking-wider p-2 lg:p-3 w-full bg-cyan-700 rounded-xl cursor-pointer"
             type="submit"
           >
             Send
