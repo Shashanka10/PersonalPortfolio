@@ -14,8 +14,8 @@ import Image from 'next/image';
 
 export default function Sidebar() {
   return (
-    <div className="hidden sm:flex sm:justify-center sm:w-1/5 lg:w-1/3">
-        <div className="flex-col text-white space-y-12 p-6 sm:mt-10 lg:mt-16 sm:fixed sm:left-0 sm:top-0 sm:bottom-0">
+    <div className="hidden  sm:flex sm:justify-center sm:w-1/5 lg:w-1/3">
+        <div className="flex-col z-40 text-white space-y-12 p-6 sm:mt-10 lg:mt-16 sm:fixed sm:left-0 sm:top-0 sm:bottom-0">
           <div>
             <Link href="/" className="flex-col items-center lg:space-y-3">
               <Image
@@ -68,7 +68,7 @@ export default function Sidebar() {
             </div>
           </div>
           <hr className="mt-10 border-gray-600 opacity-50" />
-          <div className="sm:space-y-3 md:space-y-4    lg:space-y-0 lg:flex lg:justify-center gap-4 text-gray-400 font-sans">
+          <div className="sm:space-y-3 md:space-y-4 z-40  lg:space-y-0 lg:flex lg:justify-center gap-4 text-gray-400 font-sans">
             <Link
               href="https://www.facebook.com/luitel.shashanka/"
               className="hover:text-cyan-800 cursor-pointer items-center flex justify-center"

@@ -20,13 +20,6 @@ import { SiCanva } from "react-icons/si";
 import { SiAndroidstudio } from "react-icons/si";
 import { SiAdobepremierepro } from "react-icons/si";
 
-
-
-export const metadata = {
-  title: "About Me",
-  description: "about page",
-};
-
 const About = () => {
   const [isCopied, setIsCopied] = useState(false);
   const handleCopyClick = async () => {
