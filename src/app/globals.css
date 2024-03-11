@@ -3,17 +3,6 @@
   transition: 1s all ease;
 }
 
-.light
-{
-  background-color: rgb(240, 227, 227);
-  color: #111;
-}
-.dark
-{
-  background-color: black;
-  color: #bbb;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -32,7 +32,7 @@ const Blog = async() => {
               width={350}
               height={200}
               className={styles.img}
-             alt=''/>
+             alt='blog pic'/>
           </div>
           <div className={styles.content}>
             <h1>{item.title}</h1>

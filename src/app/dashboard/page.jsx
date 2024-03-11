@@ -76,7 +76,7 @@ const Dashboard = () => {
             <div className={styles.imgContainer}>
               <Image 
               src={post.img} 
-              alt=''
+              alt='post img'
               fill={true}
               className={styles.img}/>
             </div>

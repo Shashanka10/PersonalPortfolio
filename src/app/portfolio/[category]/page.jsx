@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from "./page.module.css"
 import Button from '@/components/Button/Button'
 import Image from 'next/image'
 import { items } from './data.js'
@@ -17,23 +16,25 @@ const getData = (cat)=> {
 const Category = ({params}) => {
   const data = getData(params.category);
   return (
-    <div className={styles.container}>
-      <h2>{params.category}</h2>
+    <div className="flex-col space-y-8 z-40">
+      <h2 className="text-cyan-50 text-lg justify-center flex">{params.category}</h2>
       {data.map(item=> (
       
-      <div className={styles.item} key={item.id}>
-          <div className={styles.content}>
-            <h1>{item.title}</h1>
-            <p>{item.desc}</p>
-            <Button text="See more" url="#" />
-          </div>
-          <div className={styles.imgContainer}>
+      <div className="flex-col space-y-4" key={item.id}>
+          <div>
             <Image 
             width={350}
             height={350}
             src={item.img} 
-            className={styles.img}
-            alt=''/>
+            className="object-cover w-full h-full rounded-xl"
+            alt='Images'/>
+          </div>
+          <div className='space-y-1'>
+            <h1 className="text-cyan-400 text-sm justify-start flex font-bold">{item.title}</h1>
+            <p className="text-cyan-50 text-xs justify-start flex">{item.desc}</p>
+          </div>
+          <div className='flex justify-center'>
+            <Button text="See more" url="#" />
           </div>
       </div>
       ))}
