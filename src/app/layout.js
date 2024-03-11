@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         <FrameProvider>
             <AuthProvider>
               <div className="flex flex-col sm:ml-24 lg:ml-60 p-4 min-h-screen justify-between">
-                {/* <StarsCanvas /> */}
+                <StarsCanvas />
                 <Sidebar />
                 <Navbar />
                 {children}
