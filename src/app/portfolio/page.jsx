@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -5,11 +6,6 @@ import Illustration from "../../../public/illustration.png";
 import Website from "../../../public/websites.jpg";
 import Application from "../../../public/apps.jpg";
  
-export const metadata = {
-  title: 'My Portfolio',
-  description: 'portfolio page',
-}
-
 const Portfolio = () => {
   return (
     <div className="flex-col sm:flex w-full space-y-7 p-5 md:p-16 lg:p-32 mt-8 sm:mt-0 z-40 rounded-2xl bg-[#1A1A1A]">
