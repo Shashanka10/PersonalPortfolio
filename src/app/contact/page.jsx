@@ -51,7 +51,7 @@ const Contact = () => {
 
   return (
     <div className="flex justify-between mt-8 sm:mt-2 z-40">
-      <div className="flex-col w-full p-5 md:p-16 lg:p-32 mt-8 md:mt-0 z-40 rounded-2xl bg-[#1A1A1A]">
+      <div className="flex-col w-full p-5 sm:px-12 md:p-16 lg:p-24 mt-8 sm:mt-0 z-40 rounded-2xl bg-[#1A1A1A]">
         <div className="flex-col mt-10 md:mt-0 space-y-3 ">
           <div>
             <h1 className="text-white text-3xl font-bold">Contact</h1>

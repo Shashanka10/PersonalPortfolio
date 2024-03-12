@@ -35,21 +35,21 @@ const About = () => {
   };
   return (
     <div className="flex justify-between mt-8 sm:mt-2 z-40">
-      <div className="flex-col w-full p-5 space-y-8 md:p-16 lg:p-32 mt-8 md:mt-0 z-40 rounded-2xl bg-[#1A1A1A]">
-        <div className="flex-col mt-10 md:mt-0 space-y-3">
+      <div className="flex-col w-full p-5 space-y-8 sm:px-12 md:p-16 lg:p-24 mt-8 md:mt-0 z-40 rounded-2xl bg-[#1A1A1A]">
+        <div className="flex-col mt-10 md:mt-0 space-y-2 sm:space-y-3 lg:space-y-4">
           <div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
               Shashanka Luitel
             </h1>
           </div>
           <div>
-            <h1 className="text-lg sm:text-2xl md:text-4xl font-bold text-gray-500">
+            <h1 className="text-base sm:text-lg md:text-2xl font-bold text-gray-500">
               Developer | Designer | Trekker
             </h1>
           </div>
         </div>
         <div>
-          <p className="font-sans font-semibold text-lg text-justify sm:text-md text-wrap text-gray-500">
+          <p className="font-sans font-semibold text-base text-justify sm:text-lg lg:text-xl text-wrap text-gray-500">
             Myself Shashanka Luitel, currently enrolled as a computer
             engineering student at Kathmandu University, which is regarded as
             one of the finest university in Nepal. I am passionate about
@@ -103,97 +103,118 @@ const About = () => {
           </div>
         </div>
         <hr className="mt-10 border-gray-600 opacity-50" />
-        <div className="flex-col mt-8 space-y-5">
+        <div className="flex-col mt-8 space-y-5 sm:space-y-7 lg:space-y-10">
           <div>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-white">
+            <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
               Programming Languages
             </h1>
           </div>
-          <div className="flex-col space-y-2">
-          <div className="flex space-x-4 p-4 items-center bg-[#282828] rounded-tl-xl rounded-tr-xl">
+          <div className="flex-col space-y-2 lg:space-y-3 w-full">
+            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] rounded-tl-xl rounded-tr-xl">
             <TbBrandReactNative className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-semibold text-gray-300">React Native</h1>
+            <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">React Native</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828] ">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] md:rounded-tl-xl md:rounded-tr-xl ">
             <TbHexagonLetterC className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-semibold text-gray-300">C</h1>
+            <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">C</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828] ">
+          </div>
+          <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
             <SiCplusplus className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-semibold text-gray-300">C++</h1>
+            <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">C++</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828] ">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
             <FaPython className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-semibold text-gray-300">Python</h1>
+            <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">Python</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828] ">
+          </div>
+          <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
             <BiLogoFlutter className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-semibold text-gray-300">Flutter</h1>
+            <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">Flutter</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828] ">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
             <FaHtml5 className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-semibold text-gray-300">HTML</h1>
-          </div>   
-          <div className="flex space-x-4 p-4 items-center bg-[#282828] ">
-            <FaCss3Alt className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-semibold text-gray-300">CSS</h1>
+            <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">HTML</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828] rounded-bl-xl rounded-br-xl">
+          </div>
+          <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">   
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] md:rounded-bl-xl md:rounded-br-xl ">
+            <FaCss3Alt className="text-gray-500 w-7 h-7"/>
+            <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">CSS</h1>
+          </div>
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] rounded-bl-xl rounded-br-xl">
             <SiJavascript className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-semibold text-gray-300">Javascript</h1>
+            <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">Javascript</h1>
+          </div>
           </div>
           </div>
         </div>
         <hr className="mt-10 border-gray-600 opacity-50" />
-        <div className="flex-col mt-8 space-y-5">
+        <div className="flex-col mt-8 space-y-5 sm:space-y-7 lg:space-y-10">
           <div>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-white">
+            <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
               Tools Used
             </h1>
           </div>
-          <div className="flex-col space-y-2">
-          <div className="flex space-x-4 p-4 items-center bg-[#282828] rounded-tl-xl rounded-tr-xl">
+          <div className="flex-col space-y-2 lg:space-y-3 w-full">
+          <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] rounded-tl-xl rounded-tr-xl">
             <FaFigma className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-300">Figma</h1>
+            <h1 className="text-xl lg:text-2xl font-bold text-gray-300">Figma</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828]">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] md:rounded-tl-xl md:rounded-tr-xl">
             <SiAdobeindesign className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-300">Adobe Indesign</h1>
+            <h1 className="text-xl lg:text-2xl font-bold text-gray-300">Adobe Indesign</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828]">
+          </div>
+          <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
             <FaGitAlt className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-300">Git</h1>
+            <h1 className="text-xl lg:text-2xl font-bold text-gray-300">Git</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828]">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
             <SiVisualstudiocode className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-300">Visual Studio Code</h1>
+            <h1 className="text-xl lg:text-2xl font-bold text-gray-300">Visual Studio Code</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828]">
+          </div>
+          <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
             <SiSublimetext className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-300">Sublime Text</h1>
+            <h1 className="text-xl lg:text-2xl font-bold text-gray-300">Sublime Text</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828]">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
             <SiCanva className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-300">Canva</h1>
+            <h1 className="text-xl lg:text-2xl font-bold text-gray-300">Canva</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828]">
+          </div>
+          <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
             <SiAndroidstudio className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-300">Android Studio</h1>
+            <h1 className="text-xl lg:text-2xl font-bold text-gray-300">Android Studio</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828]">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
             <SiAdobepremierepro className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-300">Adobe Premier Pro</h1>
+            <h1 className="text-xl lg:text-2xl font-bold text-gray-300">Adobe Premier Pro</h1>
           </div>
-          <div className="flex space-x-4 p-4 items-center bg-[#282828] rounded-bl-xl rounded-br-xl">
+          </div>
+          <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
+          <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] rounded-bl-xl rounded-br-xl">
             <SiAdobeillustrator className="text-gray-500 w-7 h-7"/>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-300">Adobe Illustrator</h1>
+            <h1 className="text-xl lg:text-2xl font-bold text-gray-300">Adobe Illustrator</h1>
+          </div>
+          <div className="hidden md:flex w-full space-x-4 p-4 items-center bg-[#282828] rounded-bl-xl rounded-br-xl">
+            <h1 className="text-xl lg:text-2xl font-bold text-gray-300"></h1>
           </div>
           </div>
-        </div>
+          </div>
+          </div>
         <hr className="mt-10 border-gray-600 opacity-50" />
-        <div className="flex-col mt-8 space-y-5">
+        <div className="flex-col mt-8 space-y-5 sm:space-y-7 lg:space-y-10">
         <div>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-white">
+            <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
               Experience
             </h1>
           </div>
@@ -346,7 +367,7 @@ const About = () => {
         </div>
         <hr className="mt-10 border-gray-600 opacity-50" />
         <div>
-            <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-white">
+            <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
               Education
             </h1>
           </div>

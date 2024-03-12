@@ -16,15 +16,15 @@ const getData = (cat)=> {
 const Category = ({params}) => {
   const data = getData(params.category);
   return (
-    <div className="flex-col space-y-8 z-40">
+    <div className="flex-col space-y-8 w-full p-5 md:p-16 lg:p-24 mt-8 sm:mt-0 z-40 rounded-2xl bg-[#1A1A1A]">
       <h2 className="text-cyan-50 text-lg justify-center flex">{params.category}</h2>
       {data.map(item=> (
       
       <div className="flex-col space-y-4" key={item.id}>
           <div>
             <Image 
-            width={350}
-            height={350}
+            width={1000}
+            height={1000}
             src={item.img} 
             className="object-cover w-full h-full rounded-xl"
             alt='Images'/>

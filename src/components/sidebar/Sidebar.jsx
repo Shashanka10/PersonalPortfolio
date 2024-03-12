@@ -33,7 +33,7 @@ export default function Sidebar() {
           <div className="space-y-4 text-gray-400 font-sans">
             <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 hover:text-cyan-800 cursor-pointer">
               <Link href="/" className="hidden lg:flex lg:gap-4">
-                <Home /> Homepage
+                <Home /> Home
               </Link>
               <Link href="/" className="lg:hidden flex">
                 <Home />

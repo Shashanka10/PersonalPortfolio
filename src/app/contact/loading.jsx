@@ -1,11 +1,13 @@
 "use client"
 import React from 'react'
-import { Loading } from '@nextui-org/react'
+import { BeatLoader } from 'react-spinners'
 
 const LoadingContact = () => {
   return (
     <div className='flex justify-center items-center'>
-      <Loading>Loading</Loading>
+      <BeatLoader
+        color='green' 
+      />
     </div>
   )
 }
