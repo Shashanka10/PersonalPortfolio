@@ -76,36 +76,26 @@ const Navbar = () => {
       </div>
       {open && (
         <div className="flex-col space-y-8 z-40 h-screen rounded-tl-3xl rounded-bl-3xl items-center absolute top-0 right-0 w-2/3 sm:w-1/2 bg-black text-white shadow-lg ">
-          <div className="flex h-52 items-center rounded-tl-3xl rounded-bl-3xl pt-12 p-5 bg-gradient-to-r from-gray-800 to-gray-900 transform">
-            <div className="flex-col">
-              <div className="flex space-x-4 items-center">
-                <div>
-                  <Image
-                    src="/shankss.jpg"
-                    alt="profile pic"
-                    width={1000}
-                    height={1000}
-                    className="rounded-full w-20 h-20 ring-4 ring-opacity-20 ring-gray-200"
-                  />
-                </div>
-                <div className="flex-col">
-                  <h1 className="text-white tracking-wide text-sm">
+          <div className="flex-col mt-28 px-8 space-y-8 text-gray-400 font-sans">
+          <div className="flex flex-col space-y-4 items-center">
+                <div className="flex flex-col space-y-1">
+                  <h1 className="text-white tracking-wider text-lg">
                     Shashanka Luitel
                   </h1>
-                  <p className="text-gray-300 tracking-wider text-xs">
+                  <p className="text-gray-300 tracking-wider text-sm">
                     Computer Engineer
                   </p>
                 </div>
-              </div>
-              <div className="mt-3">
+              <div>
                 <p className="text-yellow-500 tracking-wider text-xs flex items-center gap-2">
                   <GraduationCap />
                   Kathmandu University
                 </p>
               </div>
             </div>
-          </div>
-          <div className="flex-col px-8 space-y-8 text-gray-400 font-sans">
+            <div className="border border-gray-500"></div>
+            <br />
+            <br />
             <div
               className={`flex justify-start space-x-4 hover:text-cyan-800 cursor-pointer ${
                 pathname === "/" ? "text-cyan-500" : ""

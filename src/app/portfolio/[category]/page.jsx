@@ -18,7 +18,7 @@ const Category = ({ params }) => {
     <div className="flex justify-between mt-8 sm:mt-2 z-40">
       <div className="flex-col space-y-8 w-full p-5 md:p-16 lg:p-24 mt-8 sm:mt-0 z-40 rounded-2xl bg-[#1A1A1A]">
         <div className="flex justify-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+          <h2 className="text-2xl sm:text-2xl md:text-3xl font-bold text-white">
             {params.category}
           </h2>
         </div>
@@ -34,15 +34,15 @@ const Category = ({ params }) => {
               />
             </div>
             <div className="space-y-1">
-              <h1 className="text-cyan-400 text-sm justify-start flex font-bold">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
                 {item.title}
               </h1>
-              <p className="text-cyan-50 text-xs justify-start flex">
+              <p className="font-sans font-semibold text-base text-justify sm:text-lg lg:text-xl text-wrap text-gray-500">
                 {item.desc}
               </p>
             </div>
             <div className="flex justify-center">
-              <Button text="See more" url="#" />
+              <Button text="See more" url="https://medium.com/" />
             </div>
           </div>
         ))}
