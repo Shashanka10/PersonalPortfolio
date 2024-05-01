@@ -2,21 +2,27 @@ export const items = {
     Projects: [
       {
         id: 1,
-        title: "Creative Portfolio",
-        desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur vel tenetur necessitatibus unde natus perspiciatis, amet cupiditate ducimus possimus, eaque ex autem id nobis eum dolorem. Neque eveniet fugiat tenetur?",
-        img: "https://img.freepik.com/free-photo/lumbini-nepal-birthplace-buddha-siddhartha-gautama_554837-476.jpg?w=1060&t=st=1686331563~exp=1686332163~hmac=ffa6e4b418b5e09053580ee6e183f2f971df22788f9640f116d312801e07c4d9",
+        title: "Trek Diaries",
+        desc: "Trek Diaries is a social media site that is well-designed to meet the needs of trek and hike enthusiasts, making it a must-have platform in today's world. The website facilitates the exploration of new locations, connects with like-minded individuals, and shares experiences through posts, likes, and comments. ",
+        img: "/TDs.jpg",
       },
       {
         id: 2,
-        title: "Minimal Single Product",
-        desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur vel tenetur necessitatibus unde natus perspiciatis, amet cupiditate ducimus possimus, eaque ex autem id nobis eum dolorem. Neque eveniet fugiat tenetur?",
-        img: "https://img.freepik.com/premium-photo/bodhanath-stupa-kathmandu-nepal_759575-2705.jpg?w=1060",
+        title: "Battleship",
+        desc: "Battleship also known as Sea Battle is a classic strategy type guessing game for multiplayer which is played online in a browser on which each player`s fleet of warships are marked. The locations of the fleets are hidden from the other player. Players alternate turns at the other player`s ships, and the objective of the game is to destroy the opposing player`s fleet.",
+        img: "/Battleship.jpg",
       },
       {
         id: 3,
-        title: "Yak",
-        desc: "Yaks are large, sturdy animals native to the Himalayan region of Asia. They are well-adapted to high altitudes and rugged terrains, making them valuable for various purposes. Yaks are commonly used as pack animals, carrying heavy loads across mountainous trails. Their woolly coats provide insulation against the cold, and their milk is a source of nutrition for local communities. Yaks are also culturally significant, deeply woven into the traditions and livelihoods of Himalayan people. Their unique appearance and resilience make them an iconic symbol of the high Himalayas.",
-        img: "https://img.freepik.com/free-photo/yak-nepal_658691-289.jpg?w=1060&t=st=1686331826~exp=1686332426~hmac=7386cb520b8e5a8d6ea5dceca0014c1fe34fee4508d78a739b486ad35363ab48",
+        title: "chat-JPT",
+        desc: "Real time chat applications have become an essential part of the digital world, enabling people to communicate with each other smoothly and continuously from anywhere and anytime. In this project, we have developed real-time chat application, `chat-JPT` using Socket.io and Node.js.",
+        img: "/chatapp.png",
+      },
+      {
+        id: 4,
+        title: "Trek Diaries Mobile App",
+        desc: "on development phase ...",
+        img: "/developing.jpg",
       },
     ],
     Galleries: [
