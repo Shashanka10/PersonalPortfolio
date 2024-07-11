@@ -27,7 +27,7 @@ export default function HomePage() {
                   "< Welcome to my Website />",
                   "< Web Developer />",
                   "< UI/UX Designer />",
-                  "< React Native Developer />",
+                  "< App Developer />",
                   "< Trekker />",
                 ],
                 autoStart: true,
@@ -41,7 +41,7 @@ export default function HomePage() {
           <h1>Bhaktapur, Nepal</h1>
         </div>
         <div className="flex space-x-4 lg:space-x-6">
-          <Button url="/portfolio" text="See my Work" />
+          <Button url="/portfolio" text="See my Portfolio" />
           <Button url="/contact" text="Contact Me" />
         </div>
         </div>

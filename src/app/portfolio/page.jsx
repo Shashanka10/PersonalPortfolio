@@ -16,8 +16,8 @@ const Portfolio = () => {
           </h1>
         </div>
         <div className="space-y-6 sm:space-y-7 z-40">
-          <div className="relative">
-            <Link href="/portfolio/Projects">
+          <div className="relative hover:translate-y-0.5 ease-in">
+            <Link href="/portfolio/projects">
               <Image
                 src={Project}
                 alt="Image of illus"
@@ -28,8 +28,8 @@ const Portfolio = () => {
               </span>
             </Link>
           </div>
-          <div className="relative">
-            <Link href="/portfolio/Galleries">
+          {/* {/* <div className="relative hover:translate-y-0.5 ease-in">
+            <Link href="/portfolio/galleries">
               <Image
                 src={Gallery}
                 alt="Image of webs"
@@ -39,9 +39,9 @@ const Portfolio = () => {
                 Galleries{" "}
               </span>
             </Link>
-          </div>
-          <div className="relative">
-            <Link href="/portfolio/Blogs">
+          </div> */}
+          <div className="relative hover:translate-y-0.5 ease-in">
+            <Link href="/portfolio/blogs">
               <Image
                 src={Application}
                 alt="Image of apps"
@@ -58,9 +58,9 @@ const Portfolio = () => {
         <div className="flex justify-center">
           <h1 className="text-3xl font-bold text-white">Choose a Gallery</h1>
         </div>
-        <div className="flex justify-around space-x-5 lg:space-x-8 z-40">
-          <div className="relative">
-            <Link href="/portfolio/Projects">
+        <div className="flex justify-center space-x-5 lg:space-x-8 z-40">
+          <div className="relative hover:translate-y-0.5 ease-in">
+            <Link href="/portfolio/projects">
               <Image
                 src={Project}
                 alt="Image of illus"
@@ -71,8 +71,8 @@ const Portfolio = () => {
               </span>
             </Link>
           </div>
-          <div className="relative">
-            <Link href="/portfolio/Galleries">
+          {/* <div className="relative hover:translate-y-0.5 ease-in">
+            <Link href="/portfolio/galleries">
               <Image
                 src={Gallery}
                 alt="Image of webs"
@@ -82,9 +82,9 @@ const Portfolio = () => {
                 Galleries{" "}
               </span>
             </Link>
-          </div>
-          <div className="relative">
-            <Link href="/portfolio/Blogs">
+          </div> */}
+          <div className="relative hover:translate-y-0.5 ease-in">
+            <Link href="/portfolio/blogs">
               <Image
                 src={Application}
                 alt="Image of apps"

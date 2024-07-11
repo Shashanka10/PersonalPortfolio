@@ -41,25 +41,30 @@ const Category = ({ params }) => {
                 {item.desc}
               </p>
             </div>
-            <div className="flex justify-start">
-              <Button text="See more" url="https://medium.com/" />
+            <div className="flex items-center">
+            <Button
+                  text="See more"
+                  url={item.linked} />
             </div>
           </div>
         ))}
-         {data.map((item) => (
-          <div className="hidden lg:flex justify-around items-center space-x-10 z-40" key={item.id}>
+        {data.map((item) => (
+          <div
+            className="hidden lg:flex justify-around items-center space-x-10 z-40"
+            key={item.id}
+          >
             <div className="flex flex-col w-2/3 space-y-5">
-            <div className="space-y-3">
-              <h1 className="text-3xl font-bold text-white">
-                {item.title}
-              </h1>
-              <p className="font-sans font-semibold text-justify text-xl text-wrap text-gray-500">
-                {item.desc}
-              </p>
-            </div>
-            <div className="flex justify-start">
-              <Button text="See more" url="https://medium.com/" />
-            </div>
+              <div className="space-y-3">
+                <h1 className="text-3xl font-bold text-white">{item.title}</h1>
+                <p className="font-sans font-semibold text-justify text-xl text-wrap text-gray-500">
+                  {item.desc}
+                </p>
+              </div>
+              <div className="flex items-center">
+                <Button
+                  text="See more"
+                  url={item.linked} />
+              </div>
             </div>
             <div className="flex justify-center w-1/2">
               <Image
