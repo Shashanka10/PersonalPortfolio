@@ -66,7 +66,7 @@ const Category = ({ params }) => {
                   url={item.linked} />
               </div>
             </div>
-            <div className="flex justify-center w-1/2">
+            <div className="flex justify-center w-1/2 hover:scale-105 transition-all duration-500">
               <Image
                 width={1000}
                 height={1000}

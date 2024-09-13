@@ -59,7 +59,7 @@ const Portfolio = () => {
           <h1 className="text-3xl font-bold text-white">Choose a Gallery</h1>
         </div>
         <div className="flex justify-center space-x-5 lg:space-x-8 z-40">
-          <div className="relative hover:translate-y-0.5 ease-in">
+          <div className="relative hover:scale-105 transition-all duration-500">
             <Link href="/portfolio/projects">
               <Image
                 src={Project}
@@ -71,7 +71,7 @@ const Portfolio = () => {
               </span>
             </Link>
           </div>
-          {/* <div className="relative hover:translate-y-0.5 ease-in">
+          {/* <div className="relative hover:scale-105 transition-all duration-500">
             <Link href="/portfolio/galleries">
               <Image
                 src={Gallery}
@@ -83,7 +83,7 @@ const Portfolio = () => {
               </span>
             </Link>
           </div> */}
-          <div className="relative hover:translate-y-0.5 ease-in">
+          <div className="relative hover:scale-105 transition-all duration-500">
             <Link href="/portfolio/blogs">
               <Image
                 src={Application}
