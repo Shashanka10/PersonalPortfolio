@@ -90,7 +90,7 @@ const About = () => {
           </div>
           <div>
             <Link
-              href="/Shashanka_professional_resume.pdf"
+              href="/my_professional_resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download="Download File"
