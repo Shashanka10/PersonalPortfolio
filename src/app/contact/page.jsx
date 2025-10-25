@@ -1,50 +1,66 @@
 "use client";
 import React, { useState, useRef } from "react";
-import emailjs from "@emailjs/browser";
 import copy from "clipboard-copy";
 import { Check, Copy } from "lucide-react";
-import Typewriter from "typewriter-effect";
+import toast from "react-hot-toast";
+import { Loader } from "lucide-react";
 
 const Contact = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [isCopied, setIsCopied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useRef();
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     setSuccess(false);
     setError(false);
+    setIsSubmitting(true);
 
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_SERVICE_ID,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID,
-        form.current,
-        {
-          publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
-        }
-      )
-      .then(
-        (result) => {
-          setSuccess(true);
-          form.current.reset();
+    const formData = new FormData(form.current);
+    const data = {
+      user_name: formData.get("user_name"),
+      user_email: formData.get("user_email"),
+      user_message: formData.get("user_message"),
+    };
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        (error) => {
-          setError(true);
-        }
-      );
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      if (res.ok && result.success) {
+        setSuccess(true);
+        toast.success("Email sent successfully");
+        form.current.reset();
+      } else {
+        setError(true);
+      }
+    } catch (error) {
+      toast.error("Failed to send email");
+      console.error("Error sending email:", error);
+      setError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCopyClick = async () => {
     try {
       await copy("sbishalluitel7@gmail.com");
       setIsCopied(true);
+      toast.success("Email copied to clipboard");
       setTimeout(() => {
         setIsCopied(false);
       }, 3000);
     } catch (error) {
+      toast.error("Failed to copy email");
       console.error("Failed to copy text to clipboard", error);
     }
   };
@@ -63,32 +79,17 @@ const Contact = () => {
           </div>
         </div>
         <hr className="mt-10 border-gray-600 opacity-50" />
-        <div className="flex-col mt-10 space-y-5">
-          <div className="space-y-5 md:flex md:space-y-0 md:space-x-16 lg:space-x-32">
-            <div>
-              <h1 className="text-white text-base font-semibold tracking-wider">
-                sbishalluitel7@gmail.com
-              </h1>
-              <p1 className="text-gray-500 text-sm font-semibold">E-mail</p1>
-            </div>
-            <div>
-              <h1 className="text-white text-base font-semibold tracking-wider">
-                <Typewriter
-                  options={{
-                    strings: ["+977 9813187989"],
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
-              </h1>
-              <p1 className="text-gray-500 text-sm font-semibold">Phone</p1>
-            </div>
+        <div className="mt-10 space-y-5 md:flex md:space-y-0 md:space-x-16 lg:space-x-32 justify-between items-center">
+          <div>
+            <h1 className="text-white text-base font-semibold tracking-wider">
+              sbishalluitel7@gmail.com
+            </h1>
+            <p1 className="text-gray-500 text-sm font-semibold">E-mail</p1>
           </div>
           <div>
             <button
-              className={`font-medium sm:font-semibold text-white tracking-wider p-3 lg:p-3 w-full border-2 border-[#282828] rounded-xl cursor-pointer flex justify-center gap-4 ${
-                isCopied ? "bg-green-600 opacity-80" : ""
-              }`}
+              className={`font-medium sm:font-semibold text-white tracking-wider p-3 lg:p-3 w-full border-2 border-[#282828] rounded-xl cursor-pointer flex justify-center gap-4 ${isCopied ? "bg-green-600 opacity-80" : ""
+                }`}
               onClick={handleCopyClick}
             >
               {isCopied ? (
@@ -126,7 +127,7 @@ const Contact = () => {
                 required
               />
               <input
-                type="text"
+                type="email"
                 placeholder="Email"
                 className="p-3 lg:p-3 flex w-full rounded-xl text-white bg-[#282828] "
                 name="user_email"
@@ -144,7 +145,7 @@ const Contact = () => {
                 className="font-medium sm:font-semibold text-white tracking-wider p-3 lg:p-3 w-full bg-green-600 rounded-xl cursor-pointer"
                 type="submit"
               >
-                Send
+                {isSubmitting ? <div className="flex item-center justify-center gap-1">Sending<Loader className="animate-spin" /></div> : "Send Message"}
               </button>
               {success && (
                 <span className="text-green-600 font-medium flex justify-center">

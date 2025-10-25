@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Footer from "@/components/footer/Footer";
 import StarsCanvas from "@/components/StarBackground/StarBackground";
 import Sidebar from "@/components/sidebar/Sidebar";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
           <Sidebar />
           <Navbar />
           {children}
+          <Toaster />
           <Footer />
         </div>
       </body>
