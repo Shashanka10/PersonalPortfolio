@@ -23,7 +23,7 @@ export default function Sidebar() {
                 alt='profile pic'
                 width={300}
                 height={300}
-                className="w-7 h-7 rounded-full bg-amber-700 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-48 lg:h-48"
+                className="w-7 h-7 rounded-full border-2 border-sky-200 bg-amber-700 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-48 lg:h-48"
               />
               <span className="hidden text-md lg:flex justify-center">
                 Shashanka
@@ -31,7 +31,7 @@ export default function Sidebar() {
             </Link>
           </div>
           <div className="space-y-4 text-gray-400 font-sans">
-            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 hover:text-cyan-800 cursor-pointer">
+            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 hover:text-amber-700 cursor-pointer">
               <Link href="/" className="hidden lg:flex lg:gap-4">
                 <Home /> Home
               </Link>
@@ -39,7 +39,7 @@ export default function Sidebar() {
                 <Home />
               </Link>
             </div>
-            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 hover:text-cyan-800 cursor-pointer">
+            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 hover:text-amber-700 cursor-pointer">
               <Link href="/about" className="hidden lg:flex lg:gap-4 ">
                 <UserRound />
                 About
@@ -48,7 +48,7 @@ export default function Sidebar() {
                 <UserRound />
               </Link>
             </div>
-            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 cursor-pointer hover:text-cyan-800">
+            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 cursor-pointer hover:text-amber-700">
               <Link href="/portfolio" className="hidden lg:flex lg:gap-4">
                 <Pen />
                 Portfolio
@@ -57,7 +57,7 @@ export default function Sidebar() {
                 <Pen />
               </Link>
             </div>
-            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 cursor-pointer hover:text-cyan-800">
+            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 cursor-pointer hover:text-amber-700">
               <Link href="/contact" className="hidden lg:flex lg:gap-4">
                 <Mail />
                 Contact

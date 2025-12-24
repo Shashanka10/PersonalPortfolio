@@ -1,15 +1,15 @@
 export const education = [
     {
         id: 1,
-        active_date: "Expected June 2025",
+        active_date: "December 2020 - August 2025",
         degree: "Bachelor's Degree in Computer Engineering",
         uni: "Kathmandu University",
-        gpa: "CGPA : TBD",
+        gpa: "CGPA : 3.69",
         p1: " Kathmandu University (KU) is an autonomous, not-for-profit, self-funding public institution established by an Act of Parliament in December 1991. It is an institution of higher learning dedicated to maintaining the standard of academic excellence in various classical and professional disciplines."
     },
     {
         id: 2,
-        active_date: "2020",
+        active_date: "2018 - 2020",
         degree: "+2 with Physics and Computer Major",
         uni: "DAV College, Jawalakhel",
         gpa: "CGPA : 3.76",

@@ -1,7 +1,7 @@
 export const extracurricular = [
     {
         id: 1,
-        active_date: "July 2024 - Present",
+        active_date: "July 2024 - Dec 2024",
         header: "IT MEET 2024",
         h1: "Developer Lead",
         p1: "As the developer lead for IT Meet, I play a pivotal role in shaping the technical direction of the event. I oversee the development of the official website, ensuring that it meets high standards of performance, user experience, and design. My responsibilities include coordinating with a team of developers, assigning tasks, and making key decisions on the tech stack and development process.",
@@ -9,7 +9,7 @@ export const extracurricular = [
     },
     {
         id: 2,
-        active_date: "Nov 2023 - Present",
+        active_date: "Nov 2023 - Mar 2025",
         header: "Microsoft",
         h1: "Beta Microsoft Student Ambassador",
         p1: "Microsoft Learn Student Ambassadors are passionate students who advocate for technology, learning, and innovation within their communities. We receive training and resources from Microsoft to enhance our technical skills and leadership abilities. We also organize events, workshops, and hackathons to empower our peers and promote the use of Microsoft technologies.",

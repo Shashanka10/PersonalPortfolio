@@ -18,7 +18,7 @@ const Category = ({ params }) => {
     <div className="flex justify-between mt-8 sm:mt-2 z-40">
       <div className="flex-col space-y-8 lg:space-y-12 xl:space-y-16 w-full p-5 md:px-16 xl:px-20 mt-8 sm:mt-0 z-40 rounded-2xl bg-[#1A1A1A]">
         <div className="flex justify-center">
-          <h2 className="text-2xl sm:text-2xl md:text-3xl font-bold text-white">
+          <h2 className="text-2xl sm:text-2xl md:text-3xl font-bold text-white capitalize">
             {params.category}
           </h2>
         </div>

@@ -18,6 +18,7 @@ import { extracurricular } from "./extracurricular";
 import { education } from "./education";
 import { experience } from "./experience";
 import toast from "react-hot-toast";
+import { DownloadIcon } from "lucide-react";
 
 const About = () => {
   const [isCopied, setIsCopied] = useState(false);
@@ -78,17 +79,17 @@ const About = () => {
           </div>
           <div>
             <Link
-              href="/my_resume.pdf"
+              href="/MyResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download="Download File"
             >
               <button
                 className="font-medium sm:font-semibold text-white tracking-wider
-                  p-3 lg:p-3 w-full border-2 border-[#282828] rounded-xl
-                   cursor-pointer flex justify-center"
+                  p-3 lg:p-3 w-full border-2 border-gray-700 rounded-xl bg-[#282828] hover:bg-gray-700 transition-all duration-300
+                   cursor-pointer flex justify-center gap-3"
               >
-                Download CV
+                <DownloadIcon /> Download CV
               </button>
             </Link>
           </div>
