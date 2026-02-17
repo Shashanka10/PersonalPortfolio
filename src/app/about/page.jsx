@@ -51,12 +51,12 @@ const About = () => {
         </div>
         <div>
           <p className="font-sans font-semibold text-base text-justify sm:text-lg lg:text-xl text-wrap text-gray-500">
-            I am Shashanka Luitel, a Computer Engineering graduate from Kathmandu University. Currently, I am working at Citytech, a fintech company
-            in Kamaladi, as a Software Engineer Trainee, contributing to the remittance product’s admin portal. My responsibilities span
+            I am Shashanka Luitel, a Computer Engineering graduate from Kathmandu University. After my graduation, I worked at Citytech, a fintech company
+            in Kamaladi, as a Software Engineer for about 7 months, contributing to the remittance product’s admin portal. My responsibilities span
             full-stack development using React.js and Node.js, with MS-SQL database management, ensuring robust, scalable, and efficient applications.
             My experience encompasses UI/UX design, web and mobile development, and collaborative project execution, which I have honed through
-            both professional and academic projects. I am committed to continuous learning and applying my technical expertise to create meaningful impact in the technology space.
-          </p>
+            both professional and academic projects. I am committed to continuous learning and work for the betterment of the tech community.
+            </p>
         </div>
         <div className="flex-col items-center mt-2 space-y-4">
           <div>
@@ -79,7 +79,7 @@ const About = () => {
           </div>
           <div>
             <Link
-              href="/MyResume.pdf"
+              href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download="Download File"

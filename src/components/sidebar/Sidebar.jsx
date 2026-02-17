@@ -94,7 +94,7 @@ export default function Sidebar() {
               <BsTwitterX />
             </Link>
             <Link
-              href="https://www.linkedin.com/in/shashanka-luitel-5b0166177/"
+              href="https://www.linkedin.com/in/shashanka-luitel/"
               className="hover:text-cyan-800 cursor-pointer items-center flex justify-center"
             >
               <Linkedin />

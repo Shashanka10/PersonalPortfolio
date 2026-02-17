@@ -12,7 +12,7 @@ const Footer = () => {
         <Link href='https://github.com/Shashanka10'><Image src="/gitt.png" width={20} height={20} alt='Github logo' className='w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6' /></Link>
         <Link href='https://www.instagram.com/_shashankaa10/'><Image src="/insta.png" width={20} height={20} alt='Instagram logo' className='w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6' /></Link>
         <Link href='https://twitter.com/_shashanka10'><Image src="/twitterX.png" width={20} height={20} alt='Twitter logo' className='w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6' /></Link>
-        <Link href='https://www.linkedin.com/in/shashanka-luitel-5b0166177/'><Image src="/linkedin.png" width={20} height={20} alt='Twitter logo' className='w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6' /></Link>
+        <Link href='https://www.linkedin.com/in/shashanka-luitel/'><Image src="/linkedin.png" width={20} height={20} alt='Twitter logo' className='w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6' /></Link>
       </div>
     </div>
   );

@@ -44,7 +44,7 @@ export default function HomePage() {
             <Button url="/portfolio" text="Check Portfolio" />
             <Button url="/contact" text="Contact Me" />
             <Button
-              url="/MyResume.pdf"
+              url="/resume.pdf"
               text="Download Resume"
               target="_blank"
               rel="noopener noreferrer"
