@@ -24,7 +24,7 @@ const About = () => {
   const [isCopied, setIsCopied] = useState(false);
   const handleCopyClick = async () => {
     try {
-      await copy("sbishalluitel7@gmail.com");
+      await copy("shashankaluitel10@gmail.com");
       setIsCopied(true);
       toast.success("Email copied to clipboard!");
       setTimeout(() => {

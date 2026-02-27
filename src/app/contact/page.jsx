@@ -53,7 +53,7 @@ const Contact = () => {
 
   const handleCopyClick = async () => {
     try {
-      await copy("sbishalluitel7@gmail.com");
+      await copy("shashankaluitel10@gmail.com");
       setIsCopied(true);
       toast.success("Email copied to clipboard");
       setTimeout(() => {
@@ -82,7 +82,7 @@ const Contact = () => {
         <div className="mt-10 space-y-5 md:flex md:space-y-0 md:space-x-16 lg:space-x-32 justify-between items-center">
           <div>
             <h1 className="text-white text-base font-semibold tracking-wider">
-              sbishalluitel7@gmail.com
+              shashankaluitel10@gmail.com
             </h1>
             <p1 className="text-gray-500 text-sm font-semibold">E-mail</p1>
           </div>
