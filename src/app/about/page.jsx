@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import copy from "clipboard-copy";
 import { Check, Copy } from "lucide-react";
-import { SiAdobeillustrator, SiDatagrip, SiFigma, SiJavascript, SiNotion, SiPostman, SiReact, SiSwagger, SiTailwindcss } from "react-icons/si";
+import { SiAdobeillustrator, SiDatagrip, SiFigma, SiJavascript, SiNotion, SiPostman, SiReact, SiSwagger, SiTailwindcss, SiUnity } from "react-icons/si";
 import { TbBrandNextjs, TbBrandReactNative } from "react-icons/tb";
 import { FaGithub, FaPython } from "react-icons/fa";
 import { FaHtml5 } from "react-icons/fa";
@@ -12,8 +12,8 @@ import { FaCss3Alt } from "react-icons/fa";
 import { SiAdobeindesign } from "react-icons/si";
 import { FaGitAlt } from "react-icons/fa";
 import { SiVisualstudiocode } from "react-icons/si";
-import { SiCanva } from "react-icons/si";
-import { SiAndroidstudio } from "react-icons/si";
+import { FaUnity } from "react-icons/fa6";
+import { SiAndroidstudio, SiCplusplus, SiCsharp  } from "react-icons/si";
 import { extracurricular } from "./extracurricular";
 import { education } from "./education";
 import { experience } from "./experience";
@@ -78,7 +78,7 @@ const About = () => {
           </div>
           <div>
             <Link
-              href="/Shashanka_Resume.pdf"
+              href="/resume_shashanka.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download="Download File"
@@ -144,6 +144,20 @@ const About = () => {
               </div>
             </div>
             <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
+              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
+                <SiCplusplus className="text-gray-500 w-7 h-7" />
+                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
+                  C/C++
+                </h1>
+              </div>
+              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
+                <SiCsharp className="text-gray-500 w-7 h-7" />
+                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
+                  C#
+                </h1>
+              </div>
+            </div>
+            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
               <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] md:rounded-bl-xl md:rounded-br-xl ">
                 <SiTailwindcss className="text-gray-500 w-7 h-7" />
                 <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
@@ -203,9 +217,9 @@ const About = () => {
                 </h1>
               </div>
               <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
-                <SiCanva className="text-gray-500 w-7 h-7" />
+                <FaUnity className="text-gray-500 w-7 h-7" />
                 <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Canva
+                  Unity
                 </h1>
               </div>
             </div>

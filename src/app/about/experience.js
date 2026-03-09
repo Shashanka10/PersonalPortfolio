@@ -2,7 +2,7 @@ export const experience = [
     {
         id: 1,
         header: "Citytech",
-        h1: "Software Engineer Trainee & Former Intern",
+        h1: "Software Engineer",
         active_date: "April 2025 – December 2025",
         roles: [
             {

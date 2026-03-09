@@ -4,7 +4,6 @@ import Illustrate from "../../../public/me.png";
 import Button from "@/components/Button/Button";
 import Typewriter from "typewriter-effect";
 import { MapPin } from "lucide-react";
-import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -13,7 +12,7 @@ export default function HomePage() {
         <div className="space-y-4 md:space-y-6 lg:space-y-8">
           <div className="mt-4">
             <button className="flex cursor-auto items-center text-[#12c971] bg-[#335f3536] px-2 lg:px-4 rounded-xl gap-2 lg:gap-3">
-              <div className="bg-[#12c971] animate-pulse w-2 h-2 md:w-2.5 md:h-2.5 rounded-full"></div>
+              <div className="bg-[#12c971] animate-pulse [animation-duration:1.5s] w-2 h-2 md:w-3 md:h-3 rounded-full"></div>
               Available for work
             </button>
           </div>
@@ -26,6 +25,7 @@ export default function HomePage() {
                 options={{
                   strings: [
                     "< Welcome to my website />",
+                    "< Research Enthusiast />",
                     "< Full Stack Developer />",
                     "< UI/UX Designer />",
                     "< Trekker />",
@@ -44,7 +44,7 @@ export default function HomePage() {
             <Button url="/portfolio" text="Check Portfolio" />
             <Button url="/contact" text="Contact Me" />
             <Button
-              url="/Shashanka_Resume.pdf"
+              url="/resume_shashanka.pdf"
               text="Download Resume"
               target="_blank"
               rel="noopener noreferrer"

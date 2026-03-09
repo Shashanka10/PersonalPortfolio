@@ -30,7 +30,7 @@ export const items = {
     },
     {
       id: 5,
-      title: "chat-JPT",
+      title: "Chat Message",
       desc: "Real time chat applications have become an essential part of the digital world, enabling people to communicate with each other smoothly and continuously from anywhere and anytime. In this project, we have developed real-time chat application, `chat-JPT` using Socket.io and Node.js.",
       img: "/chatapp.png",
       linked: "https://github.com/Re-Dei-s-Organization/chat-JPT",
@@ -48,6 +48,13 @@ export const items = {
       desc: "It is a fun and engaging 2D simulation car game developed using python, pygame, and pyopengl. A player has to drive a car through a complex maze to the finish line.",
       img: "/mazerunner.jpg",
       linked: "https://github.com/Shashanka10/OpenGL-Project",
+    },
+    {
+      id: 8,
+      title: "Roller Ball game",
+      desc: "It is an action-packed ball game where the player controls a ball that must collect pickups to score points while avoiding enemies. Colliding with an enemy ends the game, but collecting 9 or more pickups wins the game.",
+      img: "/rollerball.png",
+      linked: "https://shashanka10.itch.io/roller-baller",
     },
   ],
   // galleries: [
