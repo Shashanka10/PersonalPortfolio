@@ -6,6 +6,7 @@ import StarsCanvas from "@/components/StarBackground/StarBackground";
 import Sidebar from "@/components/sidebar/Sidebar";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: "Shashanka Luitel",
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
             },
           }}
         />
+        <Analytics mode="production"/>
       </body>
     </html>
   );
