@@ -1,106 +1,116 @@
-"use client"
-import React from 'react'
+"use client";
+import React from "react";
 import Link from "next/link";
-import { Home } from "lucide-react";
-import { Mail } from "lucide-react";
-import { Pen } from "lucide-react";
-import { UserRound } from "lucide-react";
-import { Facebook } from "lucide-react";
-import { Instagram } from "lucide-react";
-import { Linkedin } from "lucide-react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { Home, Mail, Pen, UserRound } from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
-import { Github } from "lucide-react";
-import Image from 'next/image';
+import { FaGithub, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+
+const navLinks = [
+  { id: 1, title: "Home",      url: "/",          icon: <Home size={17} /> },
+  { id: 2, title: "Portfolio", url: "/portfolio",  icon: <Pen size={17} /> },
+  { id: 3, title: "About",     url: "/about",      icon: <UserRound size={17} /> },
+  { id: 4, title: "Contact",   url: "/contact",    icon: <Mail size={17} /> },
+];
+
+const socialLinks = [
+  { href: "https://www.facebook.com/luitel.shashanka/",    icon: <FaFacebook size={15} />,  label: "Facebook" },
+  { href: "https://github.com/Shashanka10",                icon: <FaGithub size={15} />,    label: "GitHub" },
+  { href: "https://www.instagram.com/_shashankaa10/",      icon: <FaInstagram size={15} />, label: "Instagram" },
+  { href: "https://twitter.com/_shashanka10",              icon: <BsTwitterX size={14} />,  label: "Twitter" },
+  { href: "https://www.linkedin.com/in/shashanka-luitel/", icon: <FaLinkedin size={15} />,  label: "LinkedIn" },
+];
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
-    <div className="hidden  sm:flex sm:justify-center sm:w-1/5 lg:w-1/3">
-        <div className="flex-col z-40 text-white space-y-12 p-6 sm:mt-10 lg:mt-16 sm:fixed sm:left-0 sm:top-0 sm:bottom-0">
-          <div>
-            <Link href="/" className="flex-col items-center lg:space-y-3">
-              <Image
-                src="/forehead.png"
-                alt='profile pic'
-                width={300}
-                height={300}
-                className="w-7 h-7 rounded-full border-2 border-sky-200 bg-amber-700 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-48 lg:h-48"
-              />
-              <span className="hidden text-md lg:flex justify-center">
-                Shashanka
+    <div className="hidden sm:flex sm:w-[72px] lg:w-[240px] shrink-0">
+      <div className="fixed left-0 top-0 bottom-0 sm:w-[72px] lg:w-[240px] flex flex-col
+        bg-[#141414]/20 backdrop-blur-md border-r border-[#1f1f1f] z-40 py-6 px-3 lg:px-5">
+
+        {/* ── LOGO ── */}
+        <Link href="/" className="flex items-center gap-3 group mb-8 px-1">
+          <div className="relative shrink-0">
+            <Image
+              src="/forehead.png"
+              alt="Shashanka"
+              width={300}
+              height={300}
+              className="w-10 h-10 lg:w-11 lg:h-11 rounded-full object-cover
+                border-2 border-[#2e2e2e] group-hover:border-[#12c971]/50 transition-colors duration-300"
+            />
+            {/* Online dot */}
+            <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#12c971] border-2 border-[#141414]" />
+          </div>
+          <span className="hidden lg:block font-bold text-sm text-gray-100 group-hover:text-[#12c971] transition-colors duration-300 tracking-wide">
+            Shashanka
+          </span>
+        </Link>
+
+        {/* ── NAV LINKS ── */}
+        <nav className="flex-1 space-y-1 md:space-y-2">
+          {navLinks.map((link) => {
+            const active = pathname === link.url;
+            return (
+              <Link
+                key={link.id}
+                href={link.url}
+                title={link.title}
+                className={`flex items-center gap-3.5 px-2.5 py-2.5 rounded-xl text-sm font-semibold
+                  transition-all duration-200 group relative
+                  ${active
+                    ? "bg-[#12c971]/10 text-[#12c971] border border-[#12c971]/20"
+                    : "text-gray-400 hover:text-gray-100 hover:bg-[#1e1e1e] border border-transparent"
+                  }`}
+              >
+                {/* Active indicator bar */}
+                {active && (
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-[#12c971] rounded-full -ml-3 lg:-ml-5" />
+                )}
+
+                <span className={`shrink-0 transition-colors duration-200
+                  ${active ? "text-[#12c971]" : "text-gray-400 group-hover:text-gray-100"}`}>
+                  {link.icon}
+                </span>
+
+                <span className="hidden lg:block">{link.title}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* ── DIVIDER ── */}
+        <div className="my-4 h-px bg-[#2a2a2a]" />
+
+        {/* ── SOCIAL LINKS ── */}
+        <div className="space-y-1">
+          {socialLinks.map((s) => (
+            <Link
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={s.label}
+              className="flex items-center gap-3.5 px-2.5 py-2 rounded-xl text-gray-400
+                hover:text-[#12c971] hover:bg-[#12c971]/8 border border-transparent
+                hover:border-[#12c971]/15 transition-all duration-200 group text-sm"
+            >
+              <span className="shrink-0">{s.icon}</span>
+              <span className="hidden lg:block text-xs font-medium text-gray-400 group-hover:text-[#12c971] transition-colors duration-200">
+                {s.label}
               </span>
             </Link>
-          </div>
-          <div className="space-y-4 text-gray-400 font-sans">
-            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 hover:text-amber-700 cursor-pointer">
-              <Link href="/" className="hidden lg:flex lg:gap-4">
-                <Home /> Home
-              </Link>
-              <Link href="/" className="lg:hidden flex">
-                <Home />
-              </Link>
-            </div>
-            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 hover:text-amber-700 cursor-pointer">
-              <Link href="/about" className="hidden lg:flex lg:gap-4 ">
-                <UserRound />
-                About
-              </Link>
-              <Link href="/about" className="lg:hidden flex">
-                <UserRound />
-              </Link>
-            </div>
-            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 cursor-pointer hover:text-amber-700">
-              <Link href="/portfolio" className="hidden lg:flex lg:gap-4">
-                <Pen />
-                Portfolio
-              </Link>
-              <Link href="/portfolio" className="lg:hidden flex">
-                <Pen />
-              </Link>
-            </div>
-            <div className="flex lg:ml-8 justify-center lg:justify-start space-x-4 cursor-pointer hover:text-amber-700">
-              <Link href="/contact" className="hidden lg:flex lg:gap-4">
-                <Mail />
-                Contact
-              </Link>
-              <Link href="/contact" className="lg:hidden flex">
-                <Mail />
-              </Link>
-            </div>
-          </div>
-          <hr className="mt-10 border-gray-600 opacity-50" />
-          <div className="sm:space-y-3 md:space-y-4 z-40  lg:space-y-0 lg:flex lg:justify-center gap-4 text-gray-400 font-sans">
-            <Link
-              href="https://www.facebook.com/luitel.shashanka/"
-              className="hover:text-cyan-800 cursor-pointer items-center flex justify-center"
-            >
-              <Facebook />
-            </Link>
-            <Link
-              href="https://github.com/Shashanka10"
-              className="hover:text-cyan-800 cursor-pointer items-center flex justify-center"
-            >
-              <Github />
-            </Link>
-            <Link
-              href="https://www.instagram.com/_shashankaa10/"
-              className="hover:text-cyan-800 cursor-pointer items-center flex justify-center"
-            >
-              <Instagram />
-            </Link>
-            <Link
-              href="https://twitter.com/_shashanka10"
-              className="hover:text-cyan-800 cursor-pointer items-center flex justify-center"
-            >
-              <BsTwitterX />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/shashanka-luitel/"
-              className="hover:text-cyan-800 cursor-pointer items-center flex justify-center"
-            >
-              <Linkedin />
-            </Link>
-          </div>
+          ))}
+        </div>
+
+        <div className="mt-4 pt-4 border-t border-[#1f1f1f]">
+          <p className="hidden lg:block text-gray-500 text-[10px] font-mono text-center tracking-wider">
+            © 2023 Shashanka
+          </p>
         </div>
       </div>
-  )
+    </div>
+  );
 }

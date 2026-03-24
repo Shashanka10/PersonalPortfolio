@@ -1,7 +1,6 @@
 "use client"
 import Contact from "./contact/page";
 import About from "./about/page";
-import Sidebar from "@/components/sidebar/Sidebar";
 import HomePage from "./homepage/page";
 import Portfolio from "./portfolio/page";
 

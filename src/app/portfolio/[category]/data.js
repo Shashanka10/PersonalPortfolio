@@ -16,31 +16,31 @@ export const items = {
     },
     {
       id: 3,
-      title: "CureMe",
-      desc: "CureMe is a doctor appointment booking platform that allows users to conveniently select a doctor, choose from available time slots and days, and book appointments with ease. With CureMe, patients can find medical professionals across various specialties and enjoy a smooth, efficient booking experience.",
-      img: "/cureme.png",
-      linked: "https://cureme.vercel.app/",
-    },
-    {
-      id: 4,
       title: "Battleship",
       desc: "Battleship also known as Sea Battle is a classic strategy type guessing game for multiplayer which is played online in a browser on which each player`s fleet of warships are marked. The locations of the fleets are hidden from the other player. Players alternate turns at the other player`s ships, and the objective of the game is to destroy the opposing player`s fleet.",
       img: "/Battleship.jpg",
       linked: "https://battleship-io.onrender.com",
     },
     {
-      id: 5,
+      id: 4,
       title: "Chat Message",
       desc: "Real time chat applications have become an essential part of the digital world, enabling people to communicate with each other smoothly and continuously from anywhere and anytime. In this project, we have developed real-time chat application, `chat-JPT` using Socket.io and Node.js.",
       img: "/chatapp.png",
       linked: "https://github.com/Re-Dei-s-Organization/chat-JPT",
     },
     {
-      id: 6,
+      id: 5,
       title: "Gas Leakage Detection System",
       desc: "The Gas Leak Detection System is designed to detect the presence of leakage of gas in the environment using a gas sensor. When a gas leak is detected, the system triggers an audible alarm, displays a warning message on an LCD screen, and activates an LED indicator to signal the detection. The project aims to enhance safety by providing an early warning system to prevent potential accidents.",
       img: "/detected.jpg",
       linked: "https://github.com/Shashanka10/Gas_Leak_Detection_System",
+    },
+    {
+      id: 6,
+      title: "CureMe",
+      desc: "CureMe is a doctor appointment booking platform that allows users to conveniently select a doctor, choose from available time slots and days, and book appointments with ease. With CureMe, patients can find medical professionals across various specialties and enjoy a smooth, efficient booking experience.",
+      img: "/cureme.png",
+      linked: "https://cureme.vercel.app/",
     },
     {
       id: 7,
@@ -57,26 +57,6 @@ export const items = {
       linked: "https://shashanka10.itch.io/roller-baller",
     },
   ],
-  // galleries: [
-  //   {
-  //     id: 1,
-  //     title: "Creative Portfolio",
-  //     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur vel tenetur necessitatibus unde natus perspiciatis, amet cupiditate ducimus possimus, eaque ex autem id nobis eum dolorem. Neque eveniet fugiat tenetur?",
-  //     img: "https://img.freepik.com/free-photo/lumbini-nepal-birthplace-buddha-siddhartha-gautama_554837-476.jpg?w=1060&t=st=1686331563~exp=1686332163~hmac=ffa6e4b418b5e09053580ee6e183f2f971df22788f9640f116d312801e07c4d9",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Minimal Single Product",
-  //     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur vel tenetur necessitatibus unde natus perspiciatis, amet cupiditate ducimus possimus, eaque ex autem id nobis eum dolorem. Neque eveniet fugiat tenetur?",
-  //     img: "https://img.freepik.com/free-photo/lumbini-nepal-birthplace-buddha-siddhartha-gautama_554837-476.jpg?w=1060&t=st=1686331563~exp=1686332163~hmac=ffa6e4b418b5e09053580ee6e183f2f971df22788f9640f116d312801e07c4d9",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Strong Together Charity",
-  //     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur vel tenetur necessitatibus unde natus perspiciatis, amet cupiditate ducimus possimus, eaque ex autem id nobis eum dolorem. Neque eveniet fugiat tenetur?",
-  //     img: "https://img.freepik.com/free-photo/lumbini-nepal-birthplace-buddha-siddhartha-gautama_554837-476.jpg?w=1060&t=st=1686331563~exp=1686332163~hmac=ffa6e4b418b5e09053580ee6e183f2f971df22788f9640f116d312801e07c4d9",
-  //   },
-  // ],
   blogs: [
     {
       id: 1,
@@ -119,6 +99,22 @@ export const items = {
       desc: "This blog explores the evolving relationship between QA and developers, why conflicts arise, and how both can work together to ship better software, faster.",
       img: "/dev.png",
       linked: "https://medium.com/@shashanka10/qa-vs-developers-breaking-the-toxic-cycle-for-better-software-375485e1ed02",
+    },
+  ],
+  researchs: [
+    {
+      id: 1,
+      title: "Digital Health in Nepal: Past, Current and Future Scenarios",
+      desc: "This paper explores the evolution of digital health in Nepal, from its early days in the 1990s with the Health Management Information System (HMIS) to current implementations like IHIMS and DHIS2.",
+      img: "/digitalhealth.jpg",
+      linked: "https://www.researchgate.net/publication/401330627_Digital_Health_in_Nepal_Past_Current_and_Future_Scenarios",
+    },
+    {
+      id: 2,
+      title: "Ethics of Modern Media Provocation",
+      desc: "This study examines the ethical implications of modern media provocation, with a specific focus on rage-baiting, a strategy that deliberately provokes strong emotional responses through sensationalized and divisive content to increase engagement in digital platforms.",
+      img: "/ragebait.jpg",
+      linked: "https://www.researchgate.net/publication/401331932_Ethics_of_Modern_Media_Provocation",
     },
   ],
 };

@@ -1,401 +1,406 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import copy from "clipboard-copy";
-import { Check, Copy } from "lucide-react";
-import { SiAdobeillustrator, SiDatagrip, SiFigma, SiJavascript, SiNotion, SiPostman, SiReact, SiSwagger, SiTailwindcss, SiUnity } from "react-icons/si";
+import {
+  Check,
+  Copy,
+  DownloadIcon,
+  ChevronRight,
+  Briefcase,
+  GraduationCap,
+  Star,
+} from "lucide-react";
+import {
+  SiAdobeillustrator,
+  SiDatagrip,
+  SiFigma,
+  SiJavascript,
+  SiNotion,
+  SiPostman,
+  SiReact,
+  SiSwagger,
+  SiTailwindcss,
+} from "react-icons/si";
 import { TbBrandNextjs, TbBrandReactNative } from "react-icons/tb";
-import { FaGithub, FaPython } from "react-icons/fa";
-import { FaHtml5 } from "react-icons/fa";
-import { FaCss3Alt } from "react-icons/fa";
-import { SiAdobeindesign } from "react-icons/si";
-import { FaGitAlt } from "react-icons/fa";
-import { SiVisualstudiocode } from "react-icons/si";
+import {
+  FaGithub,
+  FaPython,
+  FaHtml5,
+  FaCss3Alt,
+  FaGitAlt,
+} from "react-icons/fa";
+import {
+  SiAdobeindesign,
+  SiVisualstudiocode,
+  SiAndroidstudio,
+  SiCplusplus,
+  SiCsharp,
+} from "react-icons/si";
 import { FaUnity } from "react-icons/fa6";
-import { SiAndroidstudio, SiCplusplus, SiCsharp  } from "react-icons/si";
 import { extracurricular } from "./extracurricular";
 import { education } from "./education";
 import { experience } from "./experience";
 import toast from "react-hot-toast";
-import { DownloadIcon } from "lucide-react";
+import Particles from "@/components/Particles/Particles";
+import Reveal from "@/components/Reveal/Reveal";
+
+function SectionHeading({ children }) {
+  return (
+    <div className="flex items-center gap-4 mb-6 md:mb-8">
+      <div className="w-1 h-8 rounded-full bg-[#12c971]" />
+      <h2 className="text-base sm:text-xl md:text-3xl font-bold text-gray-100 tracking-tight">
+        {children}
+      </h2>
+    </div>
+  );
+}
+
+function SkillBadge({ icon, label }) {
+  return (
+    <div className="group flex items-center gap-3 p-3 bg-[#222222] border border-[#2e2e2e] rounded-xl hover:border-[#12c971]/40 hover:bg-[#1e2e22] transition-all duration-300 cursor-default">
+      <span className="text-gray-400 group-hover:text-[#12c971] transition-colors duration-300 text-xl">
+        {icon}
+      </span>
+      <span className="text-gray-100 font-medium text-sm sm:text-base group-hover:text-gray-100 transition-colors duration-300">
+        {label}
+      </span>
+    </div>
+  );
+}
+
+function TabPill({ active, onClick, icon, label }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-300
+        ${active ? "bg-[#12c971] text-[#0d0d0d] border-[#12c971]" : "text-gray-400 border-[#2e2e2e] hover:border-[#12c971]/40 hover:text-gray-100"}`}
+    >
+      {icon}
+      {label}
+    </button>
+  );
+}
+
+function TimelineEntry({ date, title, subtitle, children }) {
+  return (
+    <div className="relative pl-6 border-l border-[#5f5f5f] hover:border-[#12c971]/50 transition-colors duration-500">
+      <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#12c971] shadow-[0_0_8px_#12c97180]" />
+      <p className="text-[#12c971] text-xs font-mono tracking-widest mb-1 uppercase">
+        {date}
+      </p>
+      <h3 className="text-gray-100 text-base sm:text-lg md:text-xl font-bold">{title}</h3>
+      {subtitle && <p className="text-gray-500 text-sm mb-3">{subtitle}</p>}
+      <div className="mt-2">{children}</div>
+    </div>
+  );
+}
 
 const About = () => {
   const [isCopied, setIsCopied] = useState(false);
+  const [activeTab, setActiveTab] = useState("experience");
+
   const handleCopyClick = async () => {
     try {
       await copy("shashankaluitel10@gmail.com");
       setIsCopied(true);
       toast.success("Email copied to clipboard!");
-      setTimeout(() => {
-        setIsCopied(false);
-      }, 3000);
+      setTimeout(() => setIsCopied(false), 3000);
     } catch (error) {
       console.error("Failed to copy text to clipboard", error);
     }
   };
+
+  const skills = [
+    { icon: <FaHtml5 />, label: "HTML" },
+    { icon: <FaCss3Alt />, label: "CSS" },
+    { icon: <SiJavascript />, label: "JavaScript" },
+    { icon: <SiReact />, label: "ReactJS" },
+    { icon: <TbBrandNextjs />, label: "Next.js" },
+    { icon: <TbBrandReactNative />, label: "React Native" },
+    { icon: <SiTailwindcss />, label: "Tailwind CSS" },
+    { icon: <FaPython />, label: "Python" },
+    { icon: <SiCplusplus />, label: "C / C++" },
+    { icon: <SiCsharp />, label: "C#" },
+  ];
+
+  const tools = [
+    { icon: <FaGitAlt />, label: "Git & GitHub" },
+    { icon: <SiVisualstudiocode />, label: "VS Code" },
+    { icon: <SiDatagrip />, label: "DataGrip" },
+    { icon: <SiPostman />, label: "Postman" },
+    { icon: <SiFigma />, label: "Figma" },
+    { icon: <FaUnity />, label: "Unity" },
+    { icon: <SiAndroidstudio />, label: "Android Studio" },
+    { icon: <FaGithub />, label: "GitHub" },
+    { icon: <SiSwagger />, label: "Swagger" },
+    { icon: <SiNotion />, label: "Notion" },
+    { icon: <SiAdobeillustrator />, label: "Adobe Illustrator" },
+    { icon: <SiAdobeindesign />, label: "Adobe InDesign" },
+  ];
+
   return (
     <div className="flex justify-between mt-8 sm:mt-2 z-40">
-      <div className="flex-col w-full p-5 space-y-8 sm:px-12 md:p-16 lg:p-24 mt-8 md:mt-0 z-40 rounded-2xl bg-[#1A1A1A]">
-        <div className="flex-col mt-10 md:mt-0 space-y-2 sm:space-y-3 lg:space-y-4">
-          <div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-              Shashanka Luitel
-            </h1>
-          </div>
-          <div>
-            <h1 className="text-base sm:text-lg md:text-2xl font-bold text-gray-500">
-              Developer | Research Enthusiast | Trekker
-            </h1>
-          </div>
-        </div>
-        <div>
-          <p className="font-sans font-semibold text-base text-justify sm:text-lg lg:text-xl text-wrap text-gray-500">
-            I am Shashanka Luitel, a Computer Engineering graduate from Kathmandu University. After graduation, I worked at Citytech, a fintech company
-            in Kamaladi, as a Software Engineer for about 7 months, contributing to the development and enhancement of the remittance product’s admin portal. My responsibilities span
-            full-stack development using React.js and Node.js, along with SQL for queries, ensuring robust, scalable, and efficient applications.
-            My experience encompasses Full-stack development, UI/UX design, collaborative project execution, and an emerging interest in research. I am committed to continuous learning and work for the betterment of the tech community.
-            </p>
-        </div>
-        <div className="flex-col items-center mt-2 space-y-4">
-          <div>
-            <button
-              className={`font-medium sm:font-semibold text-white tracking-wider p-3 lg:p-3 w-full border-2 border-[#282828] rounded-xl cursor-pointer flex justify-center gap-4 ${isCopied ? "bg-green-600 opacity-80" : ""
-                }`}
-              onClick={handleCopyClick}
-            >
-              {isCopied ? (
-                <>
-                  <Check className="text-green-200" />
-                  Copied{" "}
-                </>
-              ) : (
-                <>
-                  <Copy /> Copy email
-                </>
-              )}
-            </button>
-          </div>
-          <div>
-            <Link
-              href="/resume_shashanka.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              download="Download File"
-            >
-              <button
-                className="font-medium sm:font-semibold text-white tracking-wider
-                  p-3 lg:p-3 w-full border-2 border-gray-700 rounded-xl bg-[#282828] hover:bg-gray-700 transition-all duration-300
-                   cursor-pointer flex justify-center gap-3"
-              >
-                <DownloadIcon /> Download CV
-              </button>
-            </Link>
-          </div>
-        </div>
-        <hr className="mt-10 border-gray-600 opacity-50" />
-        <div className="flex-col mt-8 space-y-5 sm:space-y-7 lg:space-y-10">
-          <div>
-            <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-              Programming Languages / Frameworks
-            </h1>
-          </div>
-          <div className="flex-col space-y-2 lg:space-y-3 w-full">
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] rounded-tl-xl rounded-tr-xl">
-                <FaHtml5 className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
-                  HTML
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] md:rounded-tl-xl md:rounded-tr-xl ">
-                <FaCss3Alt className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
-                  CSS
-                </h1>
-              </div>
-            </div>
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
-                <SiReact className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
-                  ReactJS
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
-                <TbBrandNextjs className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
-                  NextJS
-                </h1>
-              </div>
-            </div>
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
-                <TbBrandReactNative className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
-                  React Native
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
-                <FaPython className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
-                  Python
-                </h1>
-              </div>
-            </div>
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
-                <SiCplusplus className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
-                  C/C++
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] ">
-                <SiCsharp className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
-                  C#
-                </h1>
-              </div>
-            </div>
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] md:rounded-bl-xl md:rounded-br-xl ">
-                <SiTailwindcss className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
-                  Tailwind CSS
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] rounded-bl-xl rounded-br-xl">
-                <SiJavascript className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-semibold text-gray-300">
-                  Javascript
-                </h1>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr className="mt-10 border-gray-600 opacity-50" />
-        <div className="flex-col mt-8 space-y-5 sm:space-y-7 lg:space-y-10">
-          <div>
-            <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-              Tools Used
-            </h1>
-          </div>
-          <div className="flex-col space-y-2 lg:space-y-3 w-full">
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] rounded-tl-xl rounded-tr-xl">
-                <FaGitAlt className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Git and Github
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] md:rounded-tl-xl md:rounded-tr-xl">
-                <SiVisualstudiocode className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Visual Studio Code
-                </h1>
-              </div>
-            </div>
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
-                <SiDatagrip className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  DataGrip
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
-                <SiPostman className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Postman
-                </h1>
-              </div>
-            </div>
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
-                <SiFigma className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Figma
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
-                <FaUnity className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Unity
-                </h1>
-              </div>
-            </div>
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
-                <SiAndroidstudio className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Android Studio
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
-                <FaGithub className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Github
-                </h1>
-              </div>
-            </div>
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
-                <SiSwagger className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Swagger
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828]">
-                <SiNotion className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Notion
-                </h1>
-              </div>
-            </div>
-            <div className="space-y-2 md:space-y-0 md:flex md:justify-around md:space-x-4">
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] md:rounded-bl-xl md:rounded-br-xl">
-                <SiAdobeillustrator className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Adobe Illustrator
-                </h1>
-              </div>
-              <div className="flex w-full md:justify-center space-x-4 p-4 items-center bg-[#282828] rounded-bl-xl rounded-br-xl">
-                <SiAdobeindesign className="text-gray-500 w-7 h-7" />
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-300">
-                  Adobe Indesign
-                </h1>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr className="mt-10 border-gray-600 opacity-50" />
-        <div className="flex-col mt-8 space-y-5 sm:space-y-7 lg:space-y-10">
-          <div>
-            <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-              Experience
-            </h1>
-          </div>
+      <div className="relative flex-col w-full p-5 sm:px-12 md:p-16 lg:p-24 mt-8 md:mt-0 z-40 rounded-2xl bg-[#1A1A1A] overflow-hidden">
+        {/* ── PARTICLES ── */}
+        <Particles count={30} />
 
-          {experience.map((exp) => (
-            <div key={exp.id} className="flex-col space-y-6">
-              <div>
-                <h1 className="text-lg font-semibold text-gray-500">{exp.active_date}</h1>
+        <div className="relative z-10">
+          <Reveal>
+            <div className="flex flex-col lg:flex-row lg:items-start md:justify-between gap-8 pt-6 md:pt-0">
+              <div className="space-y-4 flex-1">
+                <div className="flex flex-col space-y-3">
+                  <p className="text-[#12c971] font-mono text-sm tracking-[0.2em] uppercase mb-2">
+                    — About me
+                  </p>
+                  <p className="mt-2 flex flex-wrap gap-2 md:gap-4 text-xs sm:text-sm font-medium tracking-wide">
+                    <span className="px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/30">
+                      Full-Stack Developer
+                    </span>
+                    <span className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/30">
+                      Research Enthusiast
+                    </span>
+                    <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">
+                      Trekking
+                    </span>
+                    <span className="px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/30">
+                      Football
+                    </span>
+                  </p>
+                </div>
+                <p className="text-gray-400 text-xs sm:text-base leading-relaxed text-justify md:max-w-4xl">
+                  I am a{" "}
+                  <span className="text-gray-300 font-semibold">
+                    Computer Engineering
+                  </span>{" "}
+                  graduate from Kathmandu University, with professional
+                  experience as a{" "}
+                  <span className="text-gray-300 font-semibold">
+                    Software Engineer
+                  </span>{" "}
+                  at Citytech Group Pvt. Ltd., a fintech company based in
+                  Kathmandu, Nepal. Over the course of 7 months, I contributed
+                  to the development of remittance products, gaining hands-on
+                  experience in building scalable solutions. I am skilled in
+                  full-stack development using React.js and Node.js, and I have
+                  a growing{" "}
+                  <span className="text-gray-300 font-semibold">
+                    interest in research.
+                  </span>
+                </p>
+                <p className="text-gray-400 text-xs sm:text-base leading-relaxed text-justify md:max-w-4xl">
+                  Beside work, I enjoy playing football and other sports, love
+                  watching movies, series & anime, enjoy exploring new places.
+                  Trekking is one of my favorite hobbies.
+                </p>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  {[
+                    { value: "7+", label: "months at Citytech" },
+                    { value: "KU", label: "Computer Engineering" },
+                  ].map((s) => (
+                    <div
+                      key={s.label}
+                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#222] border border-[#2e2e2e]"
+                    >
+                      <span className="text-[#12c971] font-bold text-sm">
+                        {s.value}
+                      </span>
+                      <span className="text-gray-400 text-xs">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-
-              <div className="flex-col space-y-1">
-                <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-white">{exp.header}</h1>
-                <h2 className="text-gray-500 text-sm font-semibold">{exp.h1}</h2>
+              <div className="flex flex-wrap flex-row min-w-full lg:flex-col gap-4 lg:min-w-[220px]">
+                <button
+                  className={`flex-1 md:flex-none flex items-center justify-center gap-3 px-2 py-2.5 md:px-5 md:py-3 rounded-lg md:rounded-xl font-semibold text-xs md:text-sm border-2 transition-all duration-300
+                    ${isCopied ? "bg-[#12c971] text-[#0d0d0d] border-[#12c971]" : "text-gray-100 border-[#2e2e2e] hover:border-[#12c971] hover:bg-[#12c971]/10"}`}
+                  onClick={handleCopyClick}
+                >
+                  {isCopied ? (
+                    <>
+                      <Check size={16} /> Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={16} /> Copy email
+                    </>
+                  )}
+                </button>
+                <Link
+                  href="/shashanka_resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="flex-1 md:flex-none"
+                >
+                  <button className="w-full flex items-center justify-center gap-3 px-2 py-2.5 md:px-5 md:py-3 rounded-lg md:rounded-xl font-semibold text-xs md:text-sm text-gray-100 bg-[#222] border border-[#2e2e2e] hover:bg-[#2a2a2a] hover:border-[#12c971]/40 transition-all duration-300">
+                    <DownloadIcon size={16} /> Download CV
+                  </button>
+                </Link>
               </div>
+            </div>
+          </Reveal>
 
-              {/* Render roles inside the company */}
-              <div className="flex-col space-y-4 mt-2">
-                {exp.roles.map((role, index) => (
-                  <div key={index} className="flex-col space-y-2">
-                    <h3 className="text-md sm:text-xl font-semibold text-blue-400">{role.title}</h3>
-                    <p className="text-sm text-gray-400 italic">{role.date}</p>
-                    {role.description.map((desc, i) => (
-                      <p
-                        key={i}
-                        className="font-sans font-semibold text-lg text-justify sm:text-md text-wrap text-gray-500"
-                      >
-                        {desc}
-                      </p>
-                    ))}
-                  </div>
+          <div className="my-12 h-px bg-gradient-to-r from-transparent via-[#2e2e2e] to-transparent" />
+          <Reveal delay={80}>
+            <SectionHeading>Journey</SectionHeading>
+            <div className="flex flex-wrap gap-3 mb-10">
+              <TabPill
+                active={activeTab === "experience"}
+                onClick={() => setActiveTab("experience")}
+                icon={<Briefcase size={14} />}
+                label="Experience"
+              />
+              <TabPill
+                active={activeTab === "education"}
+                onClick={() => setActiveTab("education")}
+                icon={<GraduationCap size={14} />}
+                label="Education"
+              />
+              <TabPill
+                active={activeTab === "extracurricular"}
+                onClick={() => setActiveTab("extracurricular")}
+                icon={<Star size={14} />}
+                label="Extracurricular"
+              />
+            </div>
+
+            {activeTab === "experience" && (
+              <div className="space-y-10">
+                {experience.map((exp) => (
+                  <Reveal key={exp.id}>
+                    <TimelineEntry
+                      date={exp.active_date}
+                      title={exp.header}
+                      subtitle={exp.h1}
+                    >
+                      <div className="space-y-6 mt-4">
+                        {exp.roles.map((role, i) => (
+                          <div
+                            key={i}
+                            className="pl-4 border-l border-[#505050] space-y-2"
+                          >
+                            <div className="flex flex-col gap-3">
+                              <span className="text-[#12c971] font-semibold text-sm sm:text-base md:text-lg">
+                                {role.title}
+                              </span>
+                              <span className="text-gray-500 text-xs md:text-sm font-mono">
+                                {role.date}
+                              </span>
+                            </div>
+                            {role.description.map((desc, j) => (
+                              <p
+                                key={j}
+                                className="text-gray-400 text-xs sm:text-sm md:text-base leading-relaxed"
+                              >
+                                {desc}
+                              </p>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    </TimelineEntry>
+                  </Reveal>
                 ))}
               </div>
+            )}
 
-              <hr className="mt-10 border-gray-600 opacity-50" />
+            {activeTab === "education" && (
+              <div className="space-y-10">
+                {education.map((edu) => (
+                  <Reveal key={edu.id}>
+                    <TimelineEntry
+                      date={edu.active_date}
+                      title={edu.degree}
+                      subtitle={edu.uni}
+                    >
+                      {edu.gpa && (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#12c971]/10 text-[#12c971] text-sm md:text-base font-mono mb-3">
+                          · {edu.gpa}
+                        </span>
+                      )}
+                      <p className="text-gray-400 text-justify text-xs sm:text-sm md:text-base leading-relaxed">
+                        {edu.p1}
+                      </p>
+                    </TimelineEntry>
+                  </Reveal>
+                ))}
+              </div>
+            )}
+
+            {activeTab === "extracurricular" && (
+              <div className="space-y-10">
+                {extracurricular.map((ext) => (
+                  <Reveal key={ext.id}>
+                    <TimelineEntry
+                      date={ext.active_date}
+                      title={ext.header}
+                      subtitle={ext.h1}
+                    >
+                      <div className="space-y-2">
+                        {ext.p1 && (
+                          <p className="text-gray-400 text-justify text-xs sm:text-sm md:text-base leading-relaxed">
+                            {ext.p1}
+                          </p>
+                        )}
+                        {ext.p2 && (
+                          <p className="text-gray-400 text-justify text-xs sm:text-sm md:text-base leading-relaxed">
+                            {ext.p2}
+                          </p>
+                        )}
+                      </div>
+                    </TimelineEntry>
+                  </Reveal>
+                ))}
+              </div>
+            )}
+          </Reveal>
+
+          <div className="my-12 h-px bg-gradient-to-r from-transparent via-[#2e2e2e] to-transparent" />
+
+          <Reveal delay={80}>
+            <SectionHeading>Languages &amp; Frameworks</SectionHeading>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+              {skills.map((s) => (
+                <SkillBadge key={s.label} icon={s.icon} label={s.label} />
+              ))}
             </div>
-          ))}
-        </div>
-        <hr className="mt-10 border-gray-600 opacity-50" />
-        <div className="flex-col mt-8 space-y-5 sm:space-y-7 lg:space-y-10">
-          <div>
-            <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-              Extracurricular Activities
-            </h1>
-          </div>
-          {extracurricular.map((ext) => (
-            <div
-              key={ext.id}
-              className="flex-col space-y-6"
-            >
+          </Reveal>
+
+          <div className="my-12 h-px bg-gradient-to-r from-transparent via-[#2e2e2e] to-transparent" />
+
+          <Reveal delay={80}>
+            <SectionHeading>Tools</SectionHeading>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+              {tools.map((t) => (
+                <SkillBadge key={t.label} icon={t.icon} label={t.label} />
+              ))}
+            </div>
+          </Reveal>
+
+          <div className="my-12 h-px bg-gradient-to-r from-transparent via-[#2e2e2e] to-transparent" />
+
+          <Reveal delay={80}>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-[#1e2e22] border border-[#12c971]/20">
               <div>
-                <h1 className="text-lg font-semibold text-gray-500">
-                  {ext.active_date}
-                </h1>
-              </div>
-              <div className="flex-col space-y-1">
-                <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-white">
-                  {ext.header}
-                </h1>
-                <h2 className="text-gray-500 text-sm font-semibold">
-                  {ext.h1}
-                </h2>
-              </div>
-              <div className="flex-col space-y-2">
-                <p className="font-sans font-semibold text-lg text-justify sm:text-md text-wrap text-gray-500">
-                  {ext.p1}
+                <p className="text-gray-100 font-semibold text-lg">
+                  See all my projects
                 </p>
-                <p className="font-sans font-semibold text-lg text-justify sm:text-md text-wrap text-gray-500">
-                  {ext.p2}
+                <p className="text-gray-400 text-sm mt-1">
+                  Check my GitHub repositories or explore the Portfolio section.
                 </p>
               </div>
-              <hr className="mt-10 border-gray-600 opacity-50" />
+              <Link
+                href="https://github.com/Shashanka10"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="flex items-center gap-3 px-6 py-3 rounded-xl bg-[#12c971] text-[#0d0d0d] font-bold text-sm hover:bg-[#0fb862] transition-all duration-300 whitespace-nowrap hover:scale-105 active:scale-95"
+              >
+                <FaGithub size={18} /> View GitHub <ChevronRight size={16} />
+              </Link>
             </div>
-          ))}
+          </Reveal>
         </div>
-        <p className="font-sans font-semibold text-lg text-justify sm:text-md text-wrap text-gray-500">
-          You can check all my projects on my github repositories or go through Portfolio section of the Website:
-        </p>
-        <div className="flex justify-center items-center">
-          <Link
-            href="https://github.com/Shashanka10"
-            rel="jobhunt"
-            target="_blank"
-          >
-            <Image
-              src="/gitt.png"
-              width={20}
-              height={20}
-              alt="Github logo"
-              className="w-8 h-8 transition-all delay-100 hover:scale-105 duration-500 md:w-8 md:h-8 lg:w-10 lg:h-10"
-            />
-          </Link>
-        </div>
-        <hr className="mt-10 border-gray-600 opacity-50" />
-        <div>
-          <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-            Education
-          </h1>
-        </div>
-        {education.map((edu) => (
-          <div
-            key={edu.id}
-            className="flex-col space-y-6"
-          >
-            <div>
-              <h1 className="text-lg font-semibold text-gray-500">
-                {edu.active_date}
-              </h1>
-            </div>
-            <div className="flex-col space-y-1">
-              <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-white">
-                {edu.degree}
-              </h1>
-              <h2 className="text-gray-500 text-sm font-semibold">
-                {edu.uni}
-              </h2>
-              <h2 className="text-gray-500 text-sm font-semibold">{edu.gpa}</h2>
-            </div>
-            <div className="flex-col space-y-2">
-              <p className="font-sans font-semibold text-lg text-justify sm:text-md text-wrap text-gray-500">
-                {edu.p1}
-              </p>
-            </div>
-            <hr className="mt-10 border-gray-600 opacity-50" />
-          </div>
-        ))}
       </div>
     </div>
   );
