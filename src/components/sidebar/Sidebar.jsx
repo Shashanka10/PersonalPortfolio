@@ -6,12 +6,14 @@ import { usePathname } from "next/navigation";
 import { Home, Mail, Pen, UserRound } from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
 import { FaGithub, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { Images } from "lucide-react";
 
 const navLinks = [
   { id: 1, title: "Home",      url: "/",          icon: <Home size={17} /> },
-  { id: 2, title: "Portfolio", url: "/portfolio",  icon: <Pen size={17} /> },
-  { id: 3, title: "About",     url: "/about",      icon: <UserRound size={17} /> },
-  { id: 4, title: "Contact",   url: "/contact",    icon: <Mail size={17} /> },
+  { id: 2, title: "About",     url: "/about",      icon: <UserRound size={17} /> },
+  { id: 3, title: "Portfolio", url: "/portfolio",  icon: <Pen size={17} /> },
+  { id: 4, title: "Gallery",   url: "/gallery",    icon: <Images size={17} /> },
+  { id: 5, title: "Contact",   url: "/contact",    icon: <Mail size={17} /> },
 ];
 
 const socialLinks = [

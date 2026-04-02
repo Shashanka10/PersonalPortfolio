@@ -3,6 +3,7 @@ import Contact from "./contact/page";
 import About from "./about/page";
 import HomePage from "./homepage/page";
 import Portfolio from "./portfolio/page";
+import Gallery from "./gallery/page";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <HomePage />
       <About />
       <Portfolio />
+      <Gallery />
       <Contact />
     </div>
   );
