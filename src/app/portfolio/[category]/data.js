@@ -5,14 +5,14 @@ export const items = {
       title: "Trek Diaries",
       desc: "Trek Diaries is a social media site that is well-designed to meet the needs of trek and hike enthusiasts, making it a must-have platform in today's world. The website facilitates the exploration of new locations, connects with like-minded individuals, and shares experiences through posts, likes, and comments. ",
       img: "/TDs.jpg",
-      linked: "https://trek-diaries-bc0ax3h4n-trekdiaries123.vercel.app/login?from=%2F",
+      linked: "https://github.com/Re-Dye/Trek-Diaries",
     },
     {
       id: 2,
       title: "Trek Diaries Mobile App",
       desc: "Trek Diaries is a social media app that is well-designed to meet the needs of trek and hike enthusiasts, making it a must-have app in today's world. The app facilitates the exploration of new locations, connects with like-minded individuals, and shares experiences through posts, likes, and comments. ",
       img: "/trekapp.png",
-      linked: "https://github.com/Re-Dei-s-Organization/Trek-Diaries-Mobile",
+      linked: "https://github.com/Re-Dye/Trek-Diaries-Mobile",
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ export const items = {
       title: "Chat Message",
       desc: "Real time chat applications have become an essential part of the digital world, enabling people to communicate with each other smoothly and continuously from anywhere and anytime. In this project, we have developed real-time chat application, `chat-JPT` using Socket.io and Node.js.",
       img: "/chatapp.png",
-      linked: "https://github.com/Re-Dei-s-Organization/chat-JPT",
+      linked: "https://github.com/Re-Dye/chat-JPT",
     },
     {
       id: 5,
@@ -37,20 +37,13 @@ export const items = {
     },
     {
       id: 6,
-      title: "CureMe",
-      desc: "CureMe is a doctor appointment booking platform that allows users to conveniently select a doctor, choose from available time slots and days, and book appointments with ease. With CureMe, patients can find medical professionals across various specialties and enjoy a smooth, efficient booking experience.",
-      img: "/cureme.png",
-      linked: "https://cureme.vercel.app/",
-    },
-    {
-      id: 7,
       title: "Maze Runner 2D Simulation game",
       desc: "It is a fun and engaging 2D simulation car game developed using python, pygame, and pyopengl. A player has to drive a car through a complex maze to the finish line.",
       img: "/mazerunner.jpg",
       linked: "https://github.com/Shashanka10/OpenGL-Project",
     },
     {
-      id: 8,
+      id: 7,
       title: "Roller Ball game",
       desc: "It is an action-packed ball game where the player controls a ball that must collect pickups to score points while avoiding enemies. Colliding with an enemy ends the game, but collecting 9 or more pickups wins the game.",
       img: "/rollerball.png",
