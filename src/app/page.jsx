@@ -11,7 +11,7 @@ export default function Home() {
       <HomePage />
       <About />
       <Portfolio />
-      <Gallery />
+      {/* <Gallery /> */}
       <Contact />
     </div>
   );

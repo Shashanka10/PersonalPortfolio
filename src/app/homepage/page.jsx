@@ -40,6 +40,7 @@ export default function HomePage() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const playPronunciation = () => {
+    if (isPlaying) return;
     const audio = new Audio("/my_voice.wav");
 
     setIsPlaying(true);
@@ -111,13 +112,54 @@ export default function HomePage() {
 
                 <button
                   onClick={playPronunciation}
-                  aria-label="Pronounce Shashanka Luitel"
-                  className="flex h-7 w-7 items-center justify-center rounded-full border border-[#12c971]/25 text-[#12c971]/70 transition-all duration-300 hover:border-[#12c971]/60 hover:bg-[#12c971]/10 hover:text-[#12c971] hover:scale-110"
+                  disabled={isPlaying}
+                  aria-label={
+                    isPlaying
+                      ? "Playing pronunciation"
+                      : "Pronounce Shashanka Luitel"
+                  }
+                  className={`
+    group relative flex h-8 w-8 items-center justify-center
+    rounded-full border
+    transition-all duration-300
+    ${
+      isPlaying
+        ? "border-[#12c971]/60 bg-[#12c971]/10 text-[#12c971]"
+        : "border-[#12c971]/25 text-[#12c971]/70 hover:border-[#12c971]/60 hover:bg-[#12c971]/10 hover:text-[#12c971]"
+    }
+    hover:scale-110
+    active:scale-95
+    disabled:cursor-default
+  `}
                 >
-                  <Volume2
-                    size={14}
-                    className={isPlaying ? "animate-pulse" : ""}
-                  />
+                  {/* Playing glow */}
+                  {isPlaying && (
+                    <>
+                      <span className="absolute inset-0 rounded-full border border-[#12c971]/30 animate-ping" />
+
+                      <span className="absolute -inset-1 rounded-full bg-[#12c971]/5 blur-sm" />
+                    </>
+                  )}
+
+                  {/* Sound bars */}
+                  {isPlaying ? (
+                    <span className="relative z-10 flex h-4 items-center gap-[2px]">
+                      <span className="w-[2px] rounded-full bg-[#12c971] animate-sound-1" />
+                      <span className="w-[2px] rounded-full bg-[#12c971] animate-sound-2" />
+                      <span className="w-[2px] rounded-full bg-[#12c971] animate-sound-3" />
+                      <span className="w-[2px] rounded-full bg-[#12c971] animate-sound-2" />
+                      <span className="w-[2px] rounded-full bg-[#12c971] animate-sound-1" />
+                    </span>
+                  ) : (
+                    <Volume2
+                      size={14}
+                      className="
+        relative z-10
+        transition-transform duration-300
+        group-hover:scale-110
+      "
+                    />
+                  )}
                 </button>
               </div>
             </div>
@@ -236,11 +278,11 @@ export default function HomePage() {
           </div>
 
           {/* Quote */}
-          <div className={`mt-7 w-full max-w-[320px] text-center`}>
+          {/* <div className={`mt-7 w-full max-w-[320px] text-center`}>
             <p className="text-xs lg:text-sm text-gray-500 font-mono italic tracking-normal">
               “ Giving up is not in the blood, sir! ”
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -248,7 +290,36 @@ export default function HomePage() {
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50%       { transform: translateY(-10px); }
+  },
+  @keyframes sound-1 {
+  0%,
+  100% {
+    height: 5px;
   }
+  50% {
+    height: 12px;
+  }
+}
+
+@keyframes sound-2 {
+  0%,
+  100% {
+    height: 9px;
+  }
+  50% {
+    height: 16px;
+  }
+}
+
+@keyframes sound-3 {
+  0%,
+  100% {
+    height: 6px;
+  }
+  50% {
+    height: 14px;
+  }
+}
 `}</style>
     </div>
   );

@@ -9,19 +9,39 @@ import { FaGithub, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Images } from "lucide-react";
 
 const links = [
-  { id: 1, title: "Home",      url: "/",           icon: <Home size={17} /> },
-  { id: 2, title: "About",     url: "/about",      icon: <UserRound size={17} /> },
-  { id: 3, title: "Portfolio", url: "/portfolio",  icon: <Pen size={17} /> },
-  { id: 4, title: "Gallery",   url: "/gallery",    icon: <Images size={17} /> },
-  { id: 5, title: "Contact",   url: "/contact",    icon: <Mail size={17} /> },
+  { id: 1, title: "Home", url: "/", icon: <Home size={17} /> },
+  { id: 2, title: "About", url: "/about", icon: <UserRound size={17} /> },
+  { id: 3, title: "Portfolio", url: "/portfolio", icon: <Pen size={17} /> },
+  // { id: 4, title: "Gallery",   url: "/gallery",    icon: <Images size={17} /> },
+  { id: 4, title: "Contact", url: "/contact", icon: <Mail size={17} /> },
 ];
 
 const socialLinks = [
-  { href: "https://github.com/Shashanka10",                icon: <FaGithub size={15} />,    label: "GitHub" },
-  { href: "https://www.linkedin.com/in/shashanka-luitel/", icon: <FaLinkedin size={15} />,  label: "LinkedIn" },
-  { href: "https://twitter.com/_shashanka10",              icon: <BsTwitterX size={14} />,  label: "Twitter / X" },
-  { href: "https://www.instagram.com/_shashankaa10/",      icon: <FaInstagram size={15} />, label: "Instagram" },
-  { href: "https://www.facebook.com/luitel.shashanka/",    icon: <FaFacebook size={15} />,  label: "Facebook" },
+  {
+    href: "https://github.com/Shashanka10",
+    icon: <FaGithub size={15} />,
+    label: "GitHub",
+  },
+  {
+    href: "https://www.linkedin.com/in/shashanka-luitel/",
+    icon: <FaLinkedin size={15} />,
+    label: "LinkedIn",
+  },
+  {
+    href: "https://twitter.com/_shashanka10",
+    icon: <BsTwitterX size={14} />,
+    label: "Twitter / X",
+  },
+  {
+    href: "https://www.instagram.com/_shashankaa10/",
+    icon: <FaInstagram size={15} />,
+    label: "Instagram",
+  },
+  {
+    href: "https://www.facebook.com/luitel.shashanka/",
+    icon: <FaFacebook size={15} />,
+    label: "Facebook",
+  },
 ];
 
 const Navbar = () => {
@@ -30,17 +50,22 @@ const Navbar = () => {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
-  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <>
       {/* ── TOP BAR ── */}
-      <div className="flex fixed top-0 right-0 left-0 sm:hidden justify-between items-center
-        px-5 py-3.5 bg-[#141414]/90 backdrop-blur-md border-b border-[#2a2a2a] text-gray-100 z-50">
-
+      <div
+        className="flex fixed top-0 right-0 left-0 sm:hidden justify-between items-center
+        px-5 py-3.5 bg-[#141414]/90 backdrop-blur-md border-b border-[#2a2a2a] text-gray-100 z-50"
+      >
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="relative">
             <Image
@@ -64,12 +89,24 @@ const Navbar = () => {
             hover:border-[#12c971]/40 transition-colors duration-300 gap-1.5 z-50"
           aria-label="Toggle menu"
         >
-          <span className="h-px bg-gray-400 rounded-full block transition-all duration-300"
-            style={{ transform: open ? "rotate(45deg) translate(2px, 2px)" : "none", width: "18px" }} />
-          <span className="h-px bg-gray-400 rounded-full block transition-all duration-300"
-            style={{ opacity: open ? 0 : 1, width: "18px" }} />
-          <span className="h-px bg-gray-400 rounded-full block transition-all duration-300"
-            style={{ transform: open ? "rotate(-45deg) translate(2px, -2px)" : "none", width: "18px" }} />
+          <span
+            className="h-px bg-gray-400 rounded-full block transition-all duration-300"
+            style={{
+              transform: open ? "rotate(45deg) translate(2px, 2px)" : "none",
+              width: "18px",
+            }}
+          />
+          <span
+            className="h-px bg-gray-400 rounded-full block transition-all duration-300"
+            style={{ opacity: open ? 0 : 1, width: "18px" }}
+          />
+          <span
+            className="h-px bg-gray-400 rounded-full block transition-all duration-300"
+            style={{
+              transform: open ? "rotate(-45deg) translate(2px, -2px)" : "none",
+              width: "18px",
+            }}
+          />
         </button>
       </div>
 
@@ -99,7 +136,9 @@ const Navbar = () => {
               className="w-10 h-10 rounded-full object-cover border-2 border-[#12c971]/30"
             />
             <div>
-              <p className="text-gray-100 font-bold text-sm">Shashanka Luitel</p>
+              <p className="text-gray-100 font-bold text-sm">
+                Shashanka Luitel
+              </p>
               <p className="text-gray-400 text-xs flex items-center gap-1.5 mt-0.5">
                 <GraduationCap size={11} />
                 Kathmandu University
@@ -125,16 +164,21 @@ const Navbar = () => {
                 href={link.url}
                 className={`flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold
                   transition-all duration-200 group
-                  ${active
-                    ? "bg-[#12c971]/10 text-[#12c971] border border-[#12c971]/25"
-                    : "text-gray-400 hover:text-gray-100 hover:bg-[#1e1e1e] border border-transparent"
+                  ${
+                    active
+                      ? "bg-[#12c971]/10 text-[#12c971] border border-[#12c971]/25"
+                      : "text-gray-400 hover:text-gray-100 hover:bg-[#1e1e1e] border border-transparent"
                   }`}
               >
-                <span className={`transition-colors duration-200 ${active ? "text-[#12c971]" : "text-gray-400 group-hover:text-gray-100"}`}>
+                <span
+                  className={`transition-colors duration-200 ${active ? "text-[#12c971]" : "text-gray-400 group-hover:text-gray-100"}`}
+                >
                   {link.icon}
                 </span>
                 {link.title}
-                {active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#12c971]" />}
+                {active && (
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#12c971]" />
+                )}
               </Link>
             );
           })}

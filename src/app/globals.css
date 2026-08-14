@@ -3,6 +3,18 @@
   transition: 1s all ease;
 }
 
+.animate-sound-1 {
+  animation: sound-1 0.6s ease-in-out infinite;
+}
+
+.animate-sound-2 {
+  animation: sound-2 0.5s ease-in-out infinite;
+}
+
+.animate-sound-3 {
+  animation: sound-3 0.7s ease-in-out infinite;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
