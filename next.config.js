@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: '**.freepik.com',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: '**.appwrite.io',
+        port: '',
+      }
     ],
   },
   eslint: {

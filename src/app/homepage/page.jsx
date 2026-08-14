@@ -3,7 +3,7 @@ import Image from "next/image";
 import Illustrate from "../../../public/me.png";
 import Button from "@/components/Button/Button";
 import Typewriter from "typewriter-effect";
-import { MapPin, ArrowDown } from "lucide-react";
+import { MapPin, ArrowDown, Volume2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import Particles from "@/components/Particles/Particles";
 
@@ -36,6 +36,20 @@ export default function HomePage() {
   const v2 = useMounted(500);
   const v3 = useMounted(700);
   const v4 = useMounted(900);
+
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const playPronunciation = () => {
+    const audio = new Audio("/my_voice.wav");
+
+    setIsPlaying(true);
+
+    audio.play();
+
+    audio.onended = () => {
+      setIsPlaying(false);
+    };
+  };
 
   const fade = (visible, extra = "") =>
     `transition-all duration-700 ${extra} ${
@@ -77,15 +91,36 @@ export default function HomePage() {
             <p className="text-gray-100 font-mono text-xs tracking-[0.25em] uppercase mb-2">
               Hello, I am
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-100 leading-[1.05] tracking-tight">
-              Shashanka
-              <span
-                className="ml-2 sm:ml-4 md:ml-5 text-transparent bg-clip-text"
-                style={{ WebkitTextStroke: "1px rgba(18,201,113,0.6)" }}
-              >
-                Luitel
-              </span>
-            </h1>
+            <div className="space-y-3">
+              {/* English name */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-100 leading-[1.05] tracking-tight">
+                Shashanka
+                <span
+                  className="ml-2 sm:ml-4 md:ml-5 text-transparent bg-clip-text"
+                  style={{ WebkitTextStroke: "1px rgba(18,201,113,0.6)" }}
+                >
+                  Luitel
+                </span>
+              </h1>
+
+              {/* Nepali name + pronunciation */}
+              <div className="flex items-center gap-2">
+                <span className="text-lg sm:text-xl text-gray-400 font-medium">
+                  शशांक लुईटेल
+                </span>
+
+                <button
+                  onClick={playPronunciation}
+                  aria-label="Pronounce Shashanka Luitel"
+                  className="flex h-7 w-7 items-center justify-center rounded-full border border-[#12c971]/25 text-[#12c971]/70 transition-all duration-300 hover:border-[#12c971]/60 hover:bg-[#12c971]/10 hover:text-[#12c971] hover:scale-110"
+                >
+                  <Volume2
+                    size={14}
+                    className={isPlaying ? "animate-pulse" : ""}
+                  />
+                </button>
+              </div>
+            </div>
           </div>
 
           <div
@@ -115,12 +150,12 @@ export default function HomePage() {
               </span>
               <span className="text-gray-200 flex gap-1 items-center text-sm font-mono tracking-wider">
                 / Nepal
-              <Image
-                src="/nepal.png"
-                alt="Nepal flag"
-                width={18}
-                height={18}
-              />
+                <Image
+                  src="/nepal.png"
+                  alt="Nepal flag"
+                  width={18}
+                  height={18}
+                />
               </span>
             </div>
           </div>
@@ -150,8 +185,9 @@ export default function HomePage() {
         </div>
 
         <div
-          className={`${fade(v2, "delay-200")} flex justify-center md:justify-end`}
+          className={`${fade(v2, "delay-200")} flex flex-col items-center md:items-end`}
         >
+          {/* Picture */}
           <div
             className="relative group"
             style={{
@@ -162,7 +198,8 @@ export default function HomePage() {
             {/* Back offset ring — bottom right */}
             <div
               className="absolute bottom-[-6px] right-[-6px] rounded-2xl border border-[#12c971]/25
-      group-hover:border-[#12c971]/50 transition-all duration-500 group-hover:translate-x-[2px] group-hover:translate-y-[2px]"
+      group-hover:border-[#12c971]/50 transition-all duration-500
+      group-hover:translate-x-[2px] group-hover:translate-y-[2px]"
               style={{
                 width: "calc(100% - 16px)",
                 height: "calc(100% - 16px)",
@@ -172,16 +209,19 @@ export default function HomePage() {
             {/* Front offset ring — top left */}
             <div
               className="absolute top-[-6px] left-[-6px] rounded-2xl border border-[#12c971]/25
-      group-hover:border-[#12c971]/25 transition-all duration-500 group-hover:-translate-x-[2px] group-hover:-translate-y-[2px]"
+      group-hover:border-[#12c971]/25 transition-all duration-500
+      group-hover:-translate-x-[2px] group-hover:-translate-y-[2px]"
               style={{
                 width: "calc(100% - 16px)",
                 height: "calc(100% - 16px)",
               }}
             />
+
+            {/* Image */}
             <div
               className="absolute inset-[8px] rounded-xl overflow-hidden bg-[#111]
-        border border-[#2e2e2e] group-hover:border-[#12c971]/40
-        transition-all duration-500"
+      border border-[#2e2e2e] group-hover:border-[#12c971]/40
+      transition-all duration-500"
               style={{ animation: "float 6s ease-in-out infinite" }}
             >
               <Image
@@ -190,8 +230,16 @@ export default function HomePage() {
                 fill
                 className="object-cover"
               />
+
               <div className="absolute inset-0 bg-[#12c971]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
+          </div>
+
+          {/* Quote */}
+          <div className={`mt-7 w-full max-w-[320px] text-center`}>
+            <p className="text-xs lg:text-sm text-gray-500 font-mono italic tracking-normal">
+              “ Giving up is not in the blood, sir! ”
+            </p>
           </div>
         </div>
       </div>
