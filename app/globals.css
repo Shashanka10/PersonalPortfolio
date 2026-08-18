@@ -1,26 +1,435 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.theme
+{
+  transition: 1s all ease;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.animate-sound-1 {
+  animation: sound-1 0.6s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.animate-sound-2 {
+  animation: sound-2 0.5s ease-in-out infinite;
+}
+
+.animate-sound-3 {
+  animation: sound-3 0.7s ease-in-out infinite;
+}
+
+.trek-map-dark .leaflet-tile {
+  filter: brightness(0.55) saturate(0.7) contrast(1.1);
+}
+
+.trek-map-dark .leaflet-control-zoom,
+.trek-map-dark .leaflet-control-attribution {
+  background: rgba(20, 20, 20, 0.85);
+  color: #777;
+}
+
+.trek-map-dark .leaflet-control-attribution a {
+  color: #888;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #1e1e1e;
+  color: #f3f4f6;
+}
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.trek-map {
+  height: 100%;
+  width: 100%;
+  background: #141414;
+  z-index: 1;
+}
+
+/* =========================================================
+   THREE.JS
+========================================================= */
+
+.trek-three-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.trek-three-layer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================================
+   MARKERS
+========================================================= */
+
+.trek-marker-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.trek-marker {
+  position: relative;
+
+  width: var(--marker-size);
+  height: var(--marker-size);
+
+  border-radius: 999px;
+
+  background: var(--marker-color);
+
+  border: 2px solid #0d0d0d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 8px
+    color-mix(
+      in srgb,
+      var(--marker-color) 65%,
+      transparent
+    );
+
+  transition:
+    width 0.25s ease,
+    height 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.trek-marker:hover {
+  transform: scale(1.15);
+}
+
+/* Inner white dot */
+
+.trek-marker-core {
+  width: 4px;
+  height: 4px;
+
+  border-radius: 999px;
+
+  background: white;
+
+  opacity: 0.95;
+}
+
+/* Outer ring */
+
+.trek-marker-ring {
+  position: absolute;
+
+  inset: -5px;
+
+  border-radius: 999px;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--marker-color) 35%,
+      transparent
+    );
+
+  opacity: 0;
+}
+
+/* Active */
+
+.trek-marker-active {
+  animation:
+    trek-marker-pulse
+    2s ease-in-out infinite;
+}
+
+.trek-marker-active
+  .trek-marker-ring {
+  opacity: 1;
+
+  animation:
+    trek-ring-pulse
+    2s ease-out infinite;
+}
+
+@keyframes trek-marker-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 8px
+      var(--marker-color);
+  }
+
+  50% {
+    box-shadow:
+      0 0 20px
+      var(--marker-color);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes trek-ring-pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+.leaflet-popup-content-wrapper {
+  background: #171717 !important;
+
+  color: white !important;
+
+  border:
+    1px solid #333 !important;
+
+  border-radius:
+    16px !important;
+
+  box-shadow:
+    0 20px 60px
+    rgba(0, 0, 0, 0.55) !important;
+
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+
+  width: 250px !important;
+}
+
+.leaflet-popup-tip {
+  background: #171717 !important;
+}
+
+.leaflet-popup {
+  margin-bottom: 12px;
+}
+
+.trek-popup-content {
+  padding: 14px;
+}
+
+/* =========================================================
+   POPUP TAGS
+========================================================= */
+
+.trek-popup-tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding:
+    4px 7px;
+
+  border-radius:
+    999px;
+
+  border:
+    1px solid #2e2e2e;
+
+  background:
+    #202020;
+
+  color:
+    #888;
+
+  font-size:
+    9px;
+
+  font-family:
+    monospace;
+}
+
+/* =========================================================
+   ZOOM CONTROLS
+========================================================= */
+
+.leaflet-control-zoom {
+  border: none !important;
+
+  box-shadow: none !important;
+
+  margin-right: 16px !important;
+
+  margin-bottom: 58px !important;
+}
+
+.leaflet-control-zoom a {
+  width: 34px !important;
+
+  height: 34px !important;
+
+  line-height: 34px !important;
+
+  background:
+    rgba(24, 24, 24, 0.92) !important;
+
+  color:
+    #777 !important;
+
+  border:
+    1px solid #333 !important;
+
+  transition:
+    all 0.2s ease;
+}
+
+.leaflet-control-zoom a:first-child {
+  border-radius:
+    10px 10px 0 0 !important;
+
+  border-bottom:
+    none !important;
+}
+
+.leaflet-control-zoom a:last-child {
+  border-radius:
+    0 0 10px 10px !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background:
+    #222 !important;
+
+  color:
+    #12c971 !important;
+
+  border-color:
+    #12c97150 !important;
+}
+
+/* =========================================================
+   ATTRIBUTION
+========================================================= */
+
+.leaflet-control-attribution {
+  background:
+    rgba(20, 20, 20, 0.75) !important;
+
+  color:
+    #555 !important;
+
+  font-size:
+    8px !important;
+
+  backdrop-filter:
+    blur(6px);
+}
+
+.leaflet-control-attribution a {
+  color:
+    #666 !important;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+  .leaflet-control-zoom {
+    margin-right: 12px !important;
+
+    margin-bottom: 52px !important;
+  }
+
+  .leaflet-popup-content {
+    width: 220px !important;
+  }
+}
+
+/* Music waveform */
+
+@keyframes music-wave {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.animate-music-wave {
+  animation: music-wave 0.7s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Music progress */
+
+.music-progress {
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: #2e2e2e;
+  cursor: pointer;
+}
+
+.music-progress::-webkit-slider-thumb {
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #c084fc;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.music-progress:hover::-webkit-slider-thumb {
+  opacity: 1;
+}
+
+.music-progress::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border: none;
+  border-radius: 50%;
+  background: #c084fc;
+  cursor: pointer;
+}
+
+@theme {
+  --animate-bounce-slow: bounce-slow 1.5s ease-in-out infinite;
+  --animate-loading-bounce: loading-bounce 1.2s ease-in-out infinite;
+
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(-3%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  @keyframes loading-bounce {
+    0%, 80%, 100% {
+      transform: translateY(0);
+      opacity: 0.4;
+    }
+
+    40% {
+      transform: translateY(-10px);
+      opacity: 1;
+    }
+  }
 }

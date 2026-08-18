@@ -1,0 +1,160 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { hobbyCategories } from "./data";
+import Particles from "@/components/Particles/Particles";
+import Reveal from "@/components/Reveal/Reveal";
+
+function useMounted(delay = 0) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(true), delay);
+    return () => clearTimeout(t);
+  }, []);
+  return visible;
+}
+
+function HobbyCard({ item, index }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Reveal delay={index * 120}>
+      <Link href={item.href}>
+        <div
+          className="group relative rounded-2xl overflow-hidden border border-[#2e2e2e] bg-[#1e1e1e] cursor-pointer h-full"
+          style={{
+            transition: "border-color 0.3s ease, transform 0.4s ease",
+            transform: hovered ? "translateY(-4px)" : "translateY(0)",
+            borderColor: hovered ? `${item.accent}40` : undefined,
+          }}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          <div className="relative h-[220px] sm:h-[260px] lg:h-[320px] overflow-hidden">
+            <Image
+              src={item.image}
+              alt={item.label}
+              fill
+              sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 33vw"
+              className="object-cover"
+              style={{
+                transform: hovered ? "scale(1.05)" : "scale(1)",
+                transition: "transform 0.6s ease",
+                filter: hovered ? "brightness(1.2)" : "brightness(1.0)",
+              }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to top, #1e1e1e 0%, transparent 60%)",
+              }}
+            />
+            <div className="absolute top-4 left-4">
+              <span
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono tracking-widest uppercase border"
+                style={{
+                  color: item.accent,
+                  borderColor: `${item.accent}40`,
+                  backgroundColor: `${item.accent}10`,
+                }}
+              >
+                {item.tag}
+              </span>
+            </div>
+            <div
+              className="absolute m-auto inset-0 w-8 h-8 rounded-full flex items-center justify-center border"
+              style={{
+                borderColor: `${item.accent}40`,
+                backgroundColor: `${item.accent}10`,
+                color: item.accent,
+                opacity: hovered ? 1 : 0,
+                transform: hovered
+                  ? "scale(1) rotate(0deg)"
+                  : "scale(0.7) rotate(-45deg)",
+                transition: "opacity 0.3s ease, transform 0.3s ease",
+              }}
+            >
+              <ArrowUpRight size={14} />
+            </div>
+          </div>
+          <div className="p-5 sm:p-6 space-y-3">
+            <div className="flex items-center gap-2.5">
+              <span
+                className="p-2 rounded-lg"
+                style={{
+                  color: item.accent,
+                  backgroundColor: `${item.accent}15`,
+                }}
+              >
+                {item.icon}
+              </span>
+              <h3 className="text-gray-100 font-bold text-xl sm:text-2xl tracking-tight">
+                {item.label}
+              </h3>
+            </div>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              {item.description}
+            </p>
+            <div
+              className="h-px rounded-full transition-all duration-500"
+              style={{
+                background: `linear-gradient(to right, ${item.accent}60, transparent)`,
+                opacity: hovered ? 1 : 0,
+                transform: hovered ? "scaleX(1)" : "scaleX(0)",
+                transformOrigin: "left",
+              }}
+            />
+          </div>
+        </div>
+      </Link>
+    </Reveal>
+  );
+}
+
+export const Hobbies = () => {
+  const v0 = useMounted(100);
+  return (
+    <div className="flex justify-between mt-8 sm:mt-2 z-40">
+      <div className="relative w-full p-5 sm:p-12 md:p-16 lg:p-24 mt-8 sm:mt-0 z-40 rounded-2xl bg-[#1A1A1A] overflow-hidden">
+        <Particles count={25} />
+        <div
+          className="absolute -top-16 -left-16 w-[360px] h-[360px] rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(168,85,247,0.05) 0%, transparent 70%)",
+            zIndex: 0,
+          }}
+        />
+        <div className="relative z-10 space-y-10">
+          <div
+            style={{
+              opacity: v0 ? 1 : 0,
+              transform: v0 ? "translateY(0)" : "translateY(20px)",
+              transition: "opacity 0.7s ease, transform 0.7s ease",
+            }}
+            className="space-y-3"
+          >
+            <p className="text-[#12c971] font-mono text-xs tracking-[0.25em] uppercase">
+              — Off the clock
+            </p>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-100 tracking-tight leading-tight">
+              Hobbies
+            </h1>
+            <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">
+              What I get up to when I'm not shipping code.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7">
+            {hobbyCategories.map((item, i) => (
+              <HobbyCard key={item.id} item={item} index={i} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Hobbies;
