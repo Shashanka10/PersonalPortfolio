@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Portfolio
 
-## Getting Started
+A modern, responsive personal portfolio website showcasing my work, projects, interests, hobbies, and journey as a software developer and research enthusiast.
 
-First, run the development server:
+Built with **Next.js**, **React**, **Tailwind CSS**, and **pnpm**, with a focus on clean UI, subtle animations, interactive elements, and responsive design.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Frontend
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- [Next.js](https://nextjs.org/) — React framework
+- [React](https://react.dev/) — UI library
+- [Tailwind CSS](https://tailwindcss.com/) — Styling
+- [Lucide React](https://lucide.dev/) — Icons
+- [React Icons](https://react-icons.github.io/react-icons/) — Additional icons
+- [Typewriter Effect](https://www.npmjs.com/package/typewriter-effect) — Animated text
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Interactive & Visualization
 
-## Learn More
+- [Leaflet](https://leafletjs.com/) — Interactive maps
+- [React Leaflet](https://react-leaflet.js.org/) — React integration for Leaflet
+- [Three.js](https://threejs.org/) — 3D / visual effects
 
-To learn more about Next.js, take a look at the following resources:
+### Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [pnpm](https://pnpm.io/) — Package manager
+- ESLint — Code quality
+- Git & GitHub — Version control
