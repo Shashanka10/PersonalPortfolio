@@ -62,6 +62,17 @@ const Navbar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
+  const handleHomeClick = (e) => {
+    if (pathname === "/") {
+      e.preventDefault();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -80,7 +91,11 @@ const Navbar = () => {
         className="flex fixed top-0 right-0 left-0 sm:hidden justify-between items-center
         px-5 py-3.5 bg-[#141414]/90 backdrop-blur-md border-b border-[#2a2a2a] text-gray-100 z-50"
       >
-        <Link href="/" className="flex items-center gap-2.5 group">
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 group"
+          onClick={handleHomeClick}
+        >
           <div className="relative">
             <Image
               src="/forehead.png"
@@ -183,6 +198,7 @@ const Navbar = () => {
               <Link
                 key={link.id}
                 href={link.url}
+                onClick={link.url === "/" ? handleHomeClick : undefined}
                 className={`flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold
                   transition-all duration-200 group
                   ${

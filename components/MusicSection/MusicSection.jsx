@@ -84,8 +84,6 @@ function FeaturedPlayer({
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-[#2e2e2e] bg-[#181818]">
-      {/* BACKGROUND ART */}
-
       {track.cover && (
         <div
           className="absolute inset-0 scale-110 opacity-[0.12] blur-3xl"
@@ -135,8 +133,6 @@ function FeaturedPlayer({
         ${playing ? "animate-vinyl-spin" : ""}
       `}
               >
-                {/* ALBUM ART */}
-
                 <Image
                   src={track.cover}
                   alt={track.title}
@@ -145,8 +141,6 @@ function FeaturedPlayer({
                   sizes="(max-width: 640px) 176px, 208px"
                   className="object-cover"
                 />
-
-                {/* DARK VINYL OVERLAY */}
 
                 <div
                   className="
@@ -157,8 +151,6 @@ function FeaturedPlayer({
           bg-[radial-gradient(circle_at_center,transparent_0%,transparent_45%,rgba(0,0,0,0.18)_70%,rgba(0,0,0,0.55)_100%)]
         "
                 />
-
-                {/* VINYL GROOVES */}
 
                 <div
                   className="
@@ -193,8 +185,6 @@ function FeaturedPlayer({
         "
                 />
 
-                {/* CENTER LABEL */}
-
                 <div
                   className="
           absolute
@@ -216,8 +206,6 @@ function FeaturedPlayer({
           justify-center
         "
                 >
-                  {/* CENTER HOLE */}
-
                   <div
                     className="
             w-3
@@ -230,8 +218,6 @@ function FeaturedPlayer({
           "
                   />
                 </div>
-
-                {/* LIGHT REFLECTION */}
 
                 <div
                   className="
@@ -282,11 +268,7 @@ function FeaturedPlayer({
 
             <div className="mt-7">
               <div className="relative w-full h-5 flex items-center">
-                {/* Background */}
-
                 <div className="absolute left-0 right-0 h-[4px] rounded-full bg-[#2b2b2b]" />
-
-                {/* Played portion */}
 
                 <div
                   className="absolute left-0 h-[4px] rounded-full bg-[#c084fc] pointer-events-none"
@@ -294,8 +276,6 @@ function FeaturedPlayer({
                     width: `${progressPercent}%`,
                   }}
                 />
-
-                {/* Actual range */}
 
                 <input
                   type="range"
@@ -317,8 +297,6 @@ function FeaturedPlayer({
             </div>
 
             <div className="flex items-center gap-3 mt-4">
-              {/* PREVIOUS */}
-
               <button
                 type="button"
                 onClick={onPrev}
@@ -337,8 +315,6 @@ function FeaturedPlayer({
               >
                 <SkipBack size={15} fill="currentColor" />
               </button>
-
-              {/* PLAY */}
 
               <button
                 type="button"
@@ -366,8 +342,6 @@ function FeaturedPlayer({
                 )}
               </button>
 
-              {/* NEXT */}
-
               <button
                 type="button"
                 onClick={onNext}
@@ -389,8 +363,6 @@ function FeaturedPlayer({
 
               <Waveform playing={playing} />
 
-              {/* VOLUME */}
-
               <button
                 type="button"
                 onClick={onToggleMute}
@@ -407,8 +379,6 @@ function FeaturedPlayer({
               >
                 {muted ? <VolumeX size={15} /> : <Volume2 size={15} />}
               </button>
-
-              {/* DEEZER */}
 
               {track.externalUrl && (
                 <Link
@@ -458,8 +428,6 @@ function TrackCard({ track, index, active, playing, onSelect, onToggle }) {
         }
       `}
     >
-      {/* NUMBER */}
-
       <span
         className={`
           hidden sm:block
@@ -471,8 +439,6 @@ function TrackCard({ track, index, active, playing, onSelect, onToggle }) {
       >
         {String(index + 1).padStart(2, "0")}
       </span>
-
-      {/* COVER */}
 
       <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden shrink-0 bg-[#252525]">
         {track.cover ? (
@@ -495,8 +461,6 @@ function TrackCard({ track, index, active, playing, onSelect, onToggle }) {
         )}
       </div>
 
-      {/* INFO */}
-
       <div className="flex-1 min-w-0">
         <p
           className={`
@@ -518,13 +482,9 @@ function TrackCard({ track, index, active, playing, onSelect, onToggle }) {
         )}
       </div>
 
-      {/* PREVIEW */}
-
       <span className="hidden sm:block text-[9px] font-mono text-gray-600 uppercase">
         A little louder
       </span>
-
-      {/* PLAY */}
 
       <button
         type="button"
@@ -562,29 +522,24 @@ function TrackCard({ track, index, active, playing, onSelect, onToggle }) {
 
 export default function MusicSection() {
   const [tracks, setTracks] = useState([]);
-
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState(null);
-
   const [activeTrack, setActiveTrack] = useState(null);
-
   const [playing, setPlaying] = useState(false);
-
   const [progress, setProgress] = useState(0);
-
   const [duration, setDuration] = useState(0);
-
   const [muted, setMuted] = useState(false);
 
   const audioRef = useRef(null);
+  const activeTrackRef = useRef(null);
 
-  /*
-   * When true, the new audio element should
-   * automatically start when it has loaded.
-   */
-  const shouldAutoPlayRef = useRef(false);
+  // Keep a ref mirror of activeTrack so the audio-element event
+  // handlers (set up once) always see the latest value.
+  useEffect(() => {
+    activeTrackRef.current = activeTrack;
+  }, [activeTrack]);
 
+  // Fetch track metadata (unchanged)
   useEffect(() => {
     let cancelled = false;
 
@@ -605,19 +560,15 @@ export default function MusicSection() {
               }
 
               const data = await response.json();
-
               const deezerTrack = data?.[0];
 
               if (!deezerTrack) {
                 return null;
               }
 
-              return {
-                ...deezerTrack,
-              };
+              return { ...deezerTrack };
             } catch (error) {
               console.warn(`Could not load ${item.query}`, error);
-
               return null;
             }
           }),
@@ -652,35 +603,14 @@ export default function MusicSection() {
     };
   }, []);
 
+  // Create ONE persistent Audio element on mount.
+  // iOS/WebKit needs a single element that gets "unlocked" by a
+  // user gesture the first time .play() is called on it — creating
+  // a new Audio() per track (like before) breaks that on iPhone.
   useEffect(() => {
-    if (!activeTrack?.previewUrl) {
-      return;
-    }
-
-    /*
-     * Destroy previous audio.
-     */
-
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.src = "";
-      audioRef.current.load();
-    }
-
-    const audio = new Audio(activeTrack.previewUrl);
-
+    const audio = new Audio();
     audio.preload = "auto";
-
-    audio.volume = muted ? 0 : 1;
-
     audioRef.current = audio;
-
-    /*
-     * Reset timeline for new track.
-     */
-
-    setProgress(0);
-    setDuration(0);
 
     const handleLoadedMetadata = () => {
       if (Number.isFinite(audio.duration)) {
@@ -690,19 +620,13 @@ export default function MusicSection() {
 
     const handleTimeUpdate = () => {
       setProgress(audio.currentTime);
-
       if (Number.isFinite(audio.duration) && audio.duration > 0) {
         setDuration(audio.duration);
       }
     };
 
-    const handlePlay = () => {
-      setPlaying(true);
-    };
-
-    const handlePause = () => {
-      setPlaying(false);
-    };
+    const handlePlay = () => setPlaying(true);
+    const handlePause = () => setPlaying(false);
 
     const handleEnded = () => {
       setProgress(0);
@@ -710,109 +634,64 @@ export default function MusicSection() {
     };
 
     const handleError = () => {
-      console.warn("Deezer preview unavailable:", activeTrack.title);
-
+      console.warn("Preview unavailable:", activeTrackRef.current?.title);
       setPlaying(false);
     };
 
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
-
     audio.addEventListener("timeupdate", handleTimeUpdate);
-
     audio.addEventListener("play", handlePlay);
-
     audio.addEventListener("pause", handlePause);
-
     audio.addEventListener("ended", handleEnded);
-
     audio.addEventListener("error", handleError);
-
-    /*
-     * Automatically play after changing track
-     * if requested by next/play button.
-     */
-
-    if (shouldAutoPlayRef.current) {
-      shouldAutoPlayRef.current = false;
-
-      const startPlayback = async () => {
-        try {
-          await audio.play();
-        } catch (error) {
-          console.warn("Autoplay failed:", error);
-
-          setPlaying(false);
-        }
-      };
-
-      startPlayback();
-    }
 
     return () => {
       audio.pause();
-
-      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
-
-      audio.removeEventListener("timeupdate", handleTimeUpdate);
-
-      audio.removeEventListener("play", handlePlay);
-
-      audio.removeEventListener("pause", handlePause);
-
-      audio.removeEventListener("ended", handleEnded);
-
-      audio.removeEventListener("error", handleError);
-
       audio.src = "";
-      audio.load();
-    };
-  }, [activeTrack]);
-
-  useEffect(() => {
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.src = "";
-      }
+      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
+      audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("error", handleError);
     };
   }, []);
 
-  const selectTrack = (track) => {
-    if (!track) return;
-
-    if (activeTrack?.id === track.id) {
-      return;
+  // Keep volume synced with mute state
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = muted ? 0 : 1;
     }
+  }, [muted]);
 
-    shouldAutoPlayRef.current = false;
-
-    setPlaying(false);
-    setProgress(0);
-    setDuration(0);
-
-    setActiveTrack(track);
-  };
-
-  const togglePlay = async (track = activeTrack) => {
-    if (!track?.previewUrl) {
-      return;
-    }
-
-    /*
-     * Different track
-     */
-
-    if (track.id !== activeTrack?.id) {
-      shouldAutoPlayRef.current = true;
-
-      setActiveTrack(track);
-
-      return;
-    }
-
+  const playTrack = async (track) => {
     const audio = audioRef.current;
+    if (!audio || !track?.previewUrl) return;
 
-    if (!audio) return;
+    const isSameTrack = activeTrack?.id === track.id;
+
+    // Also treat it as "needs loading" if src was never set
+    // (e.g. the auto-selected first track on page load).
+    const needsLoad = !isSameTrack || !audio.src;
+
+    if (needsLoad) {
+      audio.pause();
+      audio.src = track.previewUrl;
+      audio.currentTime = 0;
+      if (!isSameTrack) {
+        setActiveTrack(track);
+      }
+      setProgress(0);
+      setDuration(0);
+
+      try {
+        await audio.play();
+      } catch (error) {
+        console.warn("Playback failed:", error);
+        setPlaying(false);
+      }
+      return;
+    }
 
     try {
       if (audio.paused) {
@@ -821,8 +700,7 @@ export default function MusicSection() {
         audio.pause();
       }
     } catch (error) {
-      console.error("Playback failed:", error);
-
+      console.warn("Playback failed:", error);
       setPlaying(false);
     }
   };
@@ -837,28 +715,17 @@ export default function MusicSection() {
     const nextIndex =
       currentIndex === -1 ? 0 : (currentIndex + 1) % tracks.length;
 
-    const next = tracks[nextIndex];
-
-    shouldAutoPlayRef.current = true;
-
-    setProgress(0);
-    setDuration(0);
-    setActiveTrack(next);
+    playTrack(tracks[nextIndex]);
   };
 
   const playPreviousTrack = () => {
     if (!tracks.length) return;
 
-    /*
-     * If we're more than 3 seconds into the current
-     * track, previous means restart the track.
-     */
+    const audio = audioRef.current;
 
-    if (audioRef.current && audioRef.current.currentTime > 3) {
-      audioRef.current.currentTime = 0;
-
+    if (audio && audio.currentTime > 3) {
+      audio.currentTime = 0;
       setProgress(0);
-
       return;
     }
 
@@ -871,18 +738,11 @@ export default function MusicSection() {
         ? 0
         : (currentIndex - 1 + tracks.length) % tracks.length;
 
-    const previous = tracks[previousIndex];
-
-    shouldAutoPlayRef.current = true;
-
-    setProgress(0);
-    setDuration(0);
-    setActiveTrack(previous);
+    playTrack(tracks[previousIndex]);
   };
 
   const seek = (value) => {
     const audio = audioRef.current;
-
     if (!audio) return;
 
     const newTime = Math.min(
@@ -891,28 +751,25 @@ export default function MusicSection() {
     );
 
     audio.currentTime = newTime;
-
     setProgress(newTime);
   };
 
   const toggleMute = () => {
-    const audio = audioRef.current;
-
-    const nextMuted = !muted;
-
-    setMuted(nextMuted);
-
-    if (audio) {
-      audio.volume = nextMuted ? 0 : 1;
-    }
+    setMuted((prev) => !prev);
   };
+
+  // Cleanup on full unmount
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = "";
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleKeyboard = (event) => {
-      /*
-       * Don't hijack keyboard controls when typing.
-       */
-
       const target = event.target;
 
       if (
@@ -925,7 +782,7 @@ export default function MusicSection() {
 
       if (event.code === "Space") {
         event.preventDefault();
-        togglePlay();
+        if (activeTrack) playTrack(activeTrack);
       }
 
       if (event.code === "ArrowRight") {
@@ -946,15 +803,11 @@ export default function MusicSection() {
 
   return (
     <div className="space-y-8">
-      {/* CURRENTLY INTO */}
-
       {!loading && activeTrack && (
         <Reveal>
           <CurrentlyInto track={activeTrack} playing={playing} />
         </Reveal>
       )}
-
-      {/* PLAYER */}
 
       {!loading && activeTrack && (
         <Reveal delay={80}>
@@ -964,7 +817,7 @@ export default function MusicSection() {
             progress={progress}
             duration={duration}
             muted={muted}
-            onToggle={() => togglePlay()}
+            onToggle={() => playTrack(activeTrack)}
             onNext={playNextTrack}
             onPrev={playPreviousTrack}
             onSeek={seek}
@@ -972,8 +825,6 @@ export default function MusicSection() {
           />
         </Reveal>
       )}
-
-      {/* TRACKS */}
 
       <div className="space-y-3">
         <div className="flex items-center justify-between">
@@ -985,8 +836,6 @@ export default function MusicSection() {
             {loading ? "Loading..." : `${tracks.length} tracks`}
           </span>
         </div>
-
-        {/* LOADING */}
 
         {loading &&
           [1, 2, 3, 4].map((item) => (
@@ -1003,23 +852,17 @@ export default function MusicSection() {
             />
           ))}
 
-        {/* ERROR */}
-
         {!loading && error && (
           <div className="p-5 rounded-xl border border-[#2e2e2e] bg-[#1e1e1e] text-gray-500 text-sm">
             {error}
           </div>
         )}
 
-        {/* EMPTY */}
-
         {!loading && !error && tracks.length === 0 && (
           <div className="p-5 rounded-xl border border-[#2e2e2e] bg-[#1e1e1e] text-gray-500 text-sm">
             No tracks found.
           </div>
         )}
-
-        {/* TRACK LIST */}
 
         {!loading &&
           !error &&
@@ -1030,13 +873,8 @@ export default function MusicSection() {
                 index={index}
                 active={activeTrack?.id === track.id}
                 playing={activeTrack?.id === track.id && playing}
-                onSelect={() => {
-                  selectTrack(track);
-                  togglePlay(track);
-                }}
-                onToggle={() => {
-                  togglePlay(track);
-                }}
+                onSelect={() => playTrack(track)}
+                onToggle={() => playTrack(track)}
               />
             </Reveal>
           ))}
