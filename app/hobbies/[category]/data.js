@@ -95,7 +95,7 @@ export const treks = [
         caption: "View from Kala Patthar (5644 m) towards Mount Everest",
       },
       {
-        url: "/ebc/e8.jpg",
+        url: "/ebc/ef.jpg",
         caption: "Namche Bazaar, the gateway to the Everest region",
       },
     ],
