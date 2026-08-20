@@ -42,10 +42,6 @@ function Headphones({ playing }) {
 
   return (
     <group ref={group} rotation={[0, 0, 0]}>
-      {/* ================================
-          HEADPHONE BAND
-      ================================= */}
-
       <mesh rotation={[0, 0, 0]}>
         <torusGeometry
           args={[
@@ -65,10 +61,6 @@ function Headphones({ playing }) {
           roughness={0.25}
         />
       </mesh>
-
-      {/* ================================
-          LEFT CUP
-      ================================= */}
 
       <group ref={leftCup} position={[-0.43, -0.05, 0]}>
         <mesh>
@@ -94,10 +86,6 @@ function Headphones({ playing }) {
           />
         </mesh>
       </group>
-
-      {/* ================================
-          RIGHT CUP
-      ================================= */}
 
       <group ref={rightCup} position={[0.43, -0.05, 0]}>
         <mesh>

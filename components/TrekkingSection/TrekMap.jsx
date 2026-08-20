@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -22,9 +22,9 @@ import "leaflet/dist/leaflet.css";
 const trekColors = [
   "#12c971",
   "#38bdf8",
-  "#a78bfa",
+  "#22d3ee",
   "#f59e0b",
-  "#f43f5e",
+  "#a78bfa",
   "#22d3ee",
 ];
 
@@ -81,8 +81,6 @@ function ThreeOverlay({ activeId }) {
 
     const sizes = new Float32Array(particleCount);
 
-    const speeds = new Float32Array(particleCount);
-
     for (let i = 0; i < particleCount; i++) {
       positions[i * 3] = Math.random() * 2 - 1;
 
@@ -91,8 +89,6 @@ function ThreeOverlay({ activeId }) {
       positions[i * 3 + 2] = Math.random();
 
       sizes[i] = Math.random() * 2.5 + 0.5;
-
-      speeds[i] = Math.random() * 0.25 + 0.05;
     }
 
     const geometry = new THREE.BufferGeometry();
@@ -133,7 +129,8 @@ function ThreeOverlay({ activeId }) {
 
             gl_PointSize =
               aSize *
-              (1.0 + sin(uTime * 1.5) * 0.25);
+              (1.0 +
+                sin(uTime * 1.5) * 0.25);
 
             gl_Position =
               projectionMatrix *
@@ -142,8 +139,6 @@ function ThreeOverlay({ activeId }) {
         `,
 
       fragmentShader: `
-          uniform float uTime;
-
           void main() {
 
             float distanceFromCenter =
@@ -176,7 +171,7 @@ function ThreeOverlay({ activeId }) {
     scene.add(particles);
 
     /* -----------------------------------------
-       Subtle grid
+       Grid
     ----------------------------------------- */
 
     const gridMaterial = new THREE.LineBasicMaterial({
@@ -213,7 +208,7 @@ function ThreeOverlay({ activeId }) {
     scene.add(grid);
 
     /* -----------------------------------------
-       Central glow
+       Glow
     ----------------------------------------- */
 
     const glowGeometry = new THREE.PlaneGeometry(1.4, 1.4);
@@ -232,6 +227,7 @@ function ThreeOverlay({ activeId }) {
           varying vec2 vUv;
 
           void main() {
+
             vUv = uv;
 
             gl_Position =
@@ -267,7 +263,8 @@ function ThreeOverlay({ activeId }) {
 
             float pulse =
               0.8 +
-              sin(uTime * 0.8) * 0.15;
+              sin(uTime * 0.8) *
+              0.15;
 
             gl_FragColor =
               vec4(
@@ -380,7 +377,7 @@ const createTrekIcon = (color, active = false) =>
 
     iconAnchor: [active ? 12 : 8.5, active ? 12 : 8.5],
 
-    popupAnchor: [0, active ? -14 : -10],
+    popupAnchor: [active ? 18 : 14, 0],
   });
 
 /* =========================================================
@@ -454,25 +451,75 @@ function ResetView() {
 
 function TrekPopup({ trek, color, onSelect }) {
   return (
-    <div className="trek-popup-content">
+    <div
+      className="
+        trek-popup-content
+        w-full
+        max-w-[250px]
+        sm:max-w-[260px]
+      "
+      onMouseEnter={() => {
+        window.dispatchEvent(
+          new CustomEvent("trek-popup-enter", {
+            detail: trek.id,
+          }),
+        );
+      }}
+      onMouseLeave={() => {
+        window.dispatchEvent(
+          new CustomEvent("trek-popup-leave", {
+            detail: trek.id,
+          }),
+        );
+      }}
+    >
+      {/* Region */}
       <div
-        className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest mb-1.5"
-        style={{
-          color,
-        }}
+        className="
+          flex
+          items-center
+          gap-1.5
+          mb-1.5
+          text-[9px]
+          sm:text-[10px]
+          font-mono
+          uppercase
+          tracking-[0.15em]
+          sm:tracking-widest
+        "
+        style={{ color }}
       >
-        <Mountain size={11} />
-        {trek.region}
+        <Mountain size={11} className="shrink-0" />
+
+        <span className="truncate">{trek.region}</span>
       </div>
 
-      <h3 className="text-white font-bold text-base leading-tight">
+      {/* Title */}
+      <h3
+        className="
+          text-white
+          font-bold
+          text-sm
+          sm:text-base
+          leading-tight
+          break-words
+        "
+      >
         {trek.name}
       </h3>
 
-      <div className="flex flex-wrap gap-1.5 mt-3">
+      {/* Metadata */}
+      <div
+        className="
+          flex
+          flex-wrap
+          gap-1.5
+          mt-3
+        "
+      >
         {trek.altitude && (
           <span
-            className="trek-popup-tag"
+            className="trek-popup-tag whitespace-nowrap"
             style={{
               borderColor: `${color}35`,
               color,
@@ -484,18 +531,35 @@ function TrekPopup({ trek, color, onSelect }) {
         )}
 
         {trek.distanceKm && (
-          <span className="trek-popup-tag">{trek.distanceKm} km</span>
+          <span className="trek-popup-tag whitespace-nowrap">
+            {trek.distanceKm} km
+          </span>
         )}
 
-        {trek.days && <span className="trek-popup-tag">{trek.days} days</span>}
+        {trek.days && (
+          <span className="trek-popup-tag whitespace-nowrap">
+            {trek.days} days
+          </span>
+        )}
       </div>
 
+      {/* Story */}
       {trek.story && (
-        <p className="text-gray-400 text-xs leading-relaxed mt-3">
+        <p
+          className="
+            mt-3
+            text-gray-400
+            text-[11px]
+            sm:text-xs
+            leading-relaxed
+            break-words
+          "
+        >
           {trek.story}
         </p>
       )}
 
+      {/* View Trek */}
       <button
         type="button"
         onClick={() => onSelect(trek.id)}
@@ -505,12 +569,14 @@ function TrekPopup({ trek, color, onSelect }) {
           w-full
           flex
           items-center
-          cursor-pointer
           justify-between
-          px-3
-          py-2
+          gap-3
+          cursor-pointer
           rounded-lg
           border
+          px-3
+          py-2
+          min-h-[36px]
           text-gray-400
           text-[10px]
           font-mono
@@ -518,6 +584,7 @@ function TrekPopup({ trek, color, onSelect }) {
           tracking-wider
           transition-all
           duration-300
+          touch-manipulation
         "
         style={{
           borderColor: `${color}30`,
@@ -525,16 +592,12 @@ function TrekPopup({ trek, color, onSelect }) {
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.color = color;
-
           e.currentTarget.style.borderColor = `${color}70`;
-
           e.currentTarget.style.background = `${color}16`;
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.color = "#9ca3af";
-
           e.currentTarget.style.borderColor = `${color}30`;
-
           e.currentTarget.style.background = `${color}0A`;
         }}
       >
@@ -542,20 +605,158 @@ function TrekPopup({ trek, color, onSelect }) {
 
         <ArrowUpRight
           size={13}
-          style={{
-            color,
-          }}
           className="
+            shrink-0
             transition-transform
             duration-300
             group-hover:translate-x-0.5
             group-hover:-translate-y-0.5
           "
+          style={{ color }}
         />
       </button>
     </div>
   );
 }
+
+/* =========================================================
+   HOVER POPUP MARKER
+========================================================= */
+
+function TrekMarker({ trek, color, active, onSelect }) {
+  const markerRef = useRef(null);
+
+  const closeTimeoutRef = useRef(null);
+
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  const cancelClose = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const scheduleClose = () => {
+    cancelClose();
+
+    closeTimeoutRef.current = setTimeout(() => {
+      setPopupOpen(false);
+    }, 180);
+  };
+
+  const handleMarkerEnter = () => {
+    cancelClose();
+    setPopupOpen(true);
+  };
+
+  const handleMarkerLeave = () => {
+    scheduleClose();
+  };
+
+  useEffect(() => {
+    return () => {
+      cancelClose();
+    };
+  }, []);
+
+  useEffect(() => {
+    const handlePopupEnter = (event) => {
+      if (event.detail !== trek.id) return;
+
+      cancelClose();
+    };
+
+    const handlePopupLeave = (event) => {
+      if (event.detail !== trek.id) return;
+
+      scheduleClose();
+    };
+
+    window.addEventListener("trek-popup-enter", handlePopupEnter);
+
+    window.addEventListener("trek-popup-leave", handlePopupLeave);
+
+    return () => {
+      window.removeEventListener("trek-popup-enter", handlePopupEnter);
+
+      window.removeEventListener("trek-popup-leave", handlePopupLeave);
+    };
+  }, [trek.id]);
+
+  /*
+   * Keep popup open when Leaflet
+   * itself considers it open.
+   */
+  useEffect(() => {
+    const marker = markerRef.current;
+
+    if (!marker) return;
+
+    const handlePopupOpen = () => {
+      cancelClose();
+    };
+
+    const handlePopupClose = () => {
+      setPopupOpen(false);
+    };
+
+    marker.on("popupopen", handlePopupOpen);
+
+    marker.on("popupclose", handlePopupClose);
+
+    return () => {
+      marker.off("popupopen", handlePopupOpen);
+
+      marker.off("popupclose", handlePopupClose);
+    };
+  }, []);
+
+  /*
+   * Explicitly open/close the
+   * Leaflet popup based on React state.
+   */
+  useEffect(() => {
+    const marker = markerRef.current;
+
+    if (!marker) return;
+
+    if (popupOpen && !marker.isPopupOpen()) {
+      marker.openPopup();
+    }
+
+    if (!popupOpen && marker.isPopupOpen()) {
+      marker.closePopup();
+    }
+  }, [popupOpen]);
+
+  return (
+    <Marker
+      ref={markerRef}
+      position={trek.coords}
+      icon={createTrekIcon(color, active)}
+      eventHandlers={{
+        mouseover: handleMarkerEnter,
+
+        mouseout: handleMarkerLeave,
+      }}
+    >
+      <Popup
+        closeButton={false}
+        offset={[140, 80]}
+        autoPan={false}
+        className="trek-hover-popup"
+      >
+        <TrekPopup trek={trek} color={color} onSelect={onSelect} />
+      </Popup>
+    </Marker>
+  );
+}
+
+/* =========================================================
+   MAIN MAP
+========================================================= */
 
 export default function TrekMap({ treks, activeId, onSelectTrek }) {
   const activeTrek = treks.find((trek) => trek.id === activeId);
@@ -577,13 +778,12 @@ export default function TrekMap({ treks, activeId, onSelectTrek }) {
         h-[380px]
         sm:h-[440px]
         rounded-2xl
-        overflow-hidden
         border
         border-[#2e2e2e]
         bg-[#141414]
       "
     >
-      {/* THREE.JS VISUAL LAYER */}
+      {/* THREE.JS */}
 
       <ThreeOverlay activeId={activeId} />
 
@@ -608,21 +808,19 @@ export default function TrekMap({ treks, activeId, onSelectTrek }) {
 
         {/* TREK MARKERS */}
 
-        {treks.map((trek, index) => {
+        {treks.map((trek) => {
           const color = trekColorsMap[trek.id];
 
           const active = trek.id === activeId;
 
           return (
-            <Marker
+            <TrekMarker
               key={trek.id}
-              position={trek.coords}
-              icon={createTrekIcon(color, active)}
-            >
-              <Popup closeButton={false} offset={[0, -4]}>
-                <TrekPopup trek={trek} color={color} onSelect={onSelectTrek} />
-              </Popup>
-            </Marker>
+              trek={trek}
+              color={color}
+              active={active}
+              onSelect={onSelectTrek}
+            />
           );
         })}
 
@@ -754,7 +952,7 @@ export default function TrekMap({ treks, activeId, onSelectTrek }) {
         </div>
       )}
 
-      {/* EDGE VIGNETTE */}
+      {/* VIGNETTE */}
 
       <div
         className="

@@ -166,7 +166,7 @@ const About = () => {
                       Trekking
                     </span>
                     <span className="px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/30">
-                      Football
+                      Sports
                     </span>
                   </p>
                 </div>
@@ -181,7 +181,7 @@ const About = () => {
                     Software Engineer
                   </span>{" "}
                   at Citytech Group Pvt. Ltd., a fintech company based in
-                  Kathmandu, Nepal. Over the course of 7 months, I contributed
+                  Kathmandu, Nepal. Over the course of +7 months, I contributed
                   to the development of remittance products, gaining hands-on
                   experience in building scalable solutions. I am skilled in
                   full-stack development using React.js and Node.js, and I have

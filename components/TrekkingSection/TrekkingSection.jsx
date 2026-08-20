@@ -14,6 +14,7 @@ import {
   ChevronRight,
   ArrowUpRight,
 } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 
 const TrekMap = dynamic(() => import("@/components/TrekkingSection/TrekMap"), {
   ssr: false,
@@ -187,7 +188,7 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 58vw"
-            className="object-cover"
+            className="object-cover animate-[fadeIn_500ms_ease-in-out]"
           />
 
           {/* Image gradient */}
@@ -253,6 +254,7 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
                 hover:text-white
                 hover:border-white/20
                 transition-all
+                cursor-pointer
               "
             >
               <ChevronLeft size={19} />
@@ -285,6 +287,7 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
                 hover:text-white
                 hover:border-white/20
                 transition-all
+                cursor-pointer
               "
             >
               <ChevronRight size={19} />
@@ -337,6 +340,75 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
           >
             {trek.name}
           </h2>
+
+          <div
+            className="
+    relative
+    py-3
+    mt-3
+    sm:mt-4
+    lg:mt-6
+    pl-4
+    pr-5
+    rounded-xl
+    border
+    border-[#2e2e2e]
+    bg-[#181818]/70
+    overflow-hidden
+    group
+  "
+          >
+            <div className="flex items-center gap-3">
+              {/* Calendar icon */}
+              <div
+                className="
+        w-9
+        h-9
+        rounded-lg
+        flex
+        items-center
+        justify-center
+        border
+        transition-all
+        duration-300
+        group-hover:scale-105
+      "
+                style={{
+                  color,
+                  borderColor: `${color}30`,
+                  background: `${color}0D`,
+                }}
+              >
+                <CalendarDays size={16} strokeWidth={1.7} />
+              </div>
+
+              {/* Date */}
+              <div>
+                <p
+                  className="
+          text-[9px]
+          font-mono
+          uppercase
+          tracking-[0.2em]
+          text-gray-600
+        "
+                >
+                  Date
+                </p>
+
+                <p
+                  className="mt-0.5 text-sm font-semibold tracking-wide"
+                  style={{ color }}
+                >
+                  {new Date(trek.date).toLocaleDateString("en-US", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* Story */}
 
@@ -490,6 +562,7 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
             text-gray-400
             hover:text-white
             transition-all
+            cursor-pointer
           "
         >
           <X size={17} />
@@ -526,22 +599,7 @@ function TrekCard({ trek, color = "#12c971", active = false }) {
     <>
       <article
         onClick={() => openModal(0)}
-        className={`
-          group
-          relative
-          overflow-hidden
-          rounded-2xl
-          border
-          bg-[#1b1b1b]
-          cursor-pointer
-          transition-all
-          duration-500
-          ${
-            active
-              ? "border-[#12c971]/60 shadow-[0_0_35px_rgba(18,201,113,0.08)]"
-              : "border-[#2e2e2e] hover:border-[#444]"
-          }
-        `}
+        className={`group relative overflow-hidden rounded-2xl border bg-[#1b1b1b] cursor-pointer transition-all duration-500 ${active ? "border-[#12c971]/60 shadow-[0_0_35px_rgba(18,201,113,0.08)]" : "border-[#2e2e2e] hover:border-[#444]"} `}
       >
         <div
           className="
@@ -837,7 +895,7 @@ export default function TrekkingSection() {
                   "#38bdf8",
                   "#22d3ee",
                   "#f59e0b",
-                  "#f43f5e",
+                  "#a78bfa",
                   "#22d3ee",
                 ][index % 6]
               }

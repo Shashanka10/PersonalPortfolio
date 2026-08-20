@@ -1,44 +1,36 @@
 @import "tailwindcss";
 
-.theme
-{
-  transition: 1s all ease;
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #333333 #111111;
 }
 
-.animate-sound-1 {
-  animation: sound-1 0.6s ease-in-out infinite;
+::-webkit-scrollbar {
+  width: 9px;
 }
 
-.animate-sound-2 {
-  animation: sound-2 0.5s ease-in-out infinite;
+::-webkit-scrollbar-track {
+  background: #111111;
 }
 
-.animate-sound-3 {
-  animation: sound-3 0.7s ease-in-out infinite;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #2e2e2e,
+    #444444
+  );
+  border-radius: 999px;
+  border: 2px solid #111111;
+  transition: background 0.3s ease;
 }
 
-.trek-map-dark .leaflet-tile {
-  filter: brightness(0.55) saturate(0.7) contrast(1.1);
+::-webkit-scrollbar-thumb:hover {
+  background: #12c971;
 }
 
-.trek-map-dark .leaflet-control-zoom,
-.trek-map-dark .leaflet-control-attribution {
-  background: rgba(20, 20, 20, 0.85);
-  color: #777;
+::-webkit-scrollbar-corner {
+  background: #111111;
 }
-
-.trek-map-dark .leaflet-control-attribution a {
-  color: #888;
-}
-
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
-  background: #1e1e1e;
-  color: #f3f4f6;
-}
-
-/* =========================================================
-   MAP
-========================================================= */
 
 .trek-map {
   height: 100%;
@@ -47,9 +39,10 @@
   z-index: 1;
 }
 
-/* =========================================================
-   THREE.JS
-========================================================= */
+.theme
+{
+  transition: 1s all ease;
+}
 
 .trek-three-layer {
   position: absolute;
@@ -64,10 +57,6 @@
   width: 100%;
   height: 100%;
 }
-
-/* =========================================================
-   MARKERS
-========================================================= */
 
 .trek-marker-wrapper {
   background: transparent !important;
@@ -109,8 +98,6 @@
   transform: scale(1.15);
 }
 
-/* Inner white dot */
-
 .trek-marker-core {
   width: 4px;
   height: 4px;
@@ -121,8 +108,6 @@
 
   opacity: 0.95;
 }
-
-/* Outer ring */
 
 .trek-marker-ring {
   position: absolute;
@@ -140,8 +125,6 @@
 
   opacity: 0;
 }
-
-/* Active */
 
 .trek-marker-active {
   animation:
@@ -185,10 +168,6 @@
   }
 }
 
-/* =========================================================
-   POPUP
-========================================================= */
-
 .leaflet-popup-content-wrapper {
   background: #171717 !important;
 
@@ -205,6 +184,11 @@
     rgba(0, 0, 0, 0.55) !important;
 
   padding: 0 !important;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #1e1e1e;
+  color: #f3f4f6;
 }
 
 .leaflet-popup-content {
@@ -224,10 +208,6 @@
 .trek-popup-content {
   padding: 14px;
 }
-
-/* =========================================================
-   POPUP TAGS
-========================================================= */
 
 .trek-popup-tag {
   display: inline-flex;
@@ -255,10 +235,6 @@
   font-family:
     monospace;
 }
-
-/* =========================================================
-   ZOOM CONTROLS
-========================================================= */
 
 .leaflet-control-zoom {
   border: none !important;
@@ -314,10 +290,6 @@
     #12c97150 !important;
 }
 
-/* =========================================================
-   ATTRIBUTION
-========================================================= */
-
 .leaflet-control-attribution {
   background:
     rgba(20, 20, 20, 0.75) !important;
@@ -337,10 +309,6 @@
     #666 !important;
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media (max-width: 640px) {
   .leaflet-control-zoom {
     margin-right: 12px !important;
@@ -352,8 +320,6 @@
     width: 220px !important;
   }
 }
-
-/* Music waveform */
 
 @keyframes music-wave {
   0%,
@@ -370,8 +336,6 @@
   animation: music-wave 0.7s ease-in-out infinite;
   transform-origin: center;
 }
-
-/* Music progress */
 
 .music-progress {
   appearance: none;
@@ -431,5 +395,43 @@
       transform: translateY(-10px);
       opacity: 1;
     }
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes vinyl-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-vinyl-spin {
+  animation: vinyl-spin 8s linear infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

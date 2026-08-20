@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import {
   Home,
   Mail,
-  Pen,
+  BriefcaseBusiness,
   UserRound,
   GraduationCap,
   X,
@@ -14,12 +14,17 @@ import {
 } from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
 import { FaGithub, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { Images } from "lucide-react";
+// import { Images } from "lucide-react";
 
 const links = [
   { id: 1, title: "Home", url: "/", icon: <Home size={17} /> },
   { id: 2, title: "About", url: "/about", icon: <UserRound size={17} /> },
-  { id: 3, title: "Portfolio", url: "/portfolio", icon: <Pen size={17} /> },
+  {
+    id: 3,
+    title: "Portfolio",
+    url: "/portfolio",
+    icon: <BriefcaseBusiness size={17} />,
+  },
   // { id: 4, title: "Gallery",   url: "/gallery",    icon: <Images size={17} /> },
   { id: 4, title: "Hobbies", url: "/hobbies", icon: <Mountain size={17} /> },
   { id: 5, title: "Contact", url: "/contact", icon: <Mail size={17} /> },
@@ -170,7 +175,10 @@ const Navbar = () => {
         {/* ── NAV LINKS ── */}
         <nav className="px-4 pt-4 space-y-1">
           {links.map((link) => {
-            const active = pathname === link.url;
+            const active =
+              link.url === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.url);
             return (
               <Link
                 key={link.id}

@@ -20,24 +20,16 @@ import Reveal from "@/components/Reveal/Reveal";
 
 import { musicTracks } from "../../app/hobbies/[category]/data";
 
-/* =========================================================
-   CURRENTLY INTO
-========================================================= */
-
 function CurrentlyInto({ track, playing }) {
   if (!track) return null;
 
   return (
-    <div className="inline-flex items-center gap-2.5 text-[#c084fc] bg-[#c084fc]/10 border border-[#c084fc]/25 px-3 py-1.5 rounded-full text-[6px] sm:text-[10px] md:text-xs font-mono tracking-widest uppercase">
+    <div className="inline-flex items-center gap-2.5 text-[#c084fc] bg-[#c084fc]/10 border border-[#c084fc]/25 px-3 py-1.5 rounded-full text-[10px] sm:text-[12px] md:text-xs font-mono tracking-widest uppercase">
       <Headphone3D playing={playing} />
       {track.title} — {track.artist}
     </div>
   );
 }
-
-/* =========================================================
-   WAVEFORM
-========================================================= */
 
 function Waveform({ playing, small = false }) {
   const heights = [35, 70, 50, 90, 45, 75, 100, 55, 80, 40, 65];
@@ -62,10 +54,6 @@ function Waveform({ playing, small = false }) {
   );
 }
 
-/* =========================================================
-   FORMAT TIME
-========================================================= */
-
 function formatTime(seconds) {
   if (!Number.isFinite(seconds) || seconds < 0) {
     return "0:00";
@@ -76,10 +64,6 @@ function formatTime(seconds) {
 
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
-
-/* =========================================================
-   FEATURED PLAYER
-========================================================= */
 
 function FeaturedPlayer({
   track,
@@ -117,64 +101,167 @@ function FeaturedPlayer({
 
       <div className="relative p-5 sm:p-7">
         <div className="flex flex-col sm:flex-row gap-6 items-center">
-          {/* =================================================
-              ART
-          ================================================= */}
-
           <div
             className={`
-              relative
-              w-44
-              h-44
-              sm:w-52
-              sm:h-52
-              shrink-0
-              rounded-2xl
-              overflow-hidden
-              border
-              border-[#3a3a3a]
-              shadow-2xl
-              transition-all
-              duration-500
-              ${
-                playing
-                  ? "scale-[1.02] shadow-[0_0_50px_rgba(192,132,252,0.18)]"
-                  : ""
-              }
-            `}
+    relative
+    w-44
+    h-44
+    sm:w-52
+    sm:h-52
+    shrink-0
+    flex
+    items-center
+    justify-center
+    transition-all
+    duration-500
+    ${
+      playing
+        ? "scale-[1.02] drop-shadow-[0_0_45px_rgba(192,132,252,0.18)]"
+        : ""
+    }
+  `}
           >
             {track.cover ? (
-              <Image
-                src={track.cover}
-                alt={track.title}
-                fill
-                priority
-                sizes="(max-width: 640px) 176px, 208px"
+              <div
                 className={`
-                  object-cover
-                  transition-transform
-                  duration-700
-                  ${playing ? "scale-105" : ""}
-                `}
-              />
+        relative
+        w-full
+        h-full
+        rounded-full
+        overflow-hidden
+        border-[5px]
+        border-[#101010]
+        shadow-[0_8px_30px_rgba(0,0,0,0.5)]
+        ${playing ? "animate-vinyl-spin" : ""}
+      `}
+              >
+                {/* ALBUM ART */}
+
+                <Image
+                  src={track.cover}
+                  alt={track.title}
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 176px, 208px"
+                  className="object-cover"
+                />
+
+                {/* DARK VINYL OVERLAY */}
+
+                <div
+                  className="
+          absolute
+          inset-0
+          rounded-full
+          pointer-events-none
+          bg-[radial-gradient(circle_at_center,transparent_0%,transparent_45%,rgba(0,0,0,0.18)_70%,rgba(0,0,0,0.55)_100%)]
+        "
+                />
+
+                {/* VINYL GROOVES */}
+
+                <div
+                  className="
+          absolute
+          inset-[7%]
+          rounded-full
+          border
+          border-white/[0.08]
+          pointer-events-none
+        "
+                />
+
+                <div
+                  className="
+          absolute
+          inset-[14%]
+          rounded-full
+          border
+          border-white/[0.06]
+          pointer-events-none
+        "
+                />
+
+                <div
+                  className="
+          absolute
+          inset-[21%]
+          rounded-full
+          border
+          border-white/[0.05]
+          pointer-events-none
+        "
+                />
+
+                {/* CENTER LABEL */}
+
+                <div
+                  className="
+          absolute
+          left-1/2
+          top-1/2
+          -translate-x-1/2
+          -translate-y-1/2
+          w-11
+          h-11
+          sm:w-12
+          sm:h-12
+          rounded-full
+          bg-[#171717]
+          border
+          border-[#444]
+          shadow-[0_0_15px_rgba(0,0,0,0.6)]
+          flex
+          items-center
+          justify-center
+        "
+                >
+                  {/* CENTER HOLE */}
+
+                  <div
+                    className="
+            w-3
+            h-3
+            rounded-full
+            bg-[#c084fc]
+            border
+            border-[#e9d5ff]/30
+            shadow-[0_0_8px_rgba(192,132,252,0.4)]
+          "
+                  />
+                </div>
+
+                {/* LIGHT REFLECTION */}
+
+                <div
+                  className="
+          absolute
+          inset-0
+          rounded-full
+          pointer-events-none
+          bg-[linear-gradient(135deg,rgba(255,255,255,0.12),transparent_35%,transparent_65%,rgba(255,255,255,0.04))]
+        "
+                />
+              </div>
             ) : (
-              <div className="w-full h-full bg-[#222] flex items-center justify-center">
+              <div
+                className="
+        w-full
+        h-full
+        rounded-full
+        bg-[#222]
+        border-[5px]
+        border-[#111]
+        flex
+        items-center
+        justify-center
+        shadow-[0_8px_30px_rgba(0,0,0,0.5)]
+      "
+              >
                 <Music2 size={48} className="text-gray-600" />
               </div>
             )}
-
-            <div className="absolute inset-0 bg-black/10" />
-
-            {playing && (
-              <div className="absolute bottom-3 left-3 px-2 py-1 rounded-full bg-black/70 backdrop-blur-md">
-                <Waveform playing small />
-              </div>
-            )}
           </div>
-
-          {/* =================================================
-              INFO
-          ================================================= */}
 
           <div className="flex-1 min-w-0 w-full">
             <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#c084fc] mb-2">
@@ -192,10 +279,6 @@ function FeaturedPlayer({
                 {track.album}
               </p>
             )}
-
-            {/* =================================================
-                TIMELINE
-            ================================================= */}
 
             <div className="mt-7">
               <div className="relative w-full h-5 flex items-center">
@@ -233,10 +316,6 @@ function FeaturedPlayer({
               </div>
             </div>
 
-            {/* =================================================
-                CONTROLS
-            ================================================= */}
-
             <div className="flex items-center gap-3 mt-4">
               {/* PREVIOUS */}
 
@@ -253,6 +332,7 @@ function FeaturedPlayer({
                   hover:text-white
                   hover:border-[#444]
                   transition-all
+                  cursor-pointer
                 "
               >
                 <SkipBack size={15} fill="currentColor" />
@@ -276,6 +356,7 @@ function FeaturedPlayer({
                   hover:bg-[#d8a8ff]
                   hover:scale-105
                   transition-all
+                  cursor-pointer
                 "
               >
                 {playing ? (
@@ -300,6 +381,7 @@ function FeaturedPlayer({
                   hover:text-white
                   hover:border-[#444]
                   transition-all
+                  cursor-pointer
                 "
               >
                 <SkipForward size={15} fill="currentColor" />
@@ -320,6 +402,7 @@ function FeaturedPlayer({
                   text-gray-600
                   hover:text-gray-300
                   transition-colors
+                  cursor-pointer
                 "
               >
                 {muted ? <VolumeX size={15} /> : <Volume2 size={15} />}
@@ -350,10 +433,6 @@ function FeaturedPlayer({
     </div>
   );
 }
-
-/* =========================================================
-   TRACK CARD
-========================================================= */
 
 function TrackCard({ track, index, active, playing, onSelect, onToggle }) {
   return (
@@ -481,10 +560,6 @@ function TrackCard({ track, index, active, playing, onSelect, onToggle }) {
   );
 }
 
-/* =========================================================
-   MAIN MUSIC SECTION
-========================================================= */
-
 export default function MusicSection() {
   const [tracks, setTracks] = useState([]);
 
@@ -509,10 +584,6 @@ export default function MusicSection() {
    * automatically start when it has loaded.
    */
   const shouldAutoPlayRef = useRef(false);
-
-  /* =========================================================
-     LOAD DEEZER TRACKS
-  ========================================================= */
 
   useEffect(() => {
     let cancelled = false;
@@ -581,10 +652,6 @@ export default function MusicSection() {
     };
   }, []);
 
-  /* =========================================================
-     AUDIO
-  ========================================================= */
-
   useEffect(() => {
     if (!activeTrack?.previewUrl) {
       return;
@@ -615,19 +682,11 @@ export default function MusicSection() {
     setProgress(0);
     setDuration(0);
 
-    /* =======================================================
-       METADATA
-    ======================================================= */
-
     const handleLoadedMetadata = () => {
       if (Number.isFinite(audio.duration)) {
         setDuration(audio.duration);
       }
     };
-
-    /* =======================================================
-       TIME UPDATE
-    ======================================================= */
 
     const handleTimeUpdate = () => {
       setProgress(audio.currentTime);
@@ -637,34 +696,18 @@ export default function MusicSection() {
       }
     };
 
-    /* =======================================================
-       PLAY
-    ======================================================= */
-
     const handlePlay = () => {
       setPlaying(true);
     };
-
-    /* =======================================================
-       PAUSE
-    ======================================================= */
 
     const handlePause = () => {
       setPlaying(false);
     };
 
-    /* =======================================================
-       ENDED
-    ======================================================= */
-
     const handleEnded = () => {
       setProgress(0);
       setPlaying(false);
     };
-
-    /* =======================================================
-       ERROR
-    ======================================================= */
 
     const handleError = () => {
       console.warn("Deezer preview unavailable:", activeTrack.title);
@@ -723,13 +766,7 @@ export default function MusicSection() {
       audio.src = "";
       audio.load();
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTrack]);
-
-  /* =========================================================
-     CLEANUP
-  ========================================================= */
 
   useEffect(() => {
     return () => {
@@ -739,10 +776,6 @@ export default function MusicSection() {
       }
     };
   }, []);
-
-  /* =========================================================
-     SELECT TRACK
-  ========================================================= */
 
   const selectTrack = (track) => {
     if (!track) return;
@@ -759,10 +792,6 @@ export default function MusicSection() {
 
     setActiveTrack(track);
   };
-
-  /* =========================================================
-     PLAY / PAUSE
-  ========================================================= */
 
   const togglePlay = async (track = activeTrack) => {
     if (!track?.previewUrl) {
@@ -798,10 +827,6 @@ export default function MusicSection() {
     }
   };
 
-  /* =========================================================
-     NEXT
-  ========================================================= */
-
   const playNextTrack = () => {
     if (!tracks.length) return;
 
@@ -820,10 +845,6 @@ export default function MusicSection() {
     setDuration(0);
     setActiveTrack(next);
   };
-
-  /* =========================================================
-     PREVIOUS
-  ========================================================= */
 
   const playPreviousTrack = () => {
     if (!tracks.length) return;
@@ -859,10 +880,6 @@ export default function MusicSection() {
     setActiveTrack(previous);
   };
 
-  /* =========================================================
-     SEEK
-  ========================================================= */
-
   const seek = (value) => {
     const audio = audioRef.current;
 
@@ -878,10 +895,6 @@ export default function MusicSection() {
     setProgress(newTime);
   };
 
-  /* =========================================================
-     MUTE
-  ========================================================= */
-
   const toggleMute = () => {
     const audio = audioRef.current;
 
@@ -893,10 +906,6 @@ export default function MusicSection() {
       audio.volume = nextMuted ? 0 : 1;
     }
   };
-
-  /* =========================================================
-     KEYBOARD CONTROLS
-  ========================================================= */
 
   useEffect(() => {
     const handleKeyboard = (event) => {
@@ -933,13 +942,7 @@ export default function MusicSection() {
     return () => {
       window.removeEventListener("keydown", handleKeyboard);
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTrack, playing, tracks]);
-
-  /* =========================================================
-     RENDER
-  ========================================================= */
 
   return (
     <div className="space-y-8">
@@ -975,7 +978,7 @@ export default function MusicSection() {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <p className="text-gray-500 text-xs font-mono uppercase tracking-widest">
-            My picks
+            My Top Picks
           </p>
 
           <span className="text-[9px] font-mono text-gray-600 uppercase">

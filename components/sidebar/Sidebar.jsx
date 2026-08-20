@@ -3,15 +3,26 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Home, Mail, Pen, UserRound, Mountain } from "lucide-react";
+import {
+  Home,
+  Mail,
+  BriefcaseBusiness,
+  UserRound,
+  Mountain,
+} from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
 import { FaGithub, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { Images } from "lucide-react";
+// import { Images } from "lucide-react";
 
 const navLinks = [
   { id: 1, title: "Home", url: "/", icon: <Home size={17} /> },
   { id: 2, title: "About", url: "/about", icon: <UserRound size={17} /> },
-  { id: 3, title: "Portfolio", url: "/portfolio", icon: <Pen size={17} /> },
+  {
+    id: 3,
+    title: "Portfolio",
+    url: "/portfolio",
+    icon: <BriefcaseBusiness size={17} />,
+  },
   // { id: 4, title: "Gallery",   url: "/gallery",    icon: <Images size={17} /> },
   { id: 4, title: "Hobbies", url: "/hobbies", icon: <Mountain size={17} /> },
   { id: 5, title: "Contact", url: "/contact", icon: <Mail size={17} /> },
@@ -48,6 +59,17 @@ const socialLinks = [
 export default function Sidebar() {
   const pathname = usePathname();
 
+  const handleHomeClick = (e) => {
+    if (pathname === "/") {
+      e.preventDefault();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="hidden sm:flex sm:w-[72px] lg:w-[240px] shrink-0">
       <div
@@ -55,7 +77,11 @@ export default function Sidebar() {
         bg-[#141414]/20 backdrop-blur-md border-r border-[#1f1f1f] z-40 py-6 px-3 lg:px-5"
       >
         {/* ── LOGO ── */}
-        <Link href="/" className="flex items-center gap-3 group mb-8 px-1">
+        <Link
+          href="/"
+          onClick={handleHomeClick}
+          className="flex items-center gap-3 group mb-8 px-1"
+        >
           <div className="relative shrink-0">
             <Image
               src="/forehead.png"
@@ -78,11 +104,15 @@ export default function Sidebar() {
         {/* ── NAV LINKS ── */}
         <nav className="flex-1 space-y-1 md:space-y-2">
           {navLinks.map((link) => {
-            const active = pathname === link.url;
+            const active =
+              link.url === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.url);
             return (
               <Link
                 key={link.id}
                 href={link.url}
+                onClick={link.url === "/" ? handleHomeClick : undefined}
                 title={link.title}
                 className={`flex items-center gap-3.5 px-2.5 py-2.5 rounded-xl text-sm font-semibold
                   transition-all duration-200 group relative
