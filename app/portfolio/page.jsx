@@ -29,109 +29,132 @@ function GalleryCard({ item, index }) {
       }}
     >
       <Reveal delay={index * 120}>
-        <Link href={item.href}>
-          <div
-            className="group relative rounded-2xl overflow-hidden border border-[#2e2e2e] bg-[#1e1e1e] cursor-pointer h-full"
-            style={{
-              transition: "border-color 0.3s ease, transform 0.4s ease",
-              transform: hovered ? "translateY(-4px)" : "translateY(0)",
-              borderColor: hovered ? `${item.accent}40` : undefined,
-            }}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-          >
-            <div className="relative h-[220px] sm:h-[260px] lg:h-[320px] overflow-hidden">
-              <Image
-                src={item.image}
-                alt={item.label}
-                fill
-                sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 33vw"
-                className="object-cover"
-                style={{
-                  transform: hovered ? "scale(1.05)" : "scale(1)",
-                  transition: "transform 0.6s ease",
-                  filter: hovered ? "brightness(1.0)" : "brightness(0.8)",
-                }}
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: `linear-gradient(to top, #1e1e1e 0%, transparent 60%)`,
-                }}
-              />
-              <div className="absolute top-4 left-4">
+        <Link
+          href={item.href}
+          className="
+            group
+            block
+            h-full
+            overflow-hidden
+            rounded-2xl
+            border
+            border-[#2e2e2e]
+            bg-[#1e1e1e]
+            transition-colors
+            duration-300
+            focus:outline-none
+            focus-visible:ring-2
+          "
+          style={{
+            borderColor: hovered ? `${item.accent}40` : undefined,
+          }}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          {/* IMAGE */}
+          <div className="relative h-[200px] overflow-hidden sm:h-[220px] lg:h-[240px]">
+            <Image
+              src={item.image}
+              alt={item.label}
+              fill
+              sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 33vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+              style={{
+                filter: hovered ? "brightness(1.0)" : "brightness(0.5)",
+              }}
+            />
+
+            {/* DARK GRADIENT */}
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to top, #1e1e1e 0%, transparent 65%)",
+              }}
+            />
+
+            {/* HOVER OVERLAY (accent tint) */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style={{ backgroundColor: `${item.accent}0a` }}
+            />
+
+            {/* CENTER REVEAL */}
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span
+                className="flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold shadow-lg"
+                style={{ backgroundColor: item.accent, color: "#0d0d0d" }}
+              >
+                <ArrowUpRight size={13} />
+                View
+              </span>
+            </div>
+
+            {/* TAG (top-left, replaces numbered index) */}
+            <span
+              className="absolute left-3 top-3 rounded-full border px-2 py-0.5 font-mono text-xs backdrop-blur-sm"
+              style={{
+                color: item.accent,
+                borderColor: `${item.accent}40`,
+                backgroundColor: `${item.accent}1a`,
+              }}
+            >
+              {item.tag}
+            </span>
+
+            {/* IMAGE ARROW (top-right) */}
+            <span
+              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full border opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style={{
+                borderColor: `${item.accent}4d`,
+                backgroundColor: `${item.accent}1a`,
+                color: item.accent,
+              }}
+            >
+              <ArrowUpRight size={14} />
+            </span>
+          </div>
+
+          {/* CONTENT */}
+          <div className="p-5 sm:p-6">
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex min-w-0 items-center gap-2.5">
                 <span
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono tracking-widest uppercase border"
+                  className="p-2 rounded-lg"
                   style={{
                     color: item.accent,
-                    borderColor: `${item.accent}40`,
-                    backgroundColor: `${item.accent}10`,
+                    backgroundColor: `${item.accent}15`,
                   }}
                 >
-                  {item.tag}
+                  {item.icon}
                 </span>
+                <h2 className="min-w-0 text-lg font-bold leading-tight text-gray-100 sm:text-xl">
+                  {item.label}
+                </h2>
               </div>
-              <div
-                className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center border"
+
+              <span
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#3a3a3a] text-[#4b5563] transition-colors duration-300"
                 style={{
-                  borderColor: `${item.accent}40`,
-                  backgroundColor: `${item.accent}10`,
-                  color: item.accent,
-                  opacity: hovered ? 1 : 0,
-                  transform: hovered
-                    ? "scale(1) rotate(0deg)"
-                    : "scale(0.7) rotate(-45deg)",
-                  transition: "opacity 0.3s ease, transform 0.3s ease",
+                  borderColor: hovered ? `${item.accent}80` : undefined,
+                  color: hovered ? item.accent : undefined,
                 }}
               >
-                <ArrowUpRight size={14} />
-              </div>
+                <ArrowUpRight size={13} />
+              </span>
             </div>
-            <div className="p-5 sm:p-6 space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <span
-                    className="p-2 rounded-lg"
-                    style={{
-                      color: item.accent,
-                      backgroundColor: `${item.accent}15`,
-                    }}
-                  >
-                    {item.icon}
-                  </span>
-                  <h3 className="text-gray-100 font-bold text-xl sm:text-2xl tracking-tight">
-                    {item.label}
-                  </h3>
-                </div>
-                <span
-                  className="text-xs font-mono font-semibold flex items-center gap-1 transition-all duration-300"
-                  style={{ color: hovered ? item.accent : "#4b5563" }}
-                >
-                  {item.count}
-                  <ArrowUpRight
-                    size={12}
-                    style={{
-                      transform: hovered
-                        ? "translate(2px, -2px)"
-                        : "translate(0,0)",
-                      transition: "transform 0.3s ease",
-                    }}
-                  />
-                </span>
-              </div>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                {item.description}
-              </p>
-              <div
-                className="h-px rounded-full transition-all duration-500"
-                style={{
-                  background: `linear-gradient(to right, ${item.accent}60, transparent)`,
-                  opacity: hovered ? 1 : 0,
-                  transform: hovered ? "scaleX(1)" : "scaleX(0)",
-                  transformOrigin: "left",
-                }}
-              />
-            </div>
+
+            <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-gray-500">
+              {item.description}
+            </p>
+
+            {/* BOTTOM LINE */}
+            <div
+              className="mt-5 h-px w-full origin-left scale-x-0 opacity-0 transition-all duration-500 group-hover:scale-x-100 group-hover:opacity-100"
+              style={{
+                background: `linear-gradient(to right, ${item.accent}99, transparent)`,
+              }}
+            />
           </div>
         </Link>
       </Reveal>

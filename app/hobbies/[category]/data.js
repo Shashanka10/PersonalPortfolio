@@ -67,19 +67,19 @@ export const treks = [
       "The iconic trek through the Khumbu Valley to the foot of Mount Everest.",
     photos: [
       {
-        url: "/ebc/ebc2.jpg",
+        url: "/ebc/e1.jpg",
         caption: "Group Photo at Everest Base Camp Rock (5364 m)",
       },
       {
-        url: "/ebc/ebc1.jpg",
+        url: "/ebc/e2.jpg",
         caption: "Solo Photo at Everest Base Camp Rock (5364 m)",
       },
       {
-        url: "/ebc/ebc3.jpg",
+        url: "/ebc/e3.jpg",
         caption: "Mount Everest from Kala Patthar (5644 m)",
       },
       {
-        url: "/ebc/ebc.jpg",
+        url: "/ebc/e7.jpg",
         caption: "View of Everst Base Camp",
       },
       {
@@ -87,7 +87,7 @@ export const treks = [
         caption: "Trail to Everest Base Camp",
       },
       {
-        url: "/ebc/ebc4.jpg",
+        url: "/ebc/e4.jpg",
         caption: "View from Kala Patthar (5644 m) towards Mount Everest",
       },
       {
@@ -95,7 +95,7 @@ export const treks = [
         caption: "View from Kala Patthar (5644 m) towards Mount Everest",
       },
       {
-        url: "/ebc/ebcf.jpg",
+        url: "/ebc/e8.jpg",
         caption: "Namche Bazaar, the gateway to the Everest region",
       },
     ],

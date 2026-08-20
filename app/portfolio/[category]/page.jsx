@@ -31,194 +31,217 @@ function ProjectCard({ item, index }) {
         rel="noopener noreferrer"
         className="
           group
-          relative
           block
-          rounded-2xl
+          h-full
           overflow-hidden
+          rounded-2xl
           border
           border-[#2e2e2e]
           bg-[#1e1e1e]
-          h-full
-          cursor-pointer
-          transition-all
-          duration-500
-          ease-[cubic-bezier(0.22,1,0.36,1)]
-          hover:-translate-y-1
-          hover:border-[#12c971]/30
-          hover:shadow-[0_18px_45px_rgba(0,0,0,0.35)]
+          transition-colors
+          duration-300
+          hover:border-[#12c971]/40
           focus:outline-none
           focus-visible:ring-2
           focus-visible:ring-[#12c971]/50
         "
       >
-        <div
-          className="
-            relative
-            w-full
-            h-[200px]
-            sm:h-[220px]
-            overflow-hidden
-          "
-        >
+        {/* IMAGE */}
+        <div className="relative h-[200px] overflow-hidden sm:h-[220px] lg:h-[240px]">
           <Image
-            width={1000}
-            height={1000}
             src={item.img}
             alt={item.title}
+            fill
             sizes="
               (max-width: 639px) 100vw,
               (max-width: 1279px) 50vw,
               33vw
             "
             className="
-              w-full
-              h-full
               object-cover
-              scale-100
               brightness-[0.5]
-              group-hover:scale-[1.04]
-              group-hover:brightness-[0.6]
-              transition-all
+              transition-transform
               duration-700
-              ease-[cubic-bezier(0.22,1,0.36,1)]
+              ease-out
+              group-hover:scale-[1.05]
             "
           />
+
+          {/* DARK GRADIENT */}
           <div
             className="
+              pointer-events-none
               absolute
               inset-0
-              pointer-events-none
             "
             style={{
               background:
-                "linear-gradient(to top, #1e1e1e 0%, transparent 60%)",
+                "linear-gradient(to top, #1e1e1e 0%, transparent 65%)",
             }}
           />
+
+          {/* HOVER OVERLAY */}
           <div
             className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-[#12c971]/[0.04]
+              opacity-0
+              transition-opacity
+              duration-300
+              group-hover:opacity-100
+            "
+          />
+
+          {/* SEE MORE */}
+          <div
+            className="
+              pointer-events-none
               absolute
               inset-0
               flex
               items-center
               justify-center
               opacity-0
-              group-hover:opacity-100
               transition-opacity
               duration-300
-              pointer-events-none
-            "
-          >
-            <div
-              className="
-                flex
-                items-center
-                gap-2
-                px-4
-                py-2
-                rounded-full
-                bg-[#12c971]
-                text-[#0d0d0d]
-                font-bold
-                text-xs
-                tracking-wide
-                translate-y-2
-                group-hover:translate-y-0
-                transition-transform
-                duration-300
-              "
-            >
-              <ExternalLink size={13} />
-              See more
-            </div>
-          </div>
-
-          <div
-            className="
-              absolute
-              top-3
-              left-3
+              group-hover:opacity-100
             "
           >
             <span
               className="
-                text-[#12c971]
-                font-mono
-                text-xs
-                bg-[#12c971]/10
-                border
-                border-[#12c971]/25
-                px-2
-                py-0.5
+                flex
+                items-center
+                gap-2
                 rounded-full
+                bg-[#12c971]
+                px-4
+                py-2
+                text-xs
+                font-bold
+                text-[#0d0d0d]
+                shadow-lg
               "
             >
-              {String(index + 1).padStart(2, "0")}
+              <ExternalLink size={13} />
+              See more
             </span>
           </div>
+
+          {/* NUMBER */}
+          <span
+            className="
+              absolute
+              left-3
+              top-3
+              rounded-full
+              border
+              border-[#12c971]/25
+              bg-[#12c971]/10
+              px-2
+              py-0.5
+              font-mono
+              text-xs
+              text-[#12c971]
+              backdrop-blur-sm
+            "
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          {/* IMAGE ARROW */}
+          <span
+            className="
+              absolute
+              right-3
+              top-3
+              flex
+              h-8
+              w-8
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-[#12c971]/30
+              bg-[#12c971]/10
+              text-[#12c971]
+              opacity-0
+              transition-opacity
+              duration-300
+              group-hover:opacity-100
+            "
+          >
+            <ArrowUpRight size={14} />
+          </span>
         </div>
 
-        <div className="p-5 space-y-3">
+        {/* CONTENT */}
+        <div className="p-5 sm:p-6">
           <div className="flex items-start justify-between gap-3">
             <h2
               className="
-                text-gray-100
-                font-bold
+                min-w-0
                 text-lg
-                sm:text-xl
+                font-bold
                 leading-tight
+                text-gray-100
+                sm:text-xl
               "
             >
               {item.title}
             </h2>
 
-            <div
+            <span
               className="
-                shrink-0
-                w-7
+                flex
                 h-7
+                w-7
+                shrink-0
+                items-center
+                justify-center
                 rounded-full
                 border
                 border-[#3a3a3a]
-                flex
-                items-center
-                justify-center
                 text-[#4b5563]
-                transition-all
+                transition-colors
                 duration-300
                 group-hover:border-[#12c971]/50
                 group-hover:text-[#12c971]
-                group-hover:rotate-45
               "
             >
               <ArrowUpRight size={13} />
-            </div>
+            </span>
           </div>
 
           <p
             className="
-              text-gray-500
+              mt-3
+              line-clamp-3
               text-sm
               leading-relaxed
-              line-clamp-3
+              text-gray-500
             "
           >
             {item.desc}
           </p>
 
+          {/* BOTTOM LINE */}
           <div
             className="
+              mt-5
               h-px
-              rounded-full
+              w-full
+              origin-left
+              scale-x-0
               bg-gradient-to-r
-              from-[#12c971]/50
+              from-[#12c971]/60
               to-transparent
               opacity-0
-              scale-x-0
-              origin-left
-              group-hover:opacity-100
-              group-hover:scale-x-100
               transition-all
               duration-500
+              group-hover:scale-x-100
+              group-hover:opacity-100
             "
           />
         </div>
