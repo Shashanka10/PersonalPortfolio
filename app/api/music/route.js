@@ -1,9 +1,8 @@
-// app/api/music/route.js
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const q = searchParams.get("q");
+  const q = searchParams.get("q")?.trim();
 
   if (!q) {
     return NextResponse.json({ error: "Missing query" }, { status: 400 });
@@ -18,20 +17,38 @@ export async function GET(request) {
     );
 
     if (!res.ok) {
-      throw new Error(`Deezer responded with ${res.status}`);
+      return NextResponse.json(
+        {
+          error: `Deezer request failed with status ${response.status}`,
+        },
+        { status: response.status },
+      );
     }
 
     const data = await res.json();
 
-    const results = (data?.data || []).map((track) => ({
-      id: track.id,
-      title: track.title,
-      artist: track.artist?.name,
-      album: track.album?.title,
-      cover: track.album?.cover_medium,
-      previewUrl: track.preview?.replace(/^http:\/\//i, "https://"),
-      externalUrl: track.link,
-    }));
+    if (!Array.isArray(data?.data)) {
+      return NextResponse.json(
+        { error: "Invalid response from Deezer" },
+        { status: 502 },
+      );
+    }
+
+    const results = data.data
+      .filter((track) => track?.id && track?.preview)
+      .map((track) => ({
+        id: track.id,
+        title: track.title ?? "",
+        artist: track.artist?.name ?? "",
+        album: track.album?.title ?? "",
+        cover:
+          track.album?.cover_medium ??
+          track.album?.cover_big ??
+          track.album?.cover ??
+          "",
+        previewUrl: track.preview ?? "",
+        externalUrl: track.link ?? "",
+      }));
 
     return NextResponse.json(results, {
       headers: {
@@ -40,6 +57,9 @@ export async function GET(request) {
     });
   } catch (error) {
     console.error("Deezer fetch failed:", error);
-    return NextResponse.json([], { status: 200 });
+    return NextResponse.json(
+      { error: "Failed to fetch music" },
+      { status: 500 },
+    );
   }
 }
