@@ -143,12 +143,15 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
         inset-0
         z-[200]
         bg-black/85
-        backdrop-blur-md
+        backdrop-blur-sm
         flex
         items-center
         justify-center
         p-4
+        mt-16
+        sm:mt-0
         sm:p-8
+        md:p-16
       "
       onClick={onClose}
     >
@@ -166,7 +169,7 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
           shadow-[0_30px_100px_rgba(0,0,0,0.6)]
           flex
           flex-col
-          lg:flex-row
+          md:flex-row
         "
         onClick={(event) => event.stopPropagation()}
       >
@@ -174,10 +177,10 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
           className="
             relative
             w-full
-            lg:w-[58%]
+            md:w-[58%]
             h-[280px]
             sm:h-[380px]
-            lg:h-[600px]
+            md:h-[600px]
             bg-[#0e0e0e]
             shrink-0
           "
@@ -240,8 +243,10 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
                 left-4
                 top-1/2
                 -translate-y-1/2
-                w-10
-                h-10
+                w-8
+                h-8
+                sm:w-10
+                sm:h-10
                 rounded-xl
                 bg-black/60
                 backdrop-blur-md
@@ -273,8 +278,10 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
                 right-4
                 top-1/2
                 -translate-y-1/2
-                w-10
-                h-10
+                w-8
+                h-8
+                sm:w-10
+                sm:h-10
                 rounded-xl
                 bg-black/60
                 backdrop-blur-md
@@ -331,8 +338,9 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
           <h2
             className="
               mt-2
-              text-2xl
-              sm:text-3xl
+              text-lg
+              sm:text-xl
+              md:text-2xl
               font-bold
               tracking-tight
               text-gray-100
@@ -415,7 +423,9 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
           <p
             className="
               mt-5
-              text-sm
+              text-[10px]
+              sm:text-xs
+              md:text-sm
               leading-7
               text-gray-400
             "
@@ -429,7 +439,8 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
             className="
               grid
               grid-cols-3
-              mt-7
+              mt-3
+              md:mt-5
               border-y
               border-[#2a2a2a]
             "
@@ -473,10 +484,10 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
           </div>
 
           {trek.photos.length > 1 && (
-            <div className="mt-6">
+            <div className="mt-3 sm:mt-5 md:mt-6">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500">
-                  Journey
+                  Memories
                 </span>
 
                 <span className="text-[10px] font-mono text-gray-600">
@@ -484,7 +495,7 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
                 </span>
               </div>
 
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-6 gap-2">
                 {trek.photos.map((photo, index) => (
                   <button
                     key={index}
@@ -535,7 +546,7 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
           {/* Caption */}
 
           {photo.caption && (
-            <p className="mt-5 text-xs text-gray-500 leading-relaxed">
+            <p className="mt-5 text-[10px] md:text-xs text-gray-500 leading-relaxed">
               {photo.caption}
             </p>
           )}
@@ -549,8 +560,10 @@ function TrekModal({ trek, color, photoIndex, onClose, onPrev, onNext }) {
             absolute
             top-4
             right-4
-            w-9
-            h-9
+            w-7
+            h-7
+            sm:w-9
+            sm:h-9
             rounded-xl
             bg-black/60
             backdrop-blur-md
@@ -802,7 +815,7 @@ function TrekCard({ trek, color = "#12c971", active = false }) {
               transition-colors
             "
           >
-            View journey →
+            View →
           </span>
         </div>
       </article>
