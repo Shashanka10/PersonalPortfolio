@@ -138,6 +138,7 @@ function FeaturedPlayer({
                   alt={track.title}
                   fill
                   priority
+                  loading="eager"
                   sizes="(max-width: 640px) 176px, 208px"
                   className="object-cover"
                 />

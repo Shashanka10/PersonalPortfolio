@@ -1,58 +1,45 @@
+// app/api/music/route.js
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
+  const { searchParams } = new URL(request.url);
+  const q = searchParams.get("q");
+
+  if (!q) {
+    return NextResponse.json({ error: "Missing query" }, { status: 400 });
+  }
+
   try {
-    const { searchParams } = new URL(request.url);
-
-    const query = searchParams.get("q");
-
-    if (!query) {
-      return NextResponse.json({ error: "Missing query" }, { status: 400 });
-    }
-
-    const response = await fetch(
-      `https://api.deezer.com/search?q=${encodeURIComponent(query)}`,
+    const res = await fetch(
+      `https://api.deezer.com/search?q=${encodeURIComponent(q)}`,
       {
-        next: {
-          revalidate: 3600,
-        },
+        next: { revalidate: 3600 },
       },
     );
 
-    if (!response.ok) {
-      return NextResponse.json(
-        { error: "Deezer request failed" },
-        { status: response.status },
-      );
+    if (!res.ok) {
+      throw new Error(`Deezer responded with ${res.status}`);
     }
 
-    const data = await response.json();
+    const data = await res.json();
 
-    const tracks = (data.data || []).slice(0, 5).map((track) => ({
+    const results = (data?.data || []).map((track) => ({
       id: track.id,
       title: track.title,
-      artist: track.artist?.name || "Unknown Artist",
-
-      cover:
-        track.album?.cover_xl ||
-        track.album?.cover_big ||
-        track.album?.cover_medium ||
-        null,
-
-      previewUrl: track.preview || null,
-
-      externalUrl: track.link || null,
-
-      album: track.album?.title || null,
+      artist: track.artist?.name,
+      album: track.album?.title,
+      cover: track.album?.cover_medium,
+      previewUrl: track.preview?.replace(/^http:\/\//i, "https://"),
+      externalUrl: track.link,
     }));
 
-    return NextResponse.json(tracks);
+    return NextResponse.json(results, {
+      headers: {
+        "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (error) {
-    console.error("Deezer API error:", error);
-
-    return NextResponse.json(
-      { error: "Unable to fetch music" },
-      { status: 500 },
-    );
+    console.error("Deezer fetch failed:", error);
+    return NextResponse.json([], { status: 200 });
   }
 }
