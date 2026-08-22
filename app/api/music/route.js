@@ -12,16 +12,16 @@ export async function GET(request) {
     const res = await fetch(
       `https://api.deezer.com/search?q=${encodeURIComponent(q)}`,
       {
-        next: { revalidate: 3600 },
+        cache: "no-store",
       },
     );
 
     if (!res.ok) {
       return NextResponse.json(
         {
-          error: `Deezer request failed with status ${response.status}`,
+          error: `Deezer request failed with status ${res.status}`,
         },
-        { status: response.status },
+        { status: res.status },
       );
     }
 
@@ -50,11 +50,7 @@ export async function GET(request) {
         externalUrl: track.link ?? "",
       }));
 
-    return NextResponse.json(results, {
-      headers: {
-        "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
-      },
-    });
+    return NextResponse.json(results);
   } catch (error) {
     console.error("Deezer fetch failed:", error);
     return NextResponse.json(
