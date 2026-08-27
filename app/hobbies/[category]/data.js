@@ -5,7 +5,7 @@ export const musicTracks = [
   },
   {
     id: 2,
-    query: "Shagy Angel",
+    query: "Shaggy - Angel ft. Rayvon",
   },
   {
     id: 3,
@@ -13,7 +13,7 @@ export const musicTracks = [
   },
   {
     id: 4,
-    query: "Love Story Indila",
+    query: "Love Story - Indila",
   },
   {
     id: 5,
