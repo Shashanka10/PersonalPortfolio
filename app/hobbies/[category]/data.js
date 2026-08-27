@@ -5,62 +5,58 @@ export const musicTracks = [
   },
   {
     id: 2,
-    query: "Shaggy - Angel ft. Rayvon",
-  },
-  {
-    id: 3,
     query: "Afusic - Pal Pal",
   },
   {
-    id: 4,
-    query: "Love Story - Indila",
+    id: 3,
+    query: "Love Story Indila",
   },
   {
-    id: 5,
+    id: 4,
     query: "Sanson Ki Mala - Rahat Fateh Ali Khan",
   },
   {
-    id: 6,
+    id: 5,
     query: "Yoy Voy",
   },
   {
-    id: 7,
+    id: 6,
     query: "Nasamajh",
   },
   {
-    id: 8,
+    id: 7,
     query: "Tera Mera Rishta",
   },
   {
-    id: 9,
+    id: 8,
     query: "Hoobastank - The Reason",
   },
   {
-    id: 10,
+    id: 9,
     query: "The Child In Us",
   },
   {
-    id: 11,
+    id: 10,
     query: "Speed Chirag Khadka",
   },
   {
-    id: 12,
+    id: 11,
     query: "Djo - End Of Beginning",
   },
   {
-    id: 13,
+    id: 12,
     query: "Chamillionaire - Ridin",
   },
   {
-    id: 14,
+    id: 13,
     query: "Aerosmith - Dream On",
   },
   {
-    id: 15,
+    id: 14,
     query: "LAJAWAB 2 - TAIMOUR BAIG",
   },
   {
-    id: 16,
+    id: 15,
     query: "Christina Aguilera - Genie In A Bottle",
   },
 ];
