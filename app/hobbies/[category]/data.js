@@ -5,50 +5,62 @@ export const musicTracks = [
   },
   {
     id: 2,
-    query: "Love Story Indila",
+    query: "Shagy Angel",
   },
   {
     id: 3,
-    query: "Nasamajh",
+    query: "Afusic - Pal Pal",
   },
   {
     id: 4,
-    query: "Yoy Voy",
+    query: "Love Story Indila",
   },
   {
     id: 5,
-    query: "OneRepublic - Counting Stars",
+    query: "Sanson Ki Mala - Rahat Fateh Ali Khan",
   },
   {
     id: 6,
-    query: "Somebody's Watching Me",
+    query: "Yoy Voy",
   },
   {
     id: 7,
-    query: "The Child In Us",
+    query: "Nasamajh",
   },
   {
     id: 8,
-    query: "Speed Chirag Khadka",
+    query: "Tera Mera Rishta",
   },
   {
     id: 9,
-    query: "Djo - End Of Beginning",
+    query: "Hoobastank - The Reason",
   },
   {
     id: 10,
-    query: "Chamillionaire - Ridin",
+    query: "The Child In Us",
   },
   {
     id: 11,
-    query: "Aerosmith - Dream On",
+    query: "Speed Chirag Khadka",
   },
   {
     id: 12,
-    query: "LAJAWAB 2 - TAIMOUR BAIG",
+    query: "Djo - End Of Beginning",
   },
   {
     id: 13,
+    query: "Chamillionaire - Ridin",
+  },
+  {
+    id: 14,
+    query: "Aerosmith - Dream On",
+  },
+  {
+    id: 15,
+    query: "LAJAWAB 2 - TAIMOUR BAIG",
+  },
+  {
+    id: 16,
     query: "Christina Aguilera - Genie In A Bottle",
   },
 ];
