@@ -7,6 +7,7 @@ import Typewriter from "typewriter-effect";
 import { MapPin, ArrowDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Particles from "@/components/Particles/Particles";
+import AgeCounter from "@/components/AgeCounter/AgeCounter";
 
 function useMounted(delay = 0) {
   const [visible, setVisible] = useState(false);
@@ -303,7 +304,6 @@ export default function HomePage() {
                   Luitel
                 </span>
               </h1>
-
               {/* Nepali name + pronunciation */}
               <div className="flex items-center gap-2.5">
                 <span className="text-lg sm:text-xl text-gray-400 font-medium flex items-center gap-2">
@@ -337,9 +337,9 @@ export default function HomePage() {
               options={{
                 strings: [
                   "Research Enthusiast",
-                  "Full Stack Developer",
+                  "Full-Stack Developer",
+                  "Vibe Coder",
                   "Trekker",
-                  "Footballer",
                 ],
                 autoStart: true,
                 loop: true,
@@ -387,24 +387,37 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Location */}
           <div className={fade(v3)}>
-            <div className="inline-flex items-center gap-2">
-              <MapPin size={14} className="text-[#12c971] shrink-0" />
+            <div className="group relative inline-flex items-center gap-1 md:gap-2">
+              <div className="relative flex h-10 w-10 items-center justify-center">
+                {/* Radar rings */}
+                <span className="absolute h-5 w-5 rounded-full border border-[#12c971]/20" />
+                <span className="absolute h-7 w-7 rounded-full border border-[#12c971]/10 animate-ping" />
 
-              <span className="text-gray-400 text-sm font-mono tracking-wider">
-                Bhaktapur
-              </span>
-
-              <span className="text-gray-200 flex gap-1.5 items-center text-sm font-mono tracking-wider">
-                / Nepal
-                <Image
-                  src="/nepal.png"
-                  alt="Nepal flag"
-                  width={18}
-                  height={18}
+                <MapPin
+                  size={17}
+                  strokeWidth={1.8}
+                  className="relative z-10 text-[#12c971] drop-shadow-[0_0_6px_rgba(18,201,113,0.35)]"
                 />
-              </span>
+
+                <span className="absolute z-20 mt-[-3px] h-1.5 w-1.5 rounded-full bg-[#12c971]" />
+              </div>
+
+              <div className="flex items-center gap-2 text-xs tracking-widest font-mono sm:text-sm">
+                <span className="text-gray-200">Bhaktapur</span>
+
+                <span className="text-gray-600">/</span>
+
+                <span className="flex items-center gap-1.5 text-gray-400">
+                  Nepal
+                  <Image
+                    src="/nepal.png"
+                    alt="Nepal flag"
+                    width={16}
+                    height={16}
+                  />
+                </span>
+              </div>
             </div>
           </div>
 
@@ -644,11 +657,7 @@ export default function HomePage() {
         text-center
       "
             >
-              <span className="hidden sm:block h-px w-6 sm:w-8 bg-[#12c971]/20 shrink-0" />
-
-              <TechLabel className="leading-relaxed text-center">
-                Giving up is not in the blood, sir!
-              </TechLabel>
+              <AgeCounter />
             </div>
           </div>
         </div>
