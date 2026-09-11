@@ -440,7 +440,7 @@ export default function HomePage() {
 
             <Button url="/contact" text="Contact" />
 
-            <Button url="/shashanka_resume.pdf" text="CV" />
+            <Button url="/shashanka_cv.pdf" text="CV" />
           </div>
 
           {/* Scroll hint */}
