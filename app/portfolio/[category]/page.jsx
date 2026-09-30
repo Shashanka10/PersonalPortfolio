@@ -185,7 +185,8 @@ function ProjectCard({ item, index }) {
           />
 
           {/* ACTION BUTTONS */}
-          {(item.demo || item.github) && (
+          {/* ACTION BUTTONS */}
+          {(item.demo || item.github || item.linked) && (
             <div className="mt-5 flex gap-3">
               {/* DEMO BUTTON */}
               {item.demo && (
@@ -207,11 +208,16 @@ function ProjectCard({ item, index }) {
           text-sm
           font-semibold
           text-[#0d0d0d]
-          transition-all
+
+          transition-[transform,background-color,box-shadow]
           duration-300
+          ease-out
+
+          hover:-translate-y-0.5
           hover:bg-[#12c971]/80
           hover:shadow-lg
           hover:shadow-[#12c971]/10
+
           focus:outline-none
           focus-visible:ring-2
           focus-visible:ring-[#12c971]/50
@@ -244,11 +250,16 @@ function ProjectCard({ item, index }) {
           text-sm
           font-semibold
           text-gray-200
-          transition-all
+
+          transition-[transform,border-color,background-color,color]
           duration-300
+          ease-out
+
+          hover:-translate-y-0.5
           hover:border-[#12c971]/50
           hover:bg-[#12c971]/5
           hover:text-[#12c971]
+
           focus:outline-none
           focus-visible:ring-2
           focus-visible:ring-[#12c971]/50
@@ -256,6 +267,58 @@ function ProjectCard({ item, index }) {
                 >
                   <FaGithub size={15} />
                   GitHub
+                </Link>
+              )}
+
+              {/* SEE MORE / LINKED BUTTON */}
+              {item.linked && (
+                <Link
+                  href={item.linked}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`See more about ${item.title}`}
+                  className="
+          group/linked
+          flex
+          flex-1
+          items-center
+          justify-center
+          gap-2
+          rounded-lg
+          border
+          border-[#3a3a3a]
+          bg-[#252525]
+          px-4
+          py-2.5
+          text-sm
+          font-semibold
+          text-gray-200
+
+          transition-[transform,border-color,background-color,color]
+          duration-300
+          ease-out
+
+          hover:-translate-y-0.5
+          hover:border-[#12c971]/50
+          hover:bg-[#12c971]/5
+          hover:text-[#12c971]
+
+          focus:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-[#12c971]/50
+        "
+                >
+                  See More
+                  <ArrowUpRight
+                    size={15}
+                    className="
+            transition-transform
+            duration-300
+            ease-out
+            group-hover/linked:translate-x-0.5
+            group-hover/linked:-translate-y-0.5
+          "
+                  />
                 </Link>
               )}
             </div>
