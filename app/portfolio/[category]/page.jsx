@@ -6,6 +6,7 @@ import Link from "next/link";
 import { items } from "./data.js";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, ExternalLink, ArrowLeftCircle } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 import Particles from "@/components/Particles/Particles";
 import Reveal from "@/components/Reveal/Reveal.jsx";
@@ -25,10 +26,7 @@ function useMounted(delay = 0) {
 function ProjectCard({ item, index }) {
   return (
     <Reveal delay={index * 100}>
-      <Link
-        href={item.linked}
-        target="_blank"
-        rel="noopener noreferrer"
+      <div
         className="
           group
           block
@@ -41,9 +39,6 @@ function ProjectCard({ item, index }) {
           transition-colors
           duration-300
           hover:border-[#12c971]/40
-          focus:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-[#12c971]/50
         "
       >
         {/* IMAGE */}
@@ -94,41 +89,6 @@ function ProjectCard({ item, index }) {
             "
           />
 
-          {/* SEE MORE */}
-          <div
-            className="
-              pointer-events-none
-              absolute
-              inset-0
-              flex
-              items-center
-              justify-center
-              opacity-0
-              transition-opacity
-              duration-300
-              group-hover:opacity-100
-            "
-          >
-            <span
-              className="
-                flex
-                items-center
-                gap-2
-                rounded-full
-                bg-[#12c971]
-                px-4
-                py-2
-                text-xs
-                font-bold
-                text-[#0d0d0d]
-                shadow-lg
-              "
-            >
-              <ExternalLink size={13} />
-              See more
-            </span>
-          </div>
-
           {/* NUMBER */}
           <span
             className="
@@ -167,7 +127,7 @@ function ProjectCard({ item, index }) {
               bg-[#12c971]/10
               text-[#12c971]
               opacity-0
-              transition-opacity
+              transition-all
               duration-300
               group-hover:opacity-100
             "
@@ -191,27 +151,6 @@ function ProjectCard({ item, index }) {
             >
               {item.title}
             </h2>
-
-            <span
-              className="
-                flex
-                h-7
-                w-7
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#3a3a3a]
-                text-[#4b5563]
-                transition-colors
-                duration-300
-                group-hover:border-[#12c971]/50
-                group-hover:text-[#12c971]
-              "
-            >
-              <ArrowUpRight size={13} />
-            </span>
           </div>
 
           <p
@@ -244,8 +183,85 @@ function ProjectCard({ item, index }) {
               group-hover:opacity-100
             "
           />
+
+          {/* ACTION BUTTONS */}
+          {(item.demo || item.github) && (
+            <div className="mt-5 flex gap-3">
+              {/* DEMO BUTTON */}
+              {item.demo && (
+                <Link
+                  href={item.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View live demo of ${item.title}`}
+                  className="
+          flex
+          flex-1
+          items-center
+          justify-center
+          gap-2
+          rounded-lg
+          bg-[#12c971]
+          px-4
+          py-2.5
+          text-sm
+          font-semibold
+          text-[#0d0d0d]
+          transition-all
+          duration-300
+          hover:bg-[#12c971]/80
+          hover:shadow-lg
+          hover:shadow-[#12c971]/10
+          focus:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-[#12c971]/50
+        "
+                >
+                  <ExternalLink size={15} />
+                  Demo
+                </Link>
+              )}
+
+              {/* GITHUB BUTTON */}
+              {item.github && (
+                <Link
+                  href={item.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${item.title} source code on GitHub`}
+                  className="
+          flex
+          flex-1
+          items-center
+          justify-center
+          gap-2
+          rounded-lg
+          border
+          border-[#3a3a3a]
+          bg-[#252525]
+          px-4
+          py-2.5
+          text-sm
+          font-semibold
+          text-gray-200
+          transition-all
+          duration-300
+          hover:border-[#12c971]/50
+          hover:bg-[#12c971]/5
+          hover:text-[#12c971]
+          focus:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-[#12c971]/50
+        "
+                >
+                  <FaGithub size={15} />
+                  GitHub
+                </Link>
+              )}
+            </div>
+          )}
         </div>
-      </Link>
+      </div>
     </Reveal>
   );
 }
@@ -397,6 +413,7 @@ const Category = ({ params }) => {
             </Link>
           </div>
 
+          {/* PROJECT GRID */}
           <div
             className="
               grid
@@ -412,6 +429,7 @@ const Category = ({ params }) => {
             ))}
           </div>
 
+          {/* FOOTER */}
           <div
             style={{
               opacity: v0 ? 1 : 0,
