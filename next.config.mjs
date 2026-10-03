@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn-images.dzcdn.net",
       },
+      {
+        protocol: "https",
+        hostname: "image.tmdb.org",
+      },
     ],
   },
 };

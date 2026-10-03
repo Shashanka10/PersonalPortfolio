@@ -1,4 +1,4 @@
-import { Music } from "lucide-react";
+import { Music, Clapperboard } from "lucide-react";
 import { FaHiking } from "react-icons/fa";
 import { TbCricket } from "react-icons/tb";
 
@@ -39,5 +39,18 @@ export const hobbyCategories = [
     accent: "#38bdf8",
     image: "/sports.png",
     icon: <TbCricket size={18} />,
+  },
+
+  {
+    id: "movies",
+    href: "/hobbies/movies",
+    label: "Movies, Series & Anime",
+    tag: "Watching",
+    top: "After hours",
+    bottom: "My watchlist, all in one place.",
+    description: "Movies and series that have stayed with me.",
+    accent: "#f59e0b",
+    image: "/movies.jpg",
+    icon: <Clapperboard size={18} />,
   },
 ];

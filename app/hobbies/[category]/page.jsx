@@ -11,6 +11,7 @@ import { hobbyCategories } from "../data";
 import TrekkingSection from "@/components/TrekkingSection/TrekkingSection";
 import SportsSection from "@/components/SportsSection/SportsSection";
 import MusicSx from "@/components/MusicSection/MusicSection";
+import MoviesSection from "@/components/MoviesSection/MoviesSection";
 
 const HobbyCategory = () => {
   const params = useParams();
@@ -27,6 +28,7 @@ const HobbyCategory = () => {
     music: MusicSx,
     sports: SportsSection,
     trekking: TrekkingSection,
+    movies: MoviesSection,
   };
 
   const Section = renderers[category];

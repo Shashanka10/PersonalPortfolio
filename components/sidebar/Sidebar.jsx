@@ -11,7 +11,13 @@ import {
   Mountain,
 } from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
-import { FaGithub, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import {
+  FaGithub,
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaYoutube,
+} from "react-icons/fa";
 // import { Images } from "lucide-react";
 
 const navLinks = [
@@ -53,6 +59,11 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/shashanka-luitel/",
     icon: <FaLinkedin size={15} />,
     label: "LinkedIn",
+  },
+  {
+    href: "https://www.youtube.com/@shashanka10",
+    icon: <FaYoutube size={15} />,
+    label: "YouTube",
   },
 ];
 

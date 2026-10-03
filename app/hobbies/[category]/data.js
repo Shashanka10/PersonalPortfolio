@@ -387,3 +387,64 @@ export const sports = [
     color: "#f97316",
   },
 ];
+
+export const favoriteMovies = [
+  {
+    id: 157336,
+    personalTag: "Mind-bending",
+    featured: true,
+  },
+  {
+    id: 27205,
+    personalTag: "Rewatch",
+  },
+  {
+    id: 603,
+    personalTag: "Classic",
+  },
+  {
+    id: 155,
+    personalTag: "All-time favorite",
+  },
+  {
+    id: 206487,
+    personalTag: "Mind-bending",
+  },
+  {
+    id: 1427,
+    personalTag: "Dark",
+  },
+];
+
+export const favoriteSeries = [
+  {
+    id: 1399,
+    personalTag: "Epic",
+  },
+  {
+    id: 1396,
+    personalTag: "Must watch",
+  },
+  {
+    id: 60574,
+    personalTag: "Legendary",
+  },
+  {
+    id: 66732,
+    personalTag: "Comfort watch",
+  },
+  {
+    id: 70523,
+    personalTag: "Mind-bending",
+  },
+];
+
+export const favoriteAnime = [
+  { id: 13916, type: "tv", personalTag: "Masterpiece" },
+  { id: 1429, type: "tv", personalTag: "Epic" },
+  { id: 31911, type: "tv", personalTag: "All-time favorite" },
+  { id: 46298, type: "tv", personalTag: "Must watch" },
+  { id: 85937, type: "tv", personalTag: "Stunning" },
+  { id: 95479, type: "tv", personalTag: "Action" },
+  { id: 372058, type: "movie", personalTag: "Beautiful" },
+];
