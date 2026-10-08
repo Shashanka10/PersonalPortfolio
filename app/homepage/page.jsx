@@ -8,6 +8,7 @@ import { MapPin, ArrowDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Particles from "@/components/Particles/Particles";
 import AgeCounter from "@/components/AgeCounter/AgeCounter";
+import AskShashanka from "@/components/ChatBot/ChatBot";
 
 function useMounted(delay = 0) {
   const [visible, setVisible] = useState(false);
@@ -91,9 +92,10 @@ export default function HomePage() {
     }`;
 
   return (
-    <div
-      ref={heroRef}
-      className="
+    <>
+      <div
+        ref={heroRef}
+        className="
         hero-container
         relative
         w-full
@@ -112,17 +114,17 @@ export default function HomePage() {
         overflow-hidden
         border border-white/[0.035]
       "
-      style={{
-        "--mouse-x": "50%",
-        "--mouse-y": "50%",
-      }}
-    >
-      {/* Technical grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-60">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
+        style={{
+          "--mouse-x": "50%",
+          "--mouse-y": "50%",
+        }}
+      >
+        {/* Technical grid */}
+        <div className="absolute inset-0 pointer-events-none opacity-60">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
               linear-gradient(
                 rgba(255,255,255,0.025) 1px,
                 transparent 1px
@@ -133,27 +135,27 @@ export default function HomePage() {
                 transparent 1px
               )
             `,
-            backgroundSize: "42px 42px",
-            maskImage:
-              "radial-gradient(ellipse at center, black 0%, transparent 75%)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse at center, black 0%, transparent 75%)",
+              backgroundSize: "42px 42px",
+              maskImage:
+                "radial-gradient(ellipse at center, black 0%, transparent 75%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse at center, black 0%, transparent 75%)",
+            }}
+          />
+        </div>
+
+        {/* Mouse-following glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(420px circle at var(--mouse-x) var(--mouse-y), rgba(18,201,113,0.055), transparent 70%)",
           }}
         />
-      </div>
 
-      {/* Mouse-following glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(420px circle at var(--mouse-x) var(--mouse-y), rgba(18,201,113,0.055), transparent 70%)",
-        }}
-      />
-
-      {/* Static green glow */}
-      <div
-        className="
+        {/* Static green glow */}
+        <div
+          className="
           absolute
           -top-32
           -left-32
@@ -162,14 +164,14 @@ export default function HomePage() {
           rounded-full
           pointer-events-none
         "
-        style={{
-          background:
-            "radial-gradient(circle, rgba(18,201,113,0.065) 0%, transparent 70%)",
-        }}
-      />
+          style={{
+            background:
+              "radial-gradient(circle, rgba(18,201,113,0.065) 0%, transparent 70%)",
+          }}
+        />
 
-      <div
-        className="
+        <div
+          className="
           absolute
           -bottom-48
           right-[-100px]
@@ -178,24 +180,24 @@ export default function HomePage() {
           rounded-full
           pointer-events-none
         "
-        style={{
-          background:
-            "radial-gradient(circle, rgba(18,201,113,0.035) 0%, transparent 70%)",
-        }}
-      />
+          style={{
+            background:
+              "radial-gradient(circle, rgba(18,201,113,0.035) 0%, transparent 70%)",
+          }}
+        />
 
-      {/* Particles */}
-      <Particles />
+        {/* Particles */}
+        <Particles />
 
-      {/* Corner brackets */}
-      <Corner pos="tl" />
-      <Corner pos="tr" />
-      <Corner pos="bl" />
-      <Corner pos="br" />
+        {/* Corner brackets */}
+        <Corner pos="tl" />
+        <Corner pos="tr" />
+        <Corner pos="bl" />
+        <Corner pos="br" />
 
-      {/* Top system bar */}
-      <div
-        className={`
+        {/* Top system bar */}
+        <div
+          className={`
           ${fade(v0)}
           absolute
           top-5
@@ -210,22 +212,22 @@ export default function HomePage() {
           justify-between
           pointer-events-none
         `}
-      >
-        <TechLabel>PORTFOLIO</TechLabel>
+        >
+          <TechLabel>PORTFOLIO</TechLabel>
 
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-[#12c971] opacity-50 animate-ping" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#12c971]" />
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-[#12c971] opacity-50 animate-ping" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#12c971]" />
+            </span>
 
-          <TechLabel>ONLINE</TechLabel>
+            <TechLabel>ONLINE</TechLabel>
+          </div>
         </div>
-      </div>
 
-      {/* Main content */}
-      <div
-        className="
+        {/* Main content */}
+        <div
+          className="
           relative
           z-10
           flex
@@ -237,13 +239,13 @@ export default function HomePage() {
           pt-10
           md:pt-4
         "
-      >
-        {/* Left content */}
-        <div className="space-y-6 md:space-y-7 flex-1 max-w-3xl">
-          {/* Availability */}
-          <div className={fade(v0)}>
-            <span
-              className="
+        >
+          {/* Left content */}
+          <div className="space-y-6 md:space-y-7 flex-1 max-w-3xl">
+            {/* Availability */}
+            <div className={fade(v0)}>
+              <span
+                className="
                 inline-flex
                 items-center
                 gap-2.5
@@ -260,24 +262,24 @@ export default function HomePage() {
                 tracking-widest
                 uppercase
               "
-            >
-              <span className="relative flex w-2 h-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-[#12c971] opacity-60 animate-ping" />
-                <span className="relative w-2 h-2 rounded-full bg-[#12c971]" />
+              >
+                <span className="relative flex w-2 h-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-[#12c971] opacity-60 animate-ping" />
+                  <span className="relative w-2 h-2 rounded-full bg-[#12c971]" />
+                </span>
+                Open to opportunities
               </span>
-              Open to opportunities
-            </span>
-          </div>
+            </div>
 
-          {/* Name */}
-          <div className={fade(v1)}>
-            <p className="text-gray-500 font-mono text-[10px] sm:text-xs tracking-[0.25em] uppercase mb-3">
-              Hello, I am
-            </p>
+            {/* Name */}
+            <div className={fade(v1)}>
+              <p className="text-gray-500 font-mono text-[10px] sm:text-xs tracking-[0.25em] uppercase mb-3">
+                Hello, I am
+              </p>
 
-            <div className="space-y-3">
-              <h1
-                className="
+              <div className="space-y-3">
+                <h1
+                  className="
                   text-4xl
                   sm:text-5xl
                   md:text-6xl
@@ -287,38 +289,38 @@ export default function HomePage() {
                   leading-[0.95]
                   tracking-tight
                 "
-              >
-                Shashanka
-                <span
-                  className="
+                >
+                  Shashanka
+                  <span
+                    className="
                     ml-2
                     sm:ml-4
                     md:ml-5
                     text-transparent
                     bg-clip-text
                   "
-                  style={{
-                    WebkitTextStroke: "1px rgba(18,201,113,0.65)",
-                  }}
-                >
-                  Luitel
-                </span>
-              </h1>
-              {/* Nepali name + pronunciation */}
-              <div className="flex items-center gap-2.5">
-                <span className="text-lg sm:text-xl text-gray-400 font-medium flex items-center gap-2">
-                  शशांक लुईटेल{" "}
-                  <span className="text-sm tracking-wider text-gray-500">
-                    ( Devanagari )
+                    style={{
+                      WebkitTextStroke: "1px rgba(18,201,113,0.65)",
+                    }}
+                  >
+                    Luitel
                   </span>
-                </span>
+                </h1>
+                {/* Nepali name + pronunciation */}
+                <div className="flex items-center gap-2.5">
+                  <span className="text-lg sm:text-xl text-gray-400 font-medium flex items-center gap-2">
+                    शशांक लुईटेल{" "}
+                    <span className="text-sm tracking-wider text-gray-500">
+                      ( Devanagari )
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Typewriter */}
-          <div
-            className={`
+            {/* Typewriter */}
+            <div
+              className={`
               ${fade(v2)}
               min-h-[28px]
               text-sm
@@ -330,38 +332,38 @@ export default function HomePage() {
               flex
               items-center
             `}
-          >
-            <span className="text-[#12c971]/50 mr-2">&gt;</span>
+            >
+              <span className="text-[#12c971]/50 mr-2">&gt;</span>
 
-            <Typewriter
-              options={{
-                strings: [
-                  "Research Enthusiast",
-                  "Full-Stack Developer",
-                  "Vibe Coder",
-                  "Trekker",
-                ],
-                autoStart: true,
-                loop: true,
-                delay: 80,
-                deleteSpeed: 60,
-                cursor: "▋",
-              }}
-            />
-          </div>
-
-          {/* Research tags */}
-          <div className={fade(v3)}>
-            <div className="flex items-center gap-3 mb-3">
-              <TechLabel>Currently exploring</TechLabel>
-              <span className="h-px w-8 bg-[#12c971]/30" />
+              <Typewriter
+                options={{
+                  strings: [
+                    "Research Enthusiast",
+                    "Full-Stack Developer",
+                    "Vibe Coder",
+                    "Trekker",
+                  ],
+                  autoStart: true,
+                  loop: true,
+                  delay: 80,
+                  deleteSpeed: 60,
+                  cursor: "▋",
+                }}
+              />
             </div>
 
-            <div className="flex flex-wrap gap-2 md:gap-3">
-              {["HCI", "XR", "AI"].map((item) => (
-                <span
-                  key={item}
-                  className="
+            {/* Research tags */}
+            <div className={fade(v3)}>
+              <div className="flex items-center gap-3 mb-3">
+                <TechLabel>Currently exploring</TechLabel>
+                <span className="h-px w-8 bg-[#12c971]/30" />
+              </div>
+
+              <div className="flex flex-wrap gap-2 md:gap-3">
+                {["HCI", "XR", "AI"].map((item) => (
+                  <span
+                    key={item}
+                    className="
                     px-4
                     md:px-6
                     py-1
@@ -380,72 +382,72 @@ export default function HomePage() {
                     hover:text-[#12c971]/80
                     hover:bg-[#12c971]/5
                   "
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className={fade(v3)}>
-            <div className="group relative inline-flex items-center gap-1 md:gap-2">
-              <div className="relative flex h-10 w-10 items-center justify-center">
-                {/* Radar rings */}
-                <span className="absolute h-5 w-5 rounded-full border border-[#12c971]/20" />
-                <span className="absolute h-7 w-7 rounded-full border border-[#12c971]/10 animate-ping" />
-
-                <MapPin
-                  size={17}
-                  strokeWidth={1.8}
-                  className="relative z-10 text-[#12c971] drop-shadow-[0_0_6px_rgba(18,201,113,0.35)]"
-                />
-
-                <span className="absolute z-20 mt-[-3px] h-1.5 w-1.5 rounded-full bg-[#12c971]" />
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
+            </div>
 
-              <div className="flex items-center gap-2 text-xs tracking-widest font-mono sm:text-sm">
-                <span className="text-gray-200">Bhaktapur</span>
+            <div className={fade(v3)}>
+              <div className="group relative inline-flex items-center gap-1 md:gap-2">
+                <div className="relative flex h-10 w-10 items-center justify-center">
+                  {/* Radar rings */}
+                  <span className="absolute h-5 w-5 rounded-full border border-[#12c971]/20" />
+                  <span className="absolute h-7 w-7 rounded-full border border-[#12c971]/10 animate-ping" />
 
-                <span className="text-gray-600">/</span>
-
-                <span className="flex items-center gap-1.5 text-gray-400">
-                  Nepal
-                  <Image
-                    src="/nepal.png"
-                    alt="Nepal flag"
-                    width={16}
-                    height={16}
+                  <MapPin
+                    size={17}
+                    strokeWidth={1.8}
+                    className="relative z-10 text-[#12c971] drop-shadow-[0_0_6px_rgba(18,201,113,0.35)]"
                   />
-                </span>
+
+                  <span className="absolute z-20 mt-[-3px] h-1.5 w-1.5 rounded-full bg-[#12c971]" />
+                </div>
+
+                <div className="flex items-center gap-2 text-xs tracking-widest font-mono sm:text-sm">
+                  <span className="text-gray-200">Bhaktapur</span>
+
+                  <span className="text-gray-600">/</span>
+
+                  <span className="flex items-center gap-1.5 text-gray-400">
+                    Nepal
+                    <Image
+                      src="/nepal.png"
+                      alt="Nepal flag"
+                      width={16}
+                      height={16}
+                    />
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Divider */}
-          <div className={fade(v3)}>
-            <div className="h-px w-20 bg-gradient-to-r from-[#12c971]/50 to-transparent" />
-          </div>
+            {/* Divider */}
+            <div className={fade(v3)}>
+              <div className="h-px w-20 bg-gradient-to-r from-[#12c971]/50 to-transparent" />
+            </div>
 
-          {/* Buttons */}
-          <div
-            className={`
+            {/* Buttons */}
+            <div
+              className={`
               ${fade(v4)}
               flex
               flex-wrap
               gap-3
               items-center
             `}
-          >
-            <Button url="/portfolio" text="Portfolio" />
+            >
+              <Button url="/portfolio" text="Portfolio" />
 
-            <Button url="/contact" text="Contact" />
+              <Button url="/contact" text="Contact" />
 
-            <Button url="/shashanka_cv.pdf" text="CV" />
-          </div>
+              <Button url="/shashanka_cv.pdf" text="CV" />
+            </div>
 
-          {/* Scroll hint */}
-          <div
-            className={`
+            {/* Scroll hint */}
+            <div
+              className={`
               ${fade(v5)}
               hidden
               md:flex
@@ -456,20 +458,20 @@ export default function HomePage() {
               font-mono
               pt-3
             `}
-          >
-            <div className="flex flex-col gap-0.5">
-              <span className="tracking-[0.2em] uppercase">
-                Scroll to explore
-              </span>
+            >
+              <div className="flex flex-col gap-0.5">
+                <span className="tracking-[0.2em] uppercase">
+                  Scroll to explore
+                </span>
+              </div>
+
+              <ArrowDown size={12} className="animate-bounce ml-1" />
             </div>
-
-            <ArrowDown size={12} className="animate-bounce ml-1" />
           </div>
-        </div>
 
-        {/* Right / Portrait */}
-        <div
-          className={`
+          {/* Right / Portrait */}
+          <div
+            className={`
             ${fade(v2, "delay-200")}
             flex
             flex-col
@@ -477,11 +479,11 @@ export default function HomePage() {
             md:items-end
             flex-shrink-0
           `}
-        >
-          <div className="relative">
-            {/* Top metadata */}
-            <div
-              className="
+          >
+            <div className="relative">
+              {/* Top metadata */}
+              <div
+                className="
                 absolute
                 -top-6
                 left-2
@@ -490,23 +492,23 @@ export default function HomePage() {
                 gap-2
                 z-20
               "
-            >
-              <TechLabel>01 / 10</TechLabel>
+              >
+                <TechLabel>01 / 10</TechLabel>
 
-              <span className="h-px w-8 bg-[#12c971]/20" />
-            </div>
+                <span className="h-px w-8 bg-[#12c971]/20" />
+              </div>
 
-            {/* Portrait */}
-            <div
-              className="relative group"
-              style={{
-                width: "clamp(220px, 28vw, 330px)",
-                height: "clamp(250px, 32vw, 370px)",
-              }}
-            >
-              {/* Outer glow */}
+              {/* Portrait */}
               <div
-                className="
+                className="relative group"
+                style={{
+                  width: "clamp(220px, 28vw, 330px)",
+                  height: "clamp(250px, 32vw, 370px)",
+                }}
+              >
+                {/* Outer glow */}
+                <div
+                  className="
                   absolute
                   inset-0
                   rounded-2xl
@@ -517,11 +519,11 @@ export default function HomePage() {
                   transition-opacity
                   duration-700
                 "
-              />
+                />
 
-              {/* Back offset ring */}
-              <div
-                className="
+                {/* Back offset ring */}
+                <div
+                  className="
                   absolute
                   bottom-[-7px]
                   right-[-7px]
@@ -534,15 +536,15 @@ export default function HomePage() {
                   group-hover:translate-x-[3px]
                   group-hover:translate-y-[3px]
                 "
-                style={{
-                  width: "calc(100% - 16px)",
-                  height: "calc(100% - 16px)",
-                }}
-              />
+                  style={{
+                    width: "calc(100% - 16px)",
+                    height: "calc(100% - 16px)",
+                  }}
+                />
 
-              {/* Front offset ring */}
-              <div
-                className="
+                {/* Front offset ring */}
+                <div
+                  className="
                   absolute
                   top-[-7px]
                   left-[-7px]
@@ -555,15 +557,15 @@ export default function HomePage() {
                   group-hover:-translate-x-[3px]
                   group-hover:-translate-y-[3px]
                 "
-                style={{
-                  width: "calc(100% - 16px)",
-                  height: "calc(100% - 16px)",
-                }}
-              />
+                  style={{
+                    width: "calc(100% - 16px)",
+                    height: "calc(100% - 16px)",
+                  }}
+                />
 
-              {/* Image */}
-              <div
-                className="
+                {/* Image */}
+                <div
+                  className="
                   absolute
                   inset-[8px]
                   rounded-xl
@@ -575,27 +577,27 @@ export default function HomePage() {
                   transition-all
                   duration-500
                 "
-                style={{
-                  animation: "float 6s ease-in-out infinite",
-                }}
-              >
-                <Image
-                  src={Illustrate}
-                  alt="Shashanka Luitel"
-                  fill
-                  sizes="(max-width: 768px) 80vw, 330px"
-                  className="
+                  style={{
+                    animation: "float 6s ease-in-out infinite",
+                  }}
+                >
+                  <Image
+                    src={Illustrate}
+                    alt="Shashanka Luitel"
+                    fill
+                    sizes="(max-width: 768px) 80vw, 330px"
+                    className="
                     object-cover
                     transition-transform
                     duration-700
                     group-hover:scale-[1.025]
                   "
-                  priority
-                />
+                    priority
+                  />
 
-                {/* Image overlay */}
-                <div
-                  className="
+                  {/* Image overlay */}
+                  <div
+                    className="
                     absolute
                     inset-0
                     bg-gradient-to-t
@@ -604,11 +606,11 @@ export default function HomePage() {
                     to-[#12c971]/5
                     opacity-60
                   "
-                />
+                  />
 
-                {/* Hover overlay */}
-                <div
-                  className="
+                  {/* Hover overlay */}
+                  <div
+                    className="
                     absolute
                     inset-0
                     bg-[#12c971]/5
@@ -617,11 +619,11 @@ export default function HomePage() {
                     transition-opacity
                     duration-500
                   "
-                />
+                  />
 
-                {/* Scan line */}
-                <div
-                  className="
+                  {/* Scan line */}
+                  <div
+                    className="
                     absolute
                     left-0
                     right-0
@@ -631,19 +633,19 @@ export default function HomePage() {
                     group-hover:opacity-100
                     animate-scan
                   "
-                />
+                  />
+                </div>
+
+                {/* Corner markers */}
+                <span className="absolute top-3 left-3 w-2 h-2 border-t border-l border-[#12c971]/50 z-10" />
+                <span className="absolute top-3 right-3 w-2 h-2 border-t border-r border-[#12c971]/50 z-10" />
+                <span className="absolute bottom-3 left-3 w-2 h-2 border-b border-l border-[#12c971]/50 z-10" />
+                <span className="absolute bottom-3 right-3 w-2 h-2 border-b border-r border-[#12c971]/50 z-10" />
               </div>
 
-              {/* Corner markers */}
-              <span className="absolute top-3 left-3 w-2 h-2 border-t border-l border-[#12c971]/50 z-10" />
-              <span className="absolute top-3 right-3 w-2 h-2 border-t border-r border-[#12c971]/50 z-10" />
-              <span className="absolute bottom-3 left-3 w-2 h-2 border-b border-l border-[#12c971]/50 z-10" />
-              <span className="absolute bottom-3 right-3 w-2 h-2 border-b border-r border-[#12c971]/50 z-10" />
-            </div>
-
-            {/* Quote */}
-            <div
-              className="
+              {/* Quote */}
+              <div
+                className="
         mt-5
         md:mt-4
         w-full
@@ -656,28 +658,28 @@ export default function HomePage() {
         gap-3
         text-center
       "
-            >
-              <AgeCounter />
+              >
+                <AgeCounter />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom decorative line */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden sm:flex items-center gap-3 pointer-events-none">
-        <span className="w-8 h-px bg-gradient-to-r from-transparent to-[#12c971]/20" />
+        {/* Bottom decorative line */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden sm:flex items-center gap-3 pointer-events-none">
+          <span className="w-8 h-px bg-gradient-to-r from-transparent to-[#12c971]/20" />
 
-        <span className="w-1 h-1 rounded-full bg-[#12c971]/30" />
+          <span className="w-1 h-1 rounded-full bg-[#12c971]/30" />
 
-        <span className="w-16 h-px bg-[#12c971]/10" />
+          <span className="w-16 h-px bg-[#12c971]/10" />
 
-        <span className="w-1 h-1 rounded-full bg-[#12c971]/30" />
+          <span className="w-1 h-1 rounded-full bg-[#12c971]/30" />
 
-        <span className="w-8 h-px bg-gradient-to-l from-transparent to-[#12c971]/20" />
-      </div>
+          <span className="w-8 h-px bg-gradient-to-l from-transparent to-[#12c971]/20" />
+        </div>
 
-      {/* Animations */}
-      <style>{`
+        {/* Animations */}
+        <style>{`
         @keyframes float {
           0%,
           100% {
@@ -722,6 +724,8 @@ export default function HomePage() {
           }
         }
       `}</style>
-    </div>
+      </div>
+      <AskShashanka />
+    </>
   );
 }
