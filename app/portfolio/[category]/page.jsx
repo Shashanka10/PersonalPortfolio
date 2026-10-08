@@ -266,7 +266,7 @@ function ProjectCard({ item, index }) {
         "
                 >
                   <FaGithub size={15} />
-                  GitHub
+                  Code
                 </Link>
               )}
 

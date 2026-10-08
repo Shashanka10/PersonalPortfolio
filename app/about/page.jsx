@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import {
   SiDatagrip,
+  SiExpo,
+  SiFastapi,
   SiFigma,
   SiJavascript,
   SiNotion,
@@ -20,6 +22,7 @@ import {
   SiReact,
   SiSwagger,
   SiTailwindcss,
+  SiTypescript,
 } from "react-icons/si";
 import {
   TbBrandNextjs,
@@ -35,6 +38,7 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaGitAlt,
+  FaNodeJs,
 } from "react-icons/fa";
 import { SiAndroidstudio, SiCplusplus } from "react-icons/si";
 import { FaUnity } from "react-icons/fa6";
@@ -117,11 +121,14 @@ const About = () => {
     { icon: <FaHtml5 />, label: "HTML" },
     { icon: <FaCss3Alt />, label: "CSS" },
     { icon: <SiJavascript />, label: "JavaScript" },
+    { icon: <SiTypescript />, label: "TypeScript" },
     { icon: <SiReact />, label: "ReactJS" },
     { icon: <TbBrandNextjs />, label: "Next.js" },
     { icon: <TbBrandReactNative />, label: "React Native" },
     { icon: <SiTailwindcss />, label: "Tailwind CSS" },
+    { icon: <FaNodeJs />, label: "Node.js" },
     { icon: <FaPython />, label: "Python" },
+    { icon: <SiFastapi />, label: "FastAPI" },
     { icon: <SiCplusplus />, label: "C / C++" },
     { icon: <TbBrandCSharp />, label: "C#" },
   ];
@@ -133,6 +140,7 @@ const About = () => {
     { icon: <SiPostman />, label: "Postman" },
     { icon: <SiFigma />, label: "Figma" },
     { icon: <FaUnity />, label: "Unity" },
+    { icon: <SiExpo />, label: "Expo" },
     { icon: <SiAndroidstudio />, label: "Android Studio" },
     { icon: <FaGithub />, label: "GitHub" },
     { icon: <SiSwagger />, label: "Swagger" },
