@@ -115,11 +115,11 @@ export default function AskShashanka() {
       {/* Floating AI button */}
       <button
         onClick={() => setOpen(true)}
-        aria-label="Ask Shashanka"
+        aria-label="Ask Shaya"
         className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-[100] group flex items-center gap-2 cursor-pointer"
       >
         <span className="hidden sm:block opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[10px] font-mono uppercase tracking-[0.18em] text-gray-400 bg-[#151515] border border-white/[0.08] px-3 py-2 rounded-lg shadow-xl whitespace-nowrap">
-          Ask Shashanka
+          Ask Shaya
         </span>
 
         <span className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full border-[#12c971] opacity-90 bg-[#151515] border cursor-pointer text-[#0d0d0d] shadow-[0_0_30px_rgba(18,201,113,0.18)] hover:shadow-[0_0_40px_rgba(18,201,113,0.35)] hover:scale-105 active:scale-95 transition-all duration-300">
@@ -157,7 +157,7 @@ export default function AskShashanka() {
             </div>
 
             <div>
-              <p className="text-sm text-gray-200 font-medium">Ask Shashanka</p>
+              <p className="text-sm text-gray-200 font-medium">Ask Shaya</p>
 
               <div className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#12c971]" />
@@ -184,7 +184,7 @@ export default function AskShashanka() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg text-gray-100 font-medium">
-                  Hi, I'm Shashanka's AI assistant.
+                  Hi, I'm Shashanka's AI assistant
                 </h3>
 
                 <p className="mt-2 text-sm leading-6 text-gray-500">
@@ -195,7 +195,7 @@ export default function AskShashanka() {
 
               <div>
                 <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500 mb-3">
-                  Try asking
+                  Try asking Shaya
                 </p>
 
                 <div className="space-y-2">
