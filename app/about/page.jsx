@@ -237,7 +237,7 @@ const About = () => {
                   )}
                 </button>
                 <Link
-                  href="/shashanka_cv.pdf"
+                  href="/shashanka_resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   download
