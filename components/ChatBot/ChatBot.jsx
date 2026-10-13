@@ -5,10 +5,10 @@ import ReactMarkdown from "react-markdown";
 import { Bot, Send, X, BotMessageSquare } from "lucide-react";
 
 const suggestions = [
-  "What is Shashanka currently interested in?",
+  "What is Shashanka's academic and professional background?",
   "What kind of projects has he worked on?",
-  "What is his background in software development?",
-  "What does he want to research?",
+  "What technical skills and software development experience does he bring?",
+  "What are Shashanka's research interests?",
 ];
 
 export default function AskShashanka() {
@@ -143,11 +143,20 @@ export default function AskShashanka() {
 
       {/* Chat window */}
       <div
-        className={`fixed z-[120] right-3 bottom-3 sm:right-7 sm:bottom-7 w-[calc(100%-24px)] sm:w-[420px] h-[min(680px,calc(100vh-24px))] sm:h-[620px] bg-[#151515] border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300 origin-bottom-right ${
-          open
-            ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 scale-95 translate-y-3 pointer-events-none"
-        }`}
+        className={`fixed z-[120]
+  left-3 right-3 bottom-3 w-auto
+  sm:left-auto sm:right-7 sm:bottom-7 sm:w-[420px]
+  h-[min(680px,calc(100dvh-24px))]
+  sm:h-[620px]
+  bg-[#151515] border border-white/[0.08]
+  rounded-2xl shadow-2xl overflow-hidden
+  flex flex-col
+  transition-all duration-300 origin-bottom-right
+  ${
+    open
+      ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+      : "opacity-0 scale-95 translate-y-3 pointer-events-none"
+  }`}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.07] bg-[#181818]">
