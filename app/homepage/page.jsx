@@ -39,7 +39,7 @@ function Corner({ pos }) {
 function TechLabel({ children, className = "" }) {
   return (
     <span
-      className={`font-mono text-[9px] sm:text-[10px] tracking-[0.2em] uppercase text-gray-600 ${className}`}
+      className={`font-mono text-[9px] sm:text-[10px] tracking-[0.2em] uppercase text-gray-500 ${className}`}
     >
       {children}
     </span>
@@ -360,7 +360,7 @@ export default function HomePage() {
               </div>
 
               <div className="flex flex-wrap gap-2 md:gap-3">
-                {["HCI", "XR", "AI"].map((item) => (
+                {["HCI", "XR", "AI", "HRI"].map((item) => (
                   <span
                     key={item}
                     className="

@@ -436,43 +436,47 @@ const Category = ({ params }) => {
               href="/portfolio"
               className="
                 group
-                flex
-                items-center
-                justify-center
-                gap-2
-                overflow-hidden
-                text-gray-100
-                text-sm
-                font-semibold
-                tracking-wide
-                px-2
-                py-1.5
-                sm:px-3
-                sm:py-2
-                md:px-4
-                md:py-2.5
-                rounded-xl
-                border
-                border-[#636363]
-                bg-[#1e1e1e]
-                hover:border-[#12c971]/50
-                hover:text-[#12c971]
-                transition-all
-                duration-300
+    inline-flex
+    items-center
+    gap-2
+    px-3.5
+    py-2
+    rounded-full
+    border
+    text-xs
+    font-mono
+    uppercase
+    tracking-wider
+    transition-all
+    duration-300
               "
+              style={{
+                color: "#12c971",
+                borderColor: "#12c97145",
+                backgroundColor: "#12c9710D",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#12c97118";
+                e.currentTarget.style.borderColor = "#12c97180";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#12c9710D";
+                e.currentTarget.style.borderColor = "#12c97145";
+              }}
             >
               <ArrowLeftCircle
-                size={24}
+                size={16}
+                strokeWidth={1.7}
                 className="
-                  group-hover:-translate-x-1
-                  transition-transform
-                  duration-300
-                "
+      transition-transform
+      duration-300
+      group-hover:-translate-x-1
+    "
               />
 
               <span className="hidden sm:inline">Back to portfolio</span>
 
-              <span className="inline sm:hidden">Back</span>
+              <span className="sm:hidden">Back</span>
             </Link>
           </div>
 
