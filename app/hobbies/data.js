@@ -1,20 +1,8 @@
-import { Music, Clapperboard } from "lucide-react";
+import { Music, Clapperboard, Gamepad2 } from "lucide-react";
 import { FaHiking } from "react-icons/fa";
 import { TbCricket } from "react-icons/tb";
 
 export const hobbyCategories = [
-  {
-    id: "music",
-    href: "/hobbies/music",
-    label: "Music",
-    tag: "Listening",
-    top: "On repeat",
-    bottom: "A collection of songs, artists, and sounds I keep coming back to.",
-    description: "Genres, artists, and tracks on repeat.",
-    accent: "#a855f7",
-    image: "/music.png",
-    icon: <Music size={18} />,
-  },
   {
     id: "trekking",
     href: "/hobbies/trekking",
@@ -29,18 +17,29 @@ export const hobbyCategories = [
     icon: <FaHiking size={18} />,
   },
   {
+    id: "music",
+    href: "/hobbies/music",
+    label: "Music",
+    tag: "Listening",
+    top: "On repeat",
+    bottom: "A collection of songs, artists, and sounds I keep coming back to.",
+    description: "Genres, artists, and tracks on repeat.",
+    accent: "#a855f7",
+    image: "/music.png",
+    icon: <Music size={18} />,
+  },
+  {
     id: "sports",
     href: "/hobbies/sports",
     label: "Sports",
-    tag: "Games",
+    tag: "Playing",
     top: "Outside the Screen",
     bottom: "A few sports I enjoy playing whenever I get the chance.",
-    description: "Football, cricket, and other games I enjoy playing.",
+    description: "Sports I enjoy playing and watching.",
     accent: "#38bdf8",
     image: "/sports.png",
     icon: <TbCricket size={18} />,
   },
-
   {
     id: "movies",
     href: "/hobbies/movies",
@@ -50,7 +49,19 @@ export const hobbyCategories = [
     bottom: "My watchlist, all in one place.",
     description: "Movies and series that have stayed with me.",
     accent: "#f59e0b",
-    image: "/movies.jpg",
+    image: "/movie.jpg",
     icon: <Clapperboard size={18} />,
+  },
+  {
+    id: "games",
+    href: "/hobbies/games",
+    label: "Games",
+    tag: "Gaming",
+    top: "Currently Playing",
+    bottom: "PC and mobile games I keep coming back to.",
+    description: "Games I love playing on PC and mobile.",
+    accent: "#ec4899",
+    image: "/games.png",
+    icon: <Gamepad2 size={18} />,
   },
 ];

@@ -448,3 +448,54 @@ export const favoriteAnime = [
   { id: 95479, type: "tv", personalTag: "Action" },
   { id: 372058, type: "movie", personalTag: "Beautiful" },
 ];
+
+export const games = [
+  {
+    id: "gta-v",
+    query: "Grand Theft Auto V",
+    platform: "pc",
+    status: "Recently played",
+  },
+  {
+    id: "valorant",
+    query: "VALORANT",
+    platform: "pc",
+    status: "Recently played",
+  },
+  {
+    id: "fc-26",
+    query: "EA SPORTS FC 26",
+    platform: "pc",
+    status: "Recently played",
+  },
+  {
+    id: "among-us",
+    query: "Among Us",
+    platform: "pc",
+    status: "Recently played",
+  },
+  {
+    id: "fall-guys",
+    query: "Fall Guys",
+    platform: "pc",
+    status: "Recently played",
+  },
+  {
+    id: "clash-of-clans",
+    query: "Clash of Clans",
+    platform: "mobile",
+    status: "Recently played",
+  },
+  {
+    id: "clash-royale",
+    query: "Clash Royale",
+    platform: "mobile",
+    status: "Recently played",
+  },
+  {
+    id: "candy-crush",
+    query: "Candy Crush Saga",
+    platform: "mobile",
+    status: "Recently played",
+  },
+];

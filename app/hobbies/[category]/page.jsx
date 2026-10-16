@@ -12,6 +12,7 @@ import TrekkingSection from "@/components/TrekkingSection/TrekkingSection";
 import SportsSection from "@/components/SportsSection/SportsSection";
 import MusicSx from "@/components/MusicSection/MusicSection";
 import MoviesSection from "@/components/MoviesSection/MoviesSection";
+import GamesSection from "@/components/GamesSection/GamesSection";
 
 const HobbyCategory = () => {
   const params = useParams();
@@ -29,6 +30,7 @@ const HobbyCategory = () => {
     sports: SportsSection,
     trekking: TrekkingSection,
     movies: MoviesSection,
+    games: GamesSection,
   };
 
   const Section = renderers[category];
