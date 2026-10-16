@@ -59,10 +59,19 @@ const Footer = () => {
         }}
       />
 
-      <p className="relative text-gray-500 font-mono text-[10px] sm:text-xs tracking-wider">
-        © 2023 <span className="font-semibold">Shashanka Luitel</span>
-        <span className="hidden sm:inline"> · All rights reserved</span>
-      </p>
+      <div className="flex flex-col xl:flex-row items-center gap-x-3 gap-y-1">
+        <p className="relative text-gray-500 font-mono text-[10px] sm:text-xs tracking-wider">
+          © 2023–{new Date().getFullYear()}{" "}
+          <span className="font-semibold">Shashanka Luitel</span>
+          <span className="hidden lg:inline"> · All rights reserved</span>
+        </p>
+
+        <span className="hidden xl:inline text-[#2a2a2a]">|</span>
+
+        <p className="text-gray-600 font-mono text-[10px] sm:text-xs tracking-wider">
+          Last updated: {process.env.NEXT_PUBLIC_BUILD_DATE}
+        </p>
+      </div>
 
       {/* Social icons */}
       <div className="relative flex items-center gap-1 sm:gap-1.5">

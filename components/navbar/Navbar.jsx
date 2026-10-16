@@ -261,7 +261,7 @@ const Navbar = () => {
         {/* ── FOOTER ── */}
         <div className="mt-auto px-6 py-5 border-t border-[#2a2a2a]">
           <p className="text-gray-600 text-xs font-mono text-center tracking-wider">
-            © 2023 Shashanka Luitel
+            © 2023–{new Date().getFullYear()} Shashanka
           </p>
         </div>
       </div>

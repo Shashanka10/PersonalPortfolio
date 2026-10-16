@@ -177,7 +177,7 @@ export default function Sidebar() {
 
         <div className="mt-4 pt-4 border-t border-[#1f1f1f]">
           <p className="hidden lg:block text-gray-500 text-[10px] font-mono text-center tracking-wider">
-            © 2023 Shashanka
+            © 2023–{new Date().getFullYear()} Shashanka
           </p>
         </div>
       </div>
